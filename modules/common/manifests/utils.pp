@@ -8,6 +8,7 @@ class common::utils {
          'screen',
          'zile',
          'nmap',
+         'etckeeper',
          ]:
              ensure => installed,
     }
