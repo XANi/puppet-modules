@@ -6,8 +6,8 @@ class common::utils {
     package {
         [
          'screen',
-         'zile,'
-         'nmap'
+         'zile',
+         'nmap',
          ]:
              ensure => installed,
     }
