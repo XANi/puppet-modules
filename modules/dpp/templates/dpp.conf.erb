@@ -16,7 +16,7 @@ use_repos:
   - private
   - shared
 
-manifest_from: shared
+manifest_from: <%= manifest_from %>
 repo_dir: /var/lib/dpp/repos
 
 <%- if @manager_url -%>
@@ -28,7 +28,7 @@ poll_interval: 20
 
 puppet:
    # wait that many seconds before first run
-  start_wait: 60
+  start_wait: 20
   # minimum of seconds to wait between puppet runs
   minimum_interval: 120
   # how ofter puppet should be run if no config changes ?

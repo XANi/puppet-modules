@@ -1,4 +1,7 @@
-class dpp {
+class dpp (
+    $manifest_from = 'shared',
+)
+    {
     $repo_config = hiera('repo')
     $manager_url = hiera('manager_url',false)
     file { '/etc/dpp.conf':
