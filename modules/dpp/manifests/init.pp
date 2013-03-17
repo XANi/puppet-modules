@@ -1,5 +1,6 @@
 class dpp (
     $manifest_from = 'shared',
+    $manager_url  = false,
 )
     {
     $repo_config = hiera('repo')
