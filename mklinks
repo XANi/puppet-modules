@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+use Cwd;
+my $dir = getcwd();
+my $links = {
+    'bin/pre-commit' => '.git/hooks/pre-commit',
+};
+while ( my ($key, $val) = each (%$links) ) {
+    if ( -e $dir . '/' . $val) {
+        print "Exists: $val\n";
+    } else {
+        symlink($dir . '/' . $key, $dir . '/' . $val);
+        print "Linking $key to $val\n";
+    }
+}
+
+system('git config user.name "Mariusz Gronczewski"');
+system('git config user.email "xani666@gmail.com"');
+
