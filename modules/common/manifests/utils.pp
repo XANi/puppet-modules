@@ -12,6 +12,7 @@ class common::utils {
          'psmisc',
          'curl',
          'bwm-ng',
+         'bridge-utils',
          ]:
              ensure => installed,
     }
