@@ -10,6 +10,7 @@ class common::utils {
          'nmap',
          'etckeeper',
          'psmisc',
+         'curl',
          'bwm-ng',
          ]:
              ensure => installed,
