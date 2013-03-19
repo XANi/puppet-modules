@@ -13,6 +13,7 @@ class common::utils {
          'curl',
          'bwm-ng',
          'bridge-utils',
+         'tcpdump',
          ]:
              ensure => installed,
     }
