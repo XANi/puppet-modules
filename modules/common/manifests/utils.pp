@@ -9,6 +9,8 @@ class common::utils {
          'zile',
          'nmap',
          'etckeeper',
+         'psmisc',
+         'bwm-ng',
          ]:
              ensure => installed,
     }
