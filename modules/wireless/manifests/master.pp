@@ -8,6 +8,7 @@ class wireless::master (
     $country   = 'US',
     $hw_mode   = 'g',
     $channel   = fqdn_rand(8,1),
+    $bridge    = false,
     $password,
 ) {
     include wireless::util
