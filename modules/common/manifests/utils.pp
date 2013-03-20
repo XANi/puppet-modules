@@ -14,6 +14,7 @@ class common::utils {
          'bwm-ng',
          'bridge-utils',
          'tcpdump',
+         'lsof',
          ]:
              ensure => installed,
     }
