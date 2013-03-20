@@ -15,6 +15,7 @@ class common::utils {
          'bridge-utils',
          'tcpdump',
          'lsof',
+         'ethtool',
          ]:
              ensure => installed,
     }
