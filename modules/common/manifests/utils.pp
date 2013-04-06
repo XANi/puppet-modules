@@ -9,7 +9,25 @@ class common::utils {
          'zile',
          'nmap',
          'etckeeper',
+         'psmisc',
+         'curl',
+         'bwm-ng',
+         'bridge-utils',
+         'tcpdump',
+         'lsof',
+         'ethtool',
          ]:
              ensure => installed,
+    }
+}
+
+# remove unwanted crap
+class common::cleanup {
+    # these are outdated crappy and unwanted
+    package {[
+              'manpages-pl',
+              'manpages-pl-dev',
+              ]:
+                  ensure => absent,
     }
 }
