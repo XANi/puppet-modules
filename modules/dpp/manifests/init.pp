@@ -1,6 +1,10 @@
 class dpp (
     $manifest_from = 'shared',
     $manager_url  = false,
+    $start_wait = 20,
+    $minimum_interval = 120,
+    $schedule_run = fqdn_rand(600,3000),
+    $poll_interval = 20,
 )
     {
     $repo_config = hiera('repo')
