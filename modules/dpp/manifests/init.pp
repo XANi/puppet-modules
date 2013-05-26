@@ -1,5 +1,6 @@
 class dpp (
     $manifest_from = 'shared',
+    $use_repos = ['private','shared'],
     $manager_url  = false,
     $start_wait = 20,
     $minimum_interval = 120,
