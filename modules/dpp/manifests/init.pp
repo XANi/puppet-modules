@@ -15,6 +15,7 @@ class dpp (
             notify{'Please set up dpp::use_repos var in hiera!':;}
             $use_repos_c = ['private','shared']
         } else {
+            notify{'Upgrade to something newer pls':;}
             $use_repos_c = $use_repos_a
         }
     }
