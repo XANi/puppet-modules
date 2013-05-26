@@ -10,8 +10,13 @@ class dpp (
     $repo_config = hiera('repo')
 
     if !$use_repos {
-        notify{'Please set up dpp::use_repos var in hiera!':;}
-        $use_repos_c = ['private','shared']
+        $use_repos_a = hiera('dpp::use_repos',false)
+        if !$use_repos_a {
+            notify{'Please set up dpp::use_repos var in hiera!':;}
+            $use_repos_c = ['private','shared']
+        } else {
+            $use_repos_c = $use_repos_a
+        }
     }
     else {
         $use_repos_c = $use_repos
