@@ -1,14 +1,22 @@
 class dpp (
     $manifest_from = 'shared',
-    $use_repos = ['private','shared'],
+    $use_repos = false,
     $manager_url  = false,
     $start_wait = 20,
     $minimum_interval = 120,
     $schedule_run = fqdn_rand(600,3000),
     $poll_interval = 20,
-)
-    {
+) {
     $repo_config = hiera('repo')
+
+    if !$use_repos {
+        notify{'Please set up dpp::use_repos var in hiera!':;}
+        $use_repos_c = ['private','shared']
+    }
+    else {
+        $use_repos_c = $use_repos
+    }
+
     file { '/etc/dpp.conf':
         content => template('dpp/dpp.conf.erb'),
         mode => 600,

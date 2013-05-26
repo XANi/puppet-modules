@@ -12,7 +12,7 @@ repo_config.keys.sort.each do |repo|
 <% end %>
 <% end %>
 # in which order load repos in module/hiera path
-use_repos:<% repos_list = Array(use_repos) %><% repos_list.each do |repo| %>
+use_repos:<% repos_list = Array(use_repos_c) %><% repos_list.each do |repo| %>
   - <%= repo %><% end %>
 
 manifest_from: <%= manifest_from %>
