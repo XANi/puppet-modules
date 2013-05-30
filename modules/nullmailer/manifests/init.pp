@@ -5,6 +5,9 @@ class nullmailer (
     $adminaddr = false,
     $maildomain = $domain,
 ) {
+    package { 'nullmailer':
+        ensure => installed,
+    }
     file {'/etc/mailname':
         content => $mailname,
         mode    => 644,
