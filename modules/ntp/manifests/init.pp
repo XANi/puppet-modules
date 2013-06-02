@@ -13,7 +13,7 @@ class ntp::client ($server = hiera('ntp_server','pl.pool.ntp.org')) {
     }
     exec {'update-time':
         logoutput   => true,
-        command     => $command,
+        command     => "${command} &",
         refreshonly => true,
     }
 
