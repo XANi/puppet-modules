@@ -7,8 +7,9 @@ class ntp::client ($server = hiera('ntp_server','pl.pool.ntp.org')) {
     file { '/etc/cron.hourly/ntpdate':
         mode    => 755,
         owner   => root,
-        content => "#!/bin/sh\n${command} >/dev/null 2>&1\n",
+        content => "#!/bin/sh\n#puppet managed\n${command} >/dev/null 2>&1\n",
         notify  => Exec['update-time'],
+        require => Package['ntpdate'],
     }
     exec {'update-time':
         logoutput   => true,
