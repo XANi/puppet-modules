@@ -16,9 +16,14 @@ class ntp::client ($server = hiera('ntp_server','pl.pool.ntp.org')) {
         command     => "${command} &",
         refreshonly => true,
     }
-
-    service {'ntp':
-        ensure => stopped,
-        enable => false,
+    if defined(Package[ntp]) {
+        service {'ntp':
+            ensure => stopped,
+            enable => false,
+        }
+    } else {
+        package {'ntp':
+            ensure => absent,
+        }
     }
 }
