@@ -35,5 +35,9 @@ class dpp (
         creates => '/usr/src/dpp/.git/config',
         logoutput => true,
     }
-}
+    file { '/etc/cron.daily/dpp_cleanup':
+        content => template('dpp/cron.cleanup.erb'),
+        mode    => 755,
+    }
 
+}

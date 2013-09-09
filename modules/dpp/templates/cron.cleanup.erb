@@ -1,0 +1,10 @@
+# puppet managed template, for more info 'puppet-find-resources $filename'
+# puppet://modules/emacs/templates/autoinsert/erb.erb
+# BEFORE YOU MAKE ANY CHANGES, READ https://stonka.non.3dart.com/wiki/wiki/Puppet#Zarz.C4.85dzanie_konfiguracjami
+REPORTS_DIR='/var/lib/puppet/reports'
+if [ -d $REPORTS_DIR ] ; then
+   find $REPORTS_DIR -name '*.yaml' -type f -mtime +7 -exec gzip {} \;
+   find $REPORTS_DIR -name '*.yaml' -type f -mtime +40 -exec gzip {} \;
+   echo >  $REPORTS_DIR/last_cleanup
+   find /var/lib/puppet/reports -type d -empty -exec rmdir {} \;
+fi
