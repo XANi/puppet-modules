@@ -9,7 +9,7 @@ repos.keys.sort.each do |repo| %>
         if repos[repo]['url'][repo_type] then
             repos[repo]['url'][repo_type].sort.each do |url|
 -%>
-<%= repo_type %> <%= url %>
+# <%= repo_type %> <%= url %>
             <%- end -%>
         <%- end -%>
     <%- end -%>

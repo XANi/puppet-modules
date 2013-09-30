@@ -59,7 +59,7 @@ define apt::repo (
     $keyserver = 'keyserver.ubuntu.com',
     $repo_types = ['deb','deb-src'],
 ) {
-    file { "/etc/apt/${title}.list":
+    file { "/etc/apt/sources.list.d/${title}.list":
         mode    => 644,
         content => template('apt/sources.list.part.erb')
     }
