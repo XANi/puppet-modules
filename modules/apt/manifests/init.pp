@@ -37,6 +37,7 @@ class apt::source (
     package { 'emdebian-archive-keyring':
         ensure => latest,
     }
+    create_resources('apt::repo', $repos)
 }
 
 class apt::update {
@@ -46,6 +47,23 @@ class apt::update {
         owner   => root,
         mode    => 755,
     }
+}
+# url should be in format
+# {deb => [ 'http://address wheezy main']}
+# atm deb and deb-src are supported
+
+define apt:repo (
+    $url,
+    $comment  ='',
+    $keyid    = false,
+    $keyserver = 'keyserver.ubuntu.com',
+    $repo_types = ['deb','deb-src'],
+) {
+    file { "/etc/apt/${title}.list":
+        mode    => 644,
+        content => template('apt/sources.list.part.erb')
+    }
+
 }
 define apt::key(
     $keyid,
