@@ -52,7 +52,7 @@ class apt::update {
 # {deb => [ 'http://address wheezy main']}
 # atm deb and deb-src are supported
 
-define apt:repo (
+define apt::repo (
     $url,
     $comment  ='',
     $keyid    = false,
