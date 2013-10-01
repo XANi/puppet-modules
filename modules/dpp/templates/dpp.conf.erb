@@ -4,34 +4,34 @@
 repo:
 <%-
 # ruby1.8 yaml dump randomly orders keys so we have to do it in predictable ways
-repo_config.keys.sort.each do |repo|
+@repo_config.keys.sort.each do |repo|
 -%>
   <%= repo %>:
-<%- repo_config[repo].sort.each do |key| -%>
+<%- @repo_config[repo].sort.each do |key| -%>
     <%= key.join(': ') %>
 <% end %>
 <% end %>
 # in which order load repos in module/hiera path
-use_repos:<% repos_list = Array(use_repos_c) %><% repos_list.each do |repo| %>
+use_repos:<% repos_list = Array(@use_repos_c) %><% repos_list.each do |repo| %>
   - <%= repo %><% end %>
 
-manifest_from: <%= manifest_from %>
+manifest_from: <%= @manifest_from %>
 repo_dir: /var/lib/dpp/repos
 
 <%- if @manager_url -%>
 # manager url
-manager_url: <%= manager_url %>
+manager_url: <%= @manager_url %>
 <%- end -%>
 # how often we should poll each url
-poll_interval: <%= poll_interval %>
+poll_interval: <%= @poll_interval %>
 
 puppet:
    # wait that many seconds before first run
-  start_wait: <%= start_wait %>
+  start_wait: <%= @start_wait %>
   # minimum of seconds to wait between puppet runs
-  minimum_interval: <%= minimum_interval %>
+  minimum_interval: <%= @minimum_interval %>
   # how ofter puppet should be run if no config changes ?
-  schedule_run: <%= schedule_run %>
+  schedule_run: <%= @schedule_run %>
 
 # if defined will save pid in that file
 pid_file: /var/run/dpp.pid
@@ -43,4 +43,3 @@ status_file: /tmp/dpp.status
 log:
   ansicolor: true
   level:     notice
-

@@ -1,13 +1,13 @@
 # <%= @puppet_header %>
 # <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
 <%
-repos.keys.sort.each do |repo| %>
+@repos.keys.sort.each do |repo| %>
 # <%= repo %>
-#   <%= repos[repo]['comment'] %>
+#   <%= @repos[repo]['comment'] %>
 #
-<%  repo_types.sort.each do |repo_type|
-        if repos[repo]['url'][repo_type] then
-            repos[repo]['url'][repo_type].sort.each do |url|
+<%  @repo_types.sort.each do |repo_type|
+        if @repos[repo]['url'][repo_type] then
+            @repos[repo]['url'][repo_type].sort.each do |url|
 -%>
 # <%= repo_type %> <%= url %>
             <%- end -%>
