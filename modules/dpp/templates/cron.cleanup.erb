@@ -4,7 +4,7 @@
 REPORTS_DIR='/var/lib/puppet/reports'
 if [ -d $REPORTS_DIR ] ; then
    find $REPORTS_DIR -name '*.yaml' -type f -mtime +7 -exec gzip {} \;
-   find $REPORTS_DIR -name '*.yaml' -type f -mtime +40 -exec gzip {} \;
+   find $REPORTS_DIR -name '*.yaml' -type f -mtime +40 -delete \;
    echo >  $REPORTS_DIR/last_cleanup
    find /var/lib/puppet/reports -type d -empty -exec rmdir {} \;
 fi
