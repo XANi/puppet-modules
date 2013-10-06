@@ -77,13 +77,18 @@ define apt::repo (
     $url,
     $comment  ='',
     $keyid    = false,
-    $keyserver = 'keyserver.ubuntu.com',
+    $keyserver = undef,
     $repo_types = ['deb','deb-src'],
 ) {
     file { "/etc/apt/sources.list.d/${title}.list":
         mode    => 644,
         content => template('apt/sources.list.part.erb'),
         notify  => Exec['apt-update'],
+    }
+    if $keyid {
+        apt::key{ $keyid:
+            keyserver => $keyserver,
+        }
     }
 
 }
