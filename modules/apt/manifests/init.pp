@@ -31,6 +31,16 @@ class apt::common (
     package { 'emdebian-archive-keyring':
         ensure => latest,
     }
+    file {'/etc/apt/sources.list.d/':
+        ensure  => directory,
+        owner   => root,
+        group   => root,
+        mode    => 644,
+        purge   => true,
+        recurse => true,
+        force   => true,
+    }
+
     # repos enabled by default
     create_resources('apt::repo', {
         'main-wheezy' => $repos['main-wheezy'],
