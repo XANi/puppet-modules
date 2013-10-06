@@ -86,7 +86,8 @@ define apt::repo (
         notify  => Exec['apt-update'],
     }
     if $keyid {
-        apt::key{ $keyid:
+        apt::key{ $title:
+            keyid     => $keyid,
             keyserver => $keyserver,
         }
     }
