@@ -10,7 +10,7 @@ class apt (
 }
 
 
-class apt::source (
+class apt::common (
     $repo_types = ['deb','deb-src'] # it allows for redefining it from calling node so we can for example exclude all src repos
     ) {
     $repos = hiera('repos')
@@ -37,7 +37,17 @@ class apt::source (
     package { 'emdebian-archive-keyring':
         ensure => latest,
     }
-    create_resources('apt::repo', $repos)
+    # repos enabled by default
+    create_resources('apt::repo', {
+        'main-wheezy' => $repos['main-wheezy'],
+        'puppet'      => $repos['puppet'],
+    })
+}
+
+define apt::source  {
+    require apt::common
+    $repos = $apt::common::repos
+    create_resources('apt::repo', { "${title}" => $repos[$title] } )
 }
 
 class apt::update {
