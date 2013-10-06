@@ -28,12 +28,6 @@ class apt::common (
         mode    => 644,
     }
 
-    exec { apt-update:
-        refreshonly => true,
-        command     => '/usr/bin/aptitude update',
-        logoutput   => true,
-        timeout     => 0,
-    }
     package { 'emdebian-archive-keyring':
         ensure => latest,
     }
@@ -57,6 +51,13 @@ class apt::update {
         owner   => root,
         mode    => 755,
     }
+    exec { apt-update:
+        refreshonly => true,
+        command     => '/usr/bin/aptitude update',
+        logoutput   => true,
+        timeout     => 0,
+    }
+
 }
 # url should be in format
 # {deb => [ 'http://address wheezy main']}
