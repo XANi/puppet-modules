@@ -28,9 +28,6 @@ class apt::common (
         mode    => 644,
     }
 
-    package { 'emdebian-archive-keyring':
-        ensure => latest,
-    }
     file {'/etc/apt/sources.list.d/':
         ensure  => directory,
         owner   => root,
