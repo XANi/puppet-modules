@@ -23,3 +23,11 @@ class util::generic {
                 ensure => directory,
     }
 }
+
+
+define util::service_disable {
+    service { ${title}:
+        enable => false,
+        status => "stat -t /etc/rc?.d/S??${title} > /dev/null 2>&1",
+    }
+}
