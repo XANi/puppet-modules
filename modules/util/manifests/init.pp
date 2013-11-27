@@ -31,3 +31,13 @@ define util::service_disable {
         status => "stat -t /etc/rc?.d/S??${title} > /dev/null 2>&1",
     }
 }
+
+define util::update_alternatives (
+    $target,
+) {
+    exec {"util::update_alternatives ${title}":
+        command   => "update-alternatives --set ${title} ${target}",
+        unless    => "test $\(readlink /etc/alternatives/${title}\) == \"${target}\"",
+        logoutput => true,
+    }
+}
