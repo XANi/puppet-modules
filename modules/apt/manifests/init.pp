@@ -11,7 +11,7 @@ class apt (
 
 
 class apt::common (
-    $repo_types = ['deb','deb-src'] # it allows for redefining it from calling node so we can for example exclude all src repos
+    $repo_types = ['deb'] # it allows for redefining it from calling node so we can for example exclude all src repos
 ) {
     include apt::update
     $repos = hiera('repos')

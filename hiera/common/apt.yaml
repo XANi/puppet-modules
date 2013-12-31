@@ -89,3 +89,12 @@ repos:
         url:
             deb:
                 - http://apt.puppetlabs.com wheezy main dependencies
+
+    mopidy:
+        comment: Mopidy APT archive
+        keyid: 271D2943
+        url:
+            deb:
+                - http://apt.mopidy.com/ stable main contrib non-free
+            deb-src:
+                - http://apt.mopidy.com/ stable main contrib non-free
