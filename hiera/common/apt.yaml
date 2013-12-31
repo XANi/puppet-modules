@@ -98,3 +98,8 @@ repos:
                 - http://apt.mopidy.com/ stable main contrib non-free
             deb-src:
                 - http://apt.mopidy.com/ stable main contrib non-free
+    longview:
+        comment: Linode longview client
+        url:
+            deb:
+                - deb http://apt-longview.linode.com/ wheezy main
