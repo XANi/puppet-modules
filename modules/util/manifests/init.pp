@@ -23,3 +23,19 @@ class util::generic {
                 ensure => directory,
     }
 }
+
+
+define util::service_disable {
+    service { $title:
+        enable => false,
+        status => "stat -t /etc/rc?.d/S??${title} > /dev/null 2>&1",
+    }
+}
+
+define util::update_alternatives (
+    $target,
+) {
+exec { "/usr/sbin/update-alternatives --set $name $target":
+    unless => "/bin/sh -c '[ -L /etc/alternatives/$name ] && [ /etc/alternatives/$name -ef $target ]'"
+  }
+}
