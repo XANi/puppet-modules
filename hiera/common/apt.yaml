@@ -102,4 +102,4 @@ repos:
         comment: Linode longview client
         url:
             deb:
-                - deb http://apt-longview.linode.com/ wheezy main
+                - http://apt-longview.linode.com/ wheezy main
