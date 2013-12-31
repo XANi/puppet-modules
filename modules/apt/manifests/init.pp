@@ -12,7 +12,8 @@ class apt (
 
 class apt::common (
     $repo_types = ['deb','deb-src'] # it allows for redefining it from calling node so we can for example exclude all src repos
-    ) {
+) {
+    include apt::update
     $repos = hiera('repos')
     file { apt-sources:
         path    => '/etc/apt/sources.list',
@@ -45,7 +46,7 @@ class apt::common (
     })
 }
 
-define apt::source  {
+define apt::source {
     require apt::common
     $repos = $apt::common::repos
     create_resources('apt::repo', { "${title}" => $repos[$title] } )
@@ -53,16 +54,19 @@ define apt::source  {
 
 class apt::update {
     file { apt-download-updates:
-        path    => '/etc/cron.daily/puppet-apt-updates',
+        path    => '/etc/cron.weekly/puppet-apt-updates',
         content => template('apt/apt-updates.erb'),
         owner   => root,
         mode    => 755,
+    }
+    file { '/etc/cron.daily/puppet-apt-updates':
+        ensure => absent,
     }
     exec { apt-update:
         refreshonly => true,
         command     => '/usr/bin/aptitude update',
         logoutput   => true,
-        timeout     => 0,
+        timeout     => 1800,
     }
 
 }
