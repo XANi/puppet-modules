@@ -12,7 +12,6 @@ class dpp (
     if !$use_repos {
         $use_repos_a = hiera('dpp::use_repos',false)
         if !$use_repos_a {
-            notify{'Please set up dpp::use_repos var in hiera!':;}
             $use_repos_c = ['private','shared']
         } else {
             notify{'Upgrade to something newer pls':;}
