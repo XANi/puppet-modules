@@ -6,7 +6,7 @@ class dpp (
     $schedule_run = fqdn_rand(600,3000),
     $poll_interval = 20,
 ) {
-    $manager_url = hiera('manager_url')
+    $manager_url = hiera('manager_url',false)
     $repo_config = hiera('repo')
 
     if !$use_repos {
