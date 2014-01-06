@@ -45,9 +45,11 @@ class apt::common (
 }
 
 class apt::default_repos {
+    include apt::common
     # repos enabled by default
 
     # puppet everywhere
+    $repos = $apt::common::repos
     create_resources('apt::repo', {
         'puppet'      => $repos['puppet'],
     })
