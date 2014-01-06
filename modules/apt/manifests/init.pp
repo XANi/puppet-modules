@@ -11,7 +11,8 @@ class apt (
 
 
 class apt::common (
-    $repo_types = ['deb'] # it allows for redefining it from calling node so we can for example exclude all src repos
+    $repo_types = ['deb'], # it allows for redefining it from calling node so we can for example exclude all src repos
+    $add_default_repos = true
 ) {
     include apt::update
     $repos = hiera('repos')
@@ -38,12 +39,28 @@ class apt::common (
         recurse => true,
         force   => true,
     }
+    if $add_default_repos {
+        include apt::default_repos
+    }
+}
 
+class apt::default_repos {
     # repos enabled by default
+
+    # puppet everywhere
     create_resources('apt::repo', {
-        'main-wheezy' => $repos['main-wheezy'],
         'puppet'      => $repos['puppet'],
     })
+    # raspbian for RPi, pure debian for rest
+    if ($::hardwaremodel == 'armv6l') {
+        create_resources('apt::repo', {
+            'raspbian' => $repos['raspbian'],
+            })
+    } else {
+        create_resources('apt::repo', {
+            'main-wheezy' => $repos['main-wheezy'],
+        })
+    }
 }
 
 define apt::source {

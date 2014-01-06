@@ -103,3 +103,8 @@ repos:
         url:
             deb:
                 - http://apt-longview.linode.com/ wheezy main
+    raspbian:
+        comment: Rasbian repo
+        url:
+            deb:
+                - http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi
