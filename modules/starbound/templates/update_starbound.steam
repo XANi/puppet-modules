@@ -1,0 +1,8 @@
+# <%= @puppet_header %>
+# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+@ShutdownOnFailedCommand 1
+@NoPromptForPassword 1
+force_install_dir <%= @path %>
+login <%= @steam_user %>
+app_update 211820 validate
+quit
