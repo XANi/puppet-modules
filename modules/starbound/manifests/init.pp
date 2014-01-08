@@ -18,7 +18,8 @@ class starbound::server (
     $user = 'steam',
     $path = '/home/steam/steam_apps/starbound',
     $steam_script_dir = '/home/steam/scripts',
-    $steam_user       = false
+    $steam_user       = false,
+    $validate         = false, # validate on each update
     ) {
     if $steam_user {
         include steam::batch

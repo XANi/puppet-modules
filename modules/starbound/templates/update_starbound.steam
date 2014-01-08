@@ -4,5 +4,5 @@
 @NoPromptForPassword 1
 force_install_dir <%= @path %>
 login <%= @steam_user %>
-app_update 211820 validate
+app_update 211820 <% if @validate %>validate<% end %>
 quit
