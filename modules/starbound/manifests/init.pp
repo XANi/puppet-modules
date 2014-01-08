@@ -21,6 +21,7 @@ class starbound::server (
     $steam_user       = false
     ) {
     if $steam_user {
+        include steam::batch
         file {"${steam_script_dir}/update_starbound.steam":
             content => template('starbound/update_starbound.steam'),
             owner   => $user,

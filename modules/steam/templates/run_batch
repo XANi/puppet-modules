@@ -1,0 +1,10 @@
+#!/bin/bash
+# <%= @puppet_header %>
+# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+export HOME="~<%= @user %>"
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+cd $HOME
+if [ "z" == "z$1" ] ; then
+   echo "usage $0 script_name"
+fi
+./steamcmd.sh +runscript <%= @steam_script_dir %>/$1.steam
