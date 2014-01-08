@@ -30,6 +30,6 @@ class starbound::server (
     file { $path:
         ensure => directory,
         mode   => 644,
-        owner  => user,
+        owner  => $user,
     }
 }
