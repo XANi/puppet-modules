@@ -8,4 +8,9 @@ if [ "z" == "z$1" ] ; then
    echo "usage $0 script_name"
    exit 1
 fi
-./steamcmd.sh +runscript <%= @steam_script_dir %>/$1.steam
+script="<%= @steam_script_dir %>/$1.steam"
+if [ -r $script ] ; then
+    ./steamcmd.sh +runscript $script
+else
+    echo "File $script not found!"
+fi
