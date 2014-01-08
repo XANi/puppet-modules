@@ -27,4 +27,9 @@ class starbound::server (
             mode    => 644,
         }
     }
+    file { $path:
+        ensure => directory,
+        mode   => 644,
+        owner  => user,
+    }
 }
