@@ -35,7 +35,8 @@ define util::service_disable {
 define util::update_alternatives (
     $target,
 ) {
-exec { "/usr/sbin/update-alternatives --set $name $target":
-    unless => "/bin/sh -c '[ -L /etc/alternatives/$name ] && [ /etc/alternatives/$name -ef $target ]'"
+    exec { "update-alternatives --set $name $target":
+        path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ],
+        unless => "/bin/sh -c '[ -L /etc/alternatives/$name ] && [ /etc/alternatives/$name -ef $target ]'",
   }
 }
