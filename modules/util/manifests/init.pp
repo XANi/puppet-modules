@@ -40,3 +40,14 @@ define util::update_alternatives (
         unless => "/bin/sh -c '[ -L /etc/alternatives/$name ] && [ /etc/alternatives/$name -ef $target ]'",
   }
 }
+
+
+class util::etckeeper {
+    package {'etckeeper':
+        ensure => installed,
+    }
+    file {'/etc/cron.daily/etckeeper-cleanup':
+        content => template("util/etckeeper-cleanup"),
+        mode    => 755,
+    }
+}
