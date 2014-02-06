@@ -50,22 +50,12 @@ class apt::default_repos {
 
     # puppet everywhere
     $repos = $apt::common::repos
-    if $repos['puppet'] {
-        create_resources('apt::repo', {
-            'puppet'      => $repos['puppet'],
-            })
-    } else {
-        notify{"Missing repo ${title} in hiera file, continuing anyway, please fix me!":;}
-    }
+    apt::source {'puppet':;}
     # raspbian for RPi, pure debian for rest
     if ($::hardwaremodel == 'armv6l') {
-        create_resources('apt::repo', {
-            'raspbian' => $repos['raspbian'],
-            })
+        apt::source {'raspbian':;}
     } else {
-        create_resources('apt::repo', {
-            'main-wheezy' => $repos['main-wheezy'],
-        })
+        apt::source {'main-wheezy':;}
     }
 }
 
