@@ -50,9 +50,13 @@ class apt::default_repos {
 
     # puppet everywhere
     $repos = $apt::common::repos
-    create_resources('apt::repo', {
-        'puppet'      => $repos['puppet'],
-    })
+    if $repos['puppet'] {
+        create_resources('apt::repo', {
+            'puppet'      => $repos['puppet'],
+            })
+    } else {
+        notify{"Missing repo ${title} in hiera file, continuing anyway, please fix me!":;}
+    }
     # raspbian for RPi, pure debian for rest
     if ($::hardwaremodel == 'armv6l') {
         create_resources('apt::repo', {
