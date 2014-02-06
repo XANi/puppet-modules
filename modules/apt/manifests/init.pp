@@ -68,7 +68,11 @@ class apt::default_repos {
 define apt::source {
     require apt::common
     $repos = $apt::common::repos
-    create_resources('apt::repo', { "${title}" => $repos[$title] } )
+    if $repos[$title] {
+        create_resources('apt::repo', { "${title}" => $repos[$title] } )
+    } else {
+        notify{"Missing repo ${title} in hiera file, continuing anyway, please fix me!":;}
+    }
 }
 
 class apt::update {
