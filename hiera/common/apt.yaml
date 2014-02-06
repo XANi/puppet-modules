@@ -109,7 +109,7 @@ repos:
             deb:
                 - http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi
 
-    oracle-java:
+    oracle_java:
         comment: oracle java downloader
         keyid: EEA14886
         url:
