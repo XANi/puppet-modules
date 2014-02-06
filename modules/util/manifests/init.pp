@@ -36,7 +36,7 @@ define util::update_alternatives (
     $target,
 ) {
     exec { "update-alternatives --set $name $target":
-        path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ],
+        path   => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ],
         unless => "/bin/sh -c '[ -L /etc/alternatives/$name ] && [ /etc/alternatives/$name -ef $target ]'",
   }
 }
@@ -47,7 +47,7 @@ class util::etckeeper {
         ensure => installed,
     }
     file {'/etc/cron.daily/etckeeper-cleanup':
-        content => template("util/etckeeper-cleanup"),
+        content => template('util/etckeeper-cleanup'),
         mode    => 755,
     }
 }

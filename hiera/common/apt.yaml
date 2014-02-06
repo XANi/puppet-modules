@@ -108,3 +108,10 @@ repos:
         url:
             deb:
                 - http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi
+
+    oracle-java:
+        comment: oracle java downloader
+        keyid: EEA14886
+        url:
+            deb:
+                - http://ppa.launchpad.net/webupd8team/java/ubuntu precise main
