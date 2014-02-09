@@ -38,5 +38,11 @@ class dpp (
         content => template('dpp/cron.cleanup.erb'),
         mode    => 755,
     }
+    if !defined( Service['puppet'] ) {
+        service{ 'puppet':
+            ensure => stopped,
+            enable => false,
+        }
+    }
 
 }
