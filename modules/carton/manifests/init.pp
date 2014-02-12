@@ -25,7 +25,7 @@ define carton::app (
     $dir,
     $user = 'root',
     )  {
-    include perl::carton::common
+    include carton::common
     Exec {
         path      => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
         user      => $user,
