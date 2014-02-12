@@ -108,3 +108,10 @@ repos:
         url:
             deb:
                 - http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi
+
+    jenkins:
+        comment: jenkins repo
+        keyid: D50582E6
+        url:
+            deb:
+                - deb http://pkg.jenkins-ci.org/debian binary/
