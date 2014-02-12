@@ -114,4 +114,4 @@ repos:
         keyid: D50582E6
         url:
             deb:
-                - deb http://pkg.jenkins-ci.org/debian binary/
+                - http://pkg.jenkins-ci.org/debian binary/
