@@ -17,3 +17,13 @@ class ntp::client ($server = hiera('ntp_server','pl.pool.ntp.org')) {
         refreshonly => true,
     }
 }
+
+
+class ntp::server {
+    package {'ntp':
+        ensure => installed;
+    }
+    file { '/etc/cron.hourly/ntpdate':
+        ensure => absent;
+    }
+}
