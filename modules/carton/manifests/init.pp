@@ -34,6 +34,6 @@ define carton::app (
     }
     exec {"carton-install-${title}":
         command => 'carton install >.installed',
-        onlyif  => 'test -e .installed && test cpanfile -ot .installed',
+        onlyif  => 'test .installed -ot cpanfile',
     }
 }
