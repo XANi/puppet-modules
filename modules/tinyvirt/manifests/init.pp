@@ -15,10 +15,12 @@
 #
 
 
-class tinyvirt {
+class tinyvirt (
+    $repo_url = 'https://github.com/XANi/tinyvirt.git',
+)  {
     vcsrepo {'/usr/src/tinyvirt':
         provider => git,
-        source   => 'https://github.com/XANi/tinyvirt.git',
+        source   => $repo_url,
         revision => 'master',
     }
     carton::app { 'tinyvirt':
