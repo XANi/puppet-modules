@@ -16,7 +16,7 @@ class apt::common (
 ) {
     include apt
     include apt::update
-    $repos = hiera('repos')
+    $repos = hiera_hash('repos')
     file { apt-sources:
         path    => '/etc/apt/sources.list',
         owner   => root,
