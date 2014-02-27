@@ -1,4 +1,4 @@
-# Puppet: <%=  __FILE__.gsub(/.*?puppet\//,fqdn + ':') %>
+# Puppet: <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
 # Defaults for hostapd initscript
 #
 # See /usr/share/doc/hostapd/README.Debian for information about alternative
@@ -19,6 +19,3 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 # configured by the init.d script and must not be added to DAEMON_OPTS.
 #
 #DAEMON_OPTS=""
-
-
-

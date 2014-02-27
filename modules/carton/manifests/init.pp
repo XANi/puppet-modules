@@ -33,7 +33,7 @@ define carton::app (
         logoutput => true,
     }
     exec {"carton-install-${title}":
-        command => 'carton install >.installed',
-        onlyif  => 'test -e .installed && test cpanfile -ot .installed',
+        command => 'carton install | tee .installed',
+        onlyif  => 'test .installed -ot cpanfile',
     }
 }
