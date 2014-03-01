@@ -115,3 +115,10 @@ repos:
         url:
             deb:
                 - http://pkg.jenkins-ci.org/debian binary/
+
+    bareos:
+        comment: bareos repo
+        keyid: E0F8EFD4
+        url:
+            deb:
+                - http://download.bareos.org/bareos/release/13.2/Debian_7.0/ /
