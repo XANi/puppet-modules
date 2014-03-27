@@ -12,4 +12,12 @@ class hw::vaiopro {
         owner   => root,
         mode    => 644,
     }
+    # NFC
+    package {'neard':
+        ensure => installed,
+    }
+    # wifi
+    package {'firmware-iwlwifi':
+        ensure => installed,
+    }
 }
