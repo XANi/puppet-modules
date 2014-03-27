@@ -51,7 +51,6 @@ class apt::default_repos {
 
     # puppet everywhere
     $repos = $apt::common::repos
-    apt::source {'puppet':;}
     # raspbian for RPi, pure debian for rest
     if ($::hardwaremodel == 'armv6l') {
         apt::source {'raspbian':;}
