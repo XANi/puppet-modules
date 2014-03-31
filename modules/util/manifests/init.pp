@@ -51,3 +51,14 @@ class util::etckeeper {
         mode    => 755,
     }
 }
+
+class util::fuse {
+    package {'fuse':
+        ensure => installed,
+    }
+    file {'/etc/fuse.conf':
+        content => template('util/fuse.conf'),
+        mode    => 644,
+        owner   => root,
+    }
+}
