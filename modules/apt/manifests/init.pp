@@ -12,7 +12,8 @@ class apt (
 
 class apt::common (
     $repo_types = ['deb'], # it allows for redefining it from calling node so we can for example exclude all src repos
-    $add_default_repos = true
+    $add_default_repos = true,
+    $unattended_upgrade = true,
 ) {
     include apt
     include apt::update
@@ -42,6 +43,16 @@ class apt::common (
     }
     if $add_default_repos {
         include apt::default_repos
+    }
+    if $unattended_upgrade {
+        package {'unattended-upgrades':
+            ensure => latest,
+        }
+        file {'/etc/apt/apt.conf.d/99unattended-upgrade.conf':
+            content => template('apt/unattended-upgrade.conf'),
+            mode    => 644,
+            owner   => root,
+        }
     }
 }
 
