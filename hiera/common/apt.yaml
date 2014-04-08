@@ -13,6 +13,7 @@ repos:
         url:
             deb:
                 - http://ftp.pl.debian.org/debian/ wheezy main non-free contrib
+                - http://security.debian.org/ wheezy/updates main contrib non-free
             deb-src:
                 - http://ftp.pl.debian.org/debian/ wheezy main non-free contrib
 
