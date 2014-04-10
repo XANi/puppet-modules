@@ -123,3 +123,9 @@ repos:
         url:
             deb:
                 - http://download.bareos.org/bareos/release/13.2/Debian_7.0/ /
+    elasticsearch:
+        comment: elasticsearch 1.x
+        keyid: D88E42B4
+        url:
+            deb:
+                - http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main
