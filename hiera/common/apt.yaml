@@ -123,7 +123,13 @@ repos:
         url:
             deb:
                 - http://download.bareos.org/bareos/release/13.2/Debian_7.0/ /
-    elasticsearch:
+    elasticsearch09:
+        comment: elasticsearch 0.9
+        keyid: D88E42B4
+        url:
+            deb:
+                - http://packages.elasticsearch.org/elasticsearch/0.90/debian stable main
+    elasticsearch10:
         comment: elasticsearch 1.x
         keyid: D88E42B4
         url:
