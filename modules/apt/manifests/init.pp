@@ -1,18 +1,30 @@
 class apt (
     $install_recommended = true,
     $install_suggested = false, # baaaad idea to set it to true
+    $unattended_upgrade = true,
     ) {
         file { '/etc/apt/apt.conf.d/99-zpuppet.conf':
             content => template('apt/apt.conf.erb'),
             mode    => 644,
             owner   => root,
         }
+    if $unattended_upgrade {
+        package {'unattended-upgrades':
+            ensure => latest,
+        }
+        file {'/etc/apt/apt.conf.d/99unattended-upgrade.conf':
+            content => template('apt/unattended-upgrade.conf'),
+            mode    => 644,
+            owner   => root,
+        }
+    }
+
 }
 
 
 class apt::common (
     $repo_types = ['deb'], # it allows for redefining it from calling node so we can for example exclude all src repos
-    $add_default_repos = true
+    $add_default_repos = true,
 ) {
     include apt
     include apt::update
