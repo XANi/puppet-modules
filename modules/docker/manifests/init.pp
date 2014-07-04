@@ -1,5 +1,5 @@
 class docker::common {
-    package { 'docker':
+    package { 'docker.io':
         ensure => installed,
     }
 }
