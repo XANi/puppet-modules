@@ -1,7 +1,7 @@
 class apt (
     $install_recommended = true,
     $install_suggested = false, # baaaad idea to set it to true
-    $unattended_upgrade = true,
+    $unattended_upgrade = false,
     ) {
         file { '/etc/apt/apt.conf.d/99-zpuppet.conf':
             content => template('apt/apt.conf.erb'),
@@ -16,6 +16,14 @@ class apt (
             content => template('apt/unattended-upgrade.conf'),
             mode    => 644,
             owner   => root,
+        }
+    }
+    else {
+        package {'unattended-upgrade':
+            ensure => absent,
+        }
+        file {'/etc/apt/apt.conf.d/99unattended-upgrade.conf':
+            ensure => absent,
         }
     }
 

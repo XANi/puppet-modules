@@ -4,7 +4,7 @@ class dpp (
     $start_wait = 20,
     $minimum_interval = 120,
     $schedule_run = fqdn_rand(600,3000),
-    $poll_interval = 20,
+    $poll_interval = 120,
 ) {
     $manager_url = hiera('manager_url',false)
     $repo_config = hiera('repo')
