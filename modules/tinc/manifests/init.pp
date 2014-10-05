@@ -5,14 +5,19 @@ class tinc  {
     $config = hiera('tinc')
 }
 
+define tinc::net($network=$title) {
+    file {"/etc/tinc/${network}":
+        ensure => directory;
+    }
+    tinc::deploy_keys {$network:;}
+}
+
 define tinc::deploy_keys($network=$title) {
     require tinc
     $tinc_config = $tinc::config
 
-    if !defined (File["/etc/tinc/${network}/hosts"]) {
-        file {"/etc/tinc/${network}/hosts":
-            ensure => directory;
-        }
+    file {"/etc/tinc/${network}/hosts":
+        ensure => directory;
     }
     Tinc::Pubkey {
         network => $network,
