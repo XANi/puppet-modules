@@ -26,9 +26,11 @@ class util::generic {
 
 
 define util::service_disable {
-    service { $title:
-        enable => false,
-        status => "stat -t /etc/rc?.d/S??${title} > /dev/null 2>&1",
+    if (!defined(Service[$title])) {
+        service { $title:
+            enable => false,
+            status => "stat -t /etc/rc?.d/S??${title} > /dev/null 2>&1",
+        }
     }
 }
 
