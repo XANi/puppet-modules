@@ -30,12 +30,16 @@ class dpp (
 
     exec {'checkout-repo':
         # use http, most "compatible" with crappy firewall/corporate networks
-        command => '/bin/bash -c "cd /usr/src;git clone http://github.com/XANi/dpp.git"',
-        creates => '/usr/src/dpp/.git/config',
+        command => '/bin/bash -c "mkdir -p /opt;cd /opt;git clone http://github.com/XANi/dpp.git"',
+        creates => '/opt/dpp/.git/config',
         logoutput => true,
     }
     file { '/etc/cron.daily/dpp_cleanup':
         content => template('dpp/cron.cleanup.erb'),
+        mode    => 755,
+    }
+    file { '/etc/init.d/dpp':
+        content => template('dpp/dpp.init.erb'),
         mode    => 755,
     }
     util::service_disable {'puppet':;}
