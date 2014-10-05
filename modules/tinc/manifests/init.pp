@@ -30,8 +30,8 @@ define tinc::deploy_keys($network=$title) {
     create_resources('tinc::pubkey',$tinc_config['networks'][$network]['keys'])
 }
 
-define tinc::pubkey($key, $network) {
+define tinc::pubkey($key, $network,$address=$::ipaddress) {
     file {"/etc/tinc/${network}/hosts/${title}":
-        content => $key
+        content => "Address = ${address}\n${key}\n"
     }
 }
