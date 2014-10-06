@@ -9,7 +9,7 @@ define tinc::net($network=$title) {
     file {"/etc/tinc/${network}":
         ensure => directory;
     }
-    exec {"${module::name}::${network}::generate_key":
+    exec {"${module_name}::${network}::generate_key":
         command => "tincd -K -n ${network}",
         creates => "/etc/tinc/${network}/rsa_key.priv",
     }
