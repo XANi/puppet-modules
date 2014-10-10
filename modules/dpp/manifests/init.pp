@@ -42,5 +42,10 @@ class dpp (
         content => template('dpp/dpp.init.erb'),
         mode    => 755,
     }
+    if !defined(Package['libssl-dev']) {
+        package { 'libssl-dev':
+            ensure => installed,
+        }
+    }
     util::service_disable {'puppet':;}
 }
