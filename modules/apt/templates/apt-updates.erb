@@ -2,4 +2,5 @@
 # <%= @puppet_header %>
 # <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
 aptitude update
+aptitude autoclean
 aptitude full-upgrade --download-only -y
