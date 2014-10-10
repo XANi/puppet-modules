@@ -16,6 +16,7 @@ class common::utils {
          'tcpdump',
          'lsof',
          'ethtool',
+         'tree',
          ]:
              ensure => installed,
     }
