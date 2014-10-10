@@ -89,14 +89,10 @@ define apt::source {
     }
 }
 
-class apt::update ($backgroud_download=false) {
+class apt::update ($background_download=false) {
     file { apt-download-updates:
         path    => '/etc/cron.weekly/puppet-apt-updates',
         content => template('apt/apt-updates.erb'),
-        ensure  => $background_download ? {
-            true => present,
-            false => absent,
-        },
         owner   => root,
         mode    => 755,
     }

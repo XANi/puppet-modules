@@ -3,4 +3,4 @@
 # <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
 aptitude update
 aptitude autoclean
-aptitude full-upgrade --download-only -y
+<% if @background_download %>aptitude full-upgrade --download-only -y<% end %>
