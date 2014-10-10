@@ -145,7 +145,7 @@ define apt::key(
                 user        => 'root',
                 group       => 'root',
                 unless      => "apt-key list | grep ${keyid}",
-		notify      => Exec["apt-update"],
+                notify      => Exec["apt-update"],
                 logoutput   => on_failure,
             }
         }
