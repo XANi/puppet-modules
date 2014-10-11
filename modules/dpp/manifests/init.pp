@@ -42,6 +42,9 @@ class dpp (
         content => template('dpp/dpp.init.erb'),
         mode    => 755,
     }
+    service { 'dpp':
+        enable => true,
+    }
     if !defined(Package['libssl-dev']) {
         package { 'libssl-dev':
             ensure => installed,
