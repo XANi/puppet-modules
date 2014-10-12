@@ -7,6 +7,7 @@ class collectd::client ($server) {
     file {'/etc/collectd/collectd.conf':
         content => template('collectd/collectd.conf'),
         owner   => root,
+        replace => false,
         notify  => Service['collectd'],
     }
 }
