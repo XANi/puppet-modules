@@ -1,11 +1,13 @@
 class collectd::client ($server) {
     include collectd::common
-    package {'collectd':
-        ensure => installed
+    service {'collectd':
+        ensure => running,
+        enable => true,
     }
     file {'/etc/collectd/collectd.conf':
         content => template('collectd/collectd.conf'),
         owner   => root,
+        notify  => Service['collectd'],
     }
 }
 
