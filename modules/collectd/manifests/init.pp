@@ -16,6 +16,9 @@ class collectd::common {
     package {'collectd':
         ensure => latest,
     }
+    package {'liboping0':
+        ensure => installed,
+    }
     file {'/etc/collectd/conf.d':
         ensure  => directory,
         mode    => 600,
