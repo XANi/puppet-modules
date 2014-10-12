@@ -65,7 +65,7 @@ class apt::common (
     }
 }
 
-class apt::default_repos {
+class apt::default_repos($release='wheezy') {
     include apt::common
     # repos enabled by default
 
@@ -75,7 +75,7 @@ class apt::default_repos {
     if ($::hardwaremodel == 'armv6l') {
         apt::source {'raspbian':;}
     } else {
-        apt::source {'main-wheezy':;}
+        apt::source {"main-${release}":;}
     }
 }
 

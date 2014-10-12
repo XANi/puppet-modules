@@ -24,6 +24,13 @@ repos:
                 - http://ftp.pl.debian.org/debian/ testing main non-free contrib
             deb-src:
                 - http://ftp.pl.debian.org/debian/ testing main non-free contrib
+    main-jessie:
+        comment: Main Debian repo - Jessie
+        url:
+            deb:
+                - http://ftp.pl.debian.org/debian/ jessie main non-free contrib
+            deb-src:
+                - http://ftp.pl.debian.org/debian/ jessie main non-free contrib
 
     emdebian:
         comment: GCC for other archs
