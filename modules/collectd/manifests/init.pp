@@ -13,7 +13,7 @@ class collectd::client ($server) {
 
 class collectd::common {
     package {'collectd':
-        ensure => installed
+        ensure => latest,
     }
     file {'/etc/collectd/conf.d':
         ensure  => directory,
