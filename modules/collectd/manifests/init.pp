@@ -23,6 +23,9 @@ class collectd::common {
         purge   => true,
         force   => true,
     }
+    file {'/etc/collectd./conf.d/local.conf':
+        content => template('collectd/empty.conf');
+    }
     file {'/etc/default/collectd':
         content => template('collectd/default'),
     }
