@@ -1,3 +1,6 @@
 [submodule "modules/vcsrepo"]
 	path = modules/vcsrepo
 	url = https://github.com/puppetlabs/puppetlabs-vcsrepo
+[submodule "modules/puppet-logrotate"]
+	path = modules/logrotate
+	url = https://github.com/rodjek/puppet-logrotate
