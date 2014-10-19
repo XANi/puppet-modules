@@ -51,7 +51,7 @@ class dpp (
         }
     }
     util::service_disable {'puppet':;}
-    logrotate::rule {'puppet':
+    logrotate::rule {'puppet_dpp':
         path         => '/var/log/puppet.log',
         rotate       => 7,
         rotate_every => 'day',
