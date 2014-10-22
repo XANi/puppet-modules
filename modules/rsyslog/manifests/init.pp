@@ -18,6 +18,6 @@ define rsyslog::log (
     file {"/etc/rsyslog.d/${pad_prio}-${title}.conf":
         content => template($template),
         mode    => 644,
-        notify  => Service['rsylog'],
+        notify  => Service['rsyslog'],
     }
 }
