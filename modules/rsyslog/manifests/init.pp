@@ -13,7 +13,7 @@ define rsyslog::log (
     $template = "rsyslog/parts/${title}",
     $params   = {}
 ) {
-    require rsyslog::common
+    include rsyslog::common
     $pad_prio = sprintf('%04d',$prio)
     file {"/etc/rsyslog.d/${pad_prio}-${title}.conf":
         content => template($template),
