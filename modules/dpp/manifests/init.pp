@@ -38,6 +38,10 @@ class dpp (
         content => template('dpp/cron.maint.erb'),
         mode    => 755,
     }
+    file { '/etc/cron.daily/dpp_cleanup':
+        ensure => absent,
+    }
+
     file { '/etc/init.d/dpp':
         content => template('dpp/dpp.init.erb'),
         mode    => 755,
