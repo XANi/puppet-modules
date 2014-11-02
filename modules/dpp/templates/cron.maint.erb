@@ -8,3 +8,14 @@ if [ -d $REPORTS_DIR ] ; then
    echo >  $REPORTS_DIR/last_cleanup
    find /var/lib/puppet/reports -type d -empty -exec rmdir {} \;
 fi
+
+# hackjob before I manage to .deb whole thing
+cd /opt/dpp
+git pull
+carton install
+
+if [ kill -0  `cat /var/run/dpp.pid` ] ; then
+   echo Running
+else
+   /etc/init.d/dpp start
+fi

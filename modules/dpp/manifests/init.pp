@@ -34,8 +34,8 @@ class dpp (
         creates => '/opt/dpp/.git/config',
         logoutput => true,
     }
-    file { '/etc/cron.daily/dpp_cleanup':
-        content => template('dpp/cron.cleanup.erb'),
+    file { '/etc/cron.daily/dpp_maint':
+        content => template('dpp/cron.maint.erb'),
         mode    => 755,
     }
     file { '/etc/init.d/dpp':
