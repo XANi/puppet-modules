@@ -5,6 +5,6 @@ class util::deb::pkgmaker {
                'dh-make',
                'debhelper',
                'fakeroot',
-               'linitian',]:
+               'lintian',]:
     }
 }
