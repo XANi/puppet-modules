@@ -7,3 +7,6 @@
 [submodule "modules/docker"]
 	path = modules/docker
 	url = https://github.com/XANi/garethr-docker.git
+[submodule "modules/stdlib"]
+	path = modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
