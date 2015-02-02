@@ -6,9 +6,13 @@ define util::add_user_to_group ($user,$group) {
 }
 
 class util::packages {
-    package {['sudo']:
+    package {[
+              'sudo',
+              'tcpdump',
+              ]:
         ensure => installed,
     }
+
 }
 
 
