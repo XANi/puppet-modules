@@ -17,6 +17,7 @@ class common::utils {
          'lsof',
          'ethtool',
          'tree',
+         'sudo',
          ]:
              ensure => installed,
     }

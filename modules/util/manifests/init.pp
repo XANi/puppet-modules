@@ -5,16 +5,6 @@ define util::add_user_to_group ($user,$group) {
     }
 }
 
-class util::packages {
-    package {[
-              'sudo',
-              'tcpdump',
-              ]:
-        ensure => installed,
-    }
-
-}
-
 
 class util::generic {
     # tmp mounts
