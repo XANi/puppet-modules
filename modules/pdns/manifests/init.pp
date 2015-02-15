@@ -1,5 +1,5 @@
 class pdns::server {
-    package {'pdns':
+    package {'pdns-server':
         ensure => installed
     }
 }
