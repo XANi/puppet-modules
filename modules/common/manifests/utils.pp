@@ -5,21 +5,22 @@
 class common::utils {
     package {
         [
-         'screen',
-         'zile',
-         'nmap',
-         'etckeeper',
-         'psmisc',
-         'curl',
-         'bwm-ng',
          'bridge-utils',
-         'tcpdump',
+         'bwm-ng',
+         'curl',
+         'etckeeper',
+         'ethtool',
          'lsof',
          'lvm2',
-         'ethtool',
-         'tree',
+         'nmap',
+         'psmisc',
+         'screen',
          'sudo',
+         'tcpdump',
+         'tree',
+         'mtr-tiny',
          'xfsprogs',
+         'zile',
          ]:
              ensure => installed,
     }
