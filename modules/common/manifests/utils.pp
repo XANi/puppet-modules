@@ -3,12 +3,12 @@
 # some utils that should be on (almost) every server
 #
 class common::utils {
+    include util::etckeeper
     package {
         [
          'bridge-utils',
          'bwm-ng',
          'curl',
-         'etckeeper',
          'ethtool',
          'lsof',
          'lvm2',
