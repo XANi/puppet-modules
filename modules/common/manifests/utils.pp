@@ -15,9 +15,11 @@ class common::utils {
          'bridge-utils',
          'tcpdump',
          'lsof',
+         'lvm2',
          'ethtool',
          'tree',
          'sudo',
+         'xfsprogs',
          ]:
              ensure => installed,
     }
