@@ -142,3 +142,9 @@ repos:
         url:
             deb:
                 - http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main
+    sensu:
+        comment: Sensu
+        keyid: 7580C77F
+        url:
+            deb:
+                - http://repos.sensuapp.org/apt sensu main
