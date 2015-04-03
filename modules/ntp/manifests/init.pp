@@ -1,29 +1,40 @@
 
-class ntp::client ($server = hiera('ntp_server','pl.pool.ntp.org')) {
+class ntp::chrony (
+    $upstream = hiera('ntp_server','pl.pool.ntp.org'),
+    $server = false,
+
+    ) {
     package { 'ntpdate':
         ensure => installed;
     }
-    $command = "/usr/sbin/ntpdate -t 60 ${server}"
-    file { '/etc/cron.hourly/ntpdate':
-        mode    => 755,
-        owner   => root,
-        content => "#!/bin/sh\n#puppet managed\n${command} 2>&1 |logger -t ntpdate\n",
-        notify  => Exec['update-time'],
-        require => Package['ntpdate'],
+    package {'ntp':
+        ensure => absent,
     }
-    exec {'update-time':
-        logoutput   => true,
-        command     => "${command} &",
-        refreshonly => true,
+    package {'chrony':
+        ensure => installed,
+    }
+    file {'/etc/chrony/chrony.conf':
+        content => template('ntp/chrony.conf'),
+        owner   => root,
+        mode    => 644,
+    }
+    service {'chrony':
+        enable => true,
+        ensure => running,
+    }
+    file { '/etc/cron.hourly/ntpdate':
+        ensure => absent,
+
     }
 }
 
 
 class ntp::server {
-    package {'ntp':
-        ensure => installed;
+    class {
+        'ntp::chrony':
+            server => true,
     }
-    file { '/etc/cron.hourly/ntpdate':
-        ensure => absent;
-    }
+}
+class ntp::client {
+    include ntp::chrony
 }
