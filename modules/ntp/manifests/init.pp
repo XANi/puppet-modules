@@ -17,6 +17,7 @@ class ntp::chrony (
         content => template('ntp/chrony.conf'),
         owner   => root,
         mode    => 644,
+        notify => Service['chrony'],
     }
     service {'chrony':
         enable => true,
