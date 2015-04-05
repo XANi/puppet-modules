@@ -1,6 +1,6 @@
 
 class ntp::chrony (
-    $upstream = hiera('ntp_server','pl.pool.ntp.org'),
+    $upstream = hiera('ntp_server',['pl.pool.ntp.org','debian.pool.ntp.org','devrandom.pl']),
     $server = false,
 
     ) {
