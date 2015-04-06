@@ -137,11 +137,17 @@ repos:
             deb:
                 - http://packages.elasticsearch.org/elasticsearch/0.90/debian stable main
     elasticsearch10:
-        comment: elasticsearch 1.x
+        comment: elasticsearch 1.0
         keyid: D88E42B4
         url:
             deb:
                 - http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main
+    elasticsearch14:
+        comment: elasticsearch 1.4
+        keyid: D88E42B4
+        url:
+            deb:
+                - http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main
     sensu:
         comment: Sensu
         keyid: 7580C77F
