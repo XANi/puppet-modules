@@ -24,6 +24,14 @@ class consul (
         group  => root,
         mode   => 640,
     }
+    file {[
+           '/usr/share/consul',
+           '/usr/share/consul/ui',
+           ]:
+        ensure => directory,
+        mode   => 644,
+        owner  => root,
+    }
     file {'/var/lib/consul':
         ensure => directory,
         owner  => $user,

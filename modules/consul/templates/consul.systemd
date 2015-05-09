@@ -6,6 +6,7 @@ Description=Consul agent
 WantedBy=multi-user.target
 ExecStart=/usr/bin/consul agent -config-dir=/etc/consul/conf.d <%- -%>
  -data-dir=/var/lib/consul <%- -%>
+ -ui-dir=/usr/share/consul/ui <%- -%>
  -bind <%= @bind -%>
  -dc=<%= @dc -%>
  -node=<%= @nodename -%>
@@ -14,6 +15,7 @@ ExecStart=/usr/bin/consul agent -config-dir=/etc/consul/conf.d <%- -%>
  <%- Array(@join).each do |j|%>  -retry-join <%= j %> <% end -%>
  <%- Array(@join_wan).each do |j|%> -retry-join-wan <%= j %> <% end -%>
  <%- if @server %> -server <% end -%>
+ <%- if @bootstrap %> -bootstrap <% end -%>
 
 TimeoutStopSec=30
 Restart=always
