@@ -4,7 +4,7 @@ Description=Consul agent
 
 [Service]
 WantedBy=multi-user.target
-ExecStart=/usr/bin/consul -config-dir=/etc/consul/conf.d <%- -%>
+ExecStart=/usr/bin/consul agent -config-dir=/etc/consul/conf.d <%- -%>
  -data-dir=/var/lib/consul <%- -%>
  -bind <%= @bind -%>
  -dc=<%= @dc -%>
