@@ -7,7 +7,8 @@ class consul (
     $advertise = false,
     $join = [],
     $join_wan = [],
-    $server = false
+    $server = false,
+    $bootstrap = false,
     ) {
     # this should install package but maintainers are too lazy to bother, so I just install it manually
     # package {'consul': ensure => installed }
