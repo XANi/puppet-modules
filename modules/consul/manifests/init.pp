@@ -1,4 +1,14 @@
-class consul::common ($user='consul') {
+class consul (
+    $user = 'consul',
+    $bind = '0.0.0.0',
+    $dc   = 'home',
+    $nodename = $fqdn,
+    $client = '127.0.0.1',
+    $advertise = false,
+    $join = [],
+    $join_wan = [],
+    $server = false
+    ) {
     # this should install package but maintainers are too lazy to bother, so I just install it manually
     # package {'consul': ensure => installed }
     file {'/etc/consul':
@@ -19,7 +29,8 @@ class consul::common ($user='consul') {
         group  => root,
         mode   => 640,
     }
-}
-class consul::server {
-    require consul::common
+    file {'/etc/systemd/system/consul.service':
+        content => template('consul/consul.systemd'),
+        mode    => 644,
+    }
 }

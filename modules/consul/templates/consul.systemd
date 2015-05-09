@@ -1,0 +1,25 @@
+[Unit]
+Description=Consul agent
+
+
+[Install]
+WantedBy=multi-user.target
+ExecStart=/usr/bin/consul -config-dir=/etc/consul/conf.d <%- -%>
+-data-dir=/var/lib/consul <%- -%>
+-bind <%= @bind -%>
+-dc=<%= @dc -%>
+-node=<%= @nodename -%>
+-client <%= @client -%>
+<%- if @advertise %> -advertise=<%= @advertise %><% end -%>
+<%- Array(@join).each do |j|%>  -retry-join <%= j %> <% end -%>
+<%- Array(@join_wan).each do |j|%> -retry-join-wan <%= j %> <% end -%>
+<%- if @server %> -server <% end -%>
+
+TimeoutStopSec=30
+Restart=always
+RestartSec=30s
+WorkingDirectory=/var/lib/consul
+User=<%= @user %>
+
+[Install]
+WantedBy=multi-user.target
