@@ -43,8 +43,18 @@ class dpp (
     }
 
     file { '/etc/init.d/dpp':
-        content => template('dpp/dpp.init.erb'),
-        mode    => 755,
+        ensure  => absent,
+    }
+    file { '/etc/systemd/system/dpp.service':
+        content => template('dpp/dpp.service'),
+        mode    => 644,
+        owner   => root,
+        notify  => Exec['refresh-dpp-service'],
+    }
+    exec { 'refresh-dpp-service':
+        command     => 'systemctl daemon-reload',
+        refreshonly => true,
+        logoutput   => true,
     }
     service { 'dpp':
         enable => true,

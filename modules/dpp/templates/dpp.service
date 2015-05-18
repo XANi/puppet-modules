@@ -1,0 +1,17 @@
+#<%= @puppet_header %>
+# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+
+[Unit]
+Description=DPP
+
+
+[Service]
+WantedBy=multi-user.target
+ExecStart=/opt/dpp/run
+TimeoutStopSec=30
+Restart=always
+RestartSec=30s
+WorkingDirectory=/opt/dpp
+
+[Install]
+WantedBy=multi-user.target
