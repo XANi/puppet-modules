@@ -58,6 +58,7 @@ class dpp (
     }
     service { 'dpp':
         enable => true,
+        ensure => running,
     }
     if !defined(Package['libssl-dev']) {
         package { 'libssl-dev':
