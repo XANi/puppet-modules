@@ -6,7 +6,6 @@ Description=DPP
 
 
 [Service]
-WantedBy=multi-user.target
 ExecStart=/opt/dpp/run
 TimeoutStopSec=30
 Restart=always
