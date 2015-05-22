@@ -36,9 +36,9 @@ repos:
         comment: GCC for other archs
         url:
             deb:
-                - http://www.emdebian.org/debian wheezy main
+                - http://www.emdebian.org/debian jessie main
 
-    backports:
+    backports-squeeze:
         comment: squeeze backports
         url:
             deb:
