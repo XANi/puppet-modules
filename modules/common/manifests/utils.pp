@@ -6,6 +6,7 @@ class common::utils {
     include util::etckeeper
     package {
         [
+         'bzip2',
          'bridge-utils',
          'bwm-ng',
          'curl',
