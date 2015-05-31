@@ -65,7 +65,7 @@ class apt::common (
     }
 }
 
-class apt::default_repos($release='wheezy') {
+class apt::default_repos($release='jessie') {
     include apt::common
     # repos enabled by default
 
