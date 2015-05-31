@@ -58,6 +58,7 @@ class dpp (
     }
     service { 'dpp':
         enable => true,
+        provider => systemd,
         ensure => running,
     }
     if !defined(Package['libssl-dev']) {
