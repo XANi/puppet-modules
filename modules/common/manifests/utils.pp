@@ -20,6 +20,7 @@ class common::utils {
          'tree',
          'mtr-tiny',
          'xfsprogs',
+         'locales-all', # so various tools can use it and non-english letters in console work
          'zile',
          ]:
              ensure => installed,
