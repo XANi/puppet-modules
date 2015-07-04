@@ -48,7 +48,7 @@ class util::etckeeper {
     }
     file {'/etc/etckeeper/pre-commit.d/99cleanup-stale-index':
         mode => 755,
-        content => "#!/bin/bash\n# puppet managed\nfind /etc/.git/index.lock -type f -mmin +10 -delete\n"
+        content => "#!/bin/bash\n# puppet managed\nfind /etc/.git/ -type f -name index.lock -mmin +30 -delete\n"
     }
 
 }
