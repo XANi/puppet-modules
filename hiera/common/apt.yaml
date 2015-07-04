@@ -154,3 +154,9 @@ repos:
         url:
             deb:
                 - http://repos.sensuapp.org/apt sensu main
+    syncthing:
+        comment: syncthing
+        keyid: 37C86D31
+        url:
+            deb:
+                - http://apt.syncthing.net/ syncthing release
