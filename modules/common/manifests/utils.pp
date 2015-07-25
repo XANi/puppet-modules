@@ -12,6 +12,7 @@ class common::utils {
          'curl',
          'ethtool',
          'lsof',
+         'ncdu',
          'lvm2',
          'nmap',
          'psmisc',
