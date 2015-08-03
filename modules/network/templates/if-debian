@@ -5,7 +5,6 @@
 <% if @boot %>auto <%= @ifname %><% end %>
 <% if @hotplug %>allow-hotplug <%= @ifname %><% end %>
 <%- %>iface <%= @ifname %> <%= @type %> <%= @method %>
-    address <%= @addr %>
 <%- @keys.each do |k, v|
 if v -%>
     <%= k %> <%= v %>

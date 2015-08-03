@@ -1,3 +1,4 @@
+
 define network::if (
     $ifname = $title,
     $type = "inet",
@@ -18,9 +19,7 @@ define network::if (
     $client = false,
 )   {
     require network
-    if $title !~ /^[a-zA-Z0-9_-]+$/ {
-        fail('Title must match ^[a-zA-Z0-9_-]+$')
-    }
+    $filename = regsubst($title,'[^a-zA-Z0-9_-]{1}','_','G')
 
     # so we can easily use shortcuts and add/rename/del vars without touching erbs
     $keys = {
@@ -34,7 +33,7 @@ define network::if (
         vendor      => $vendor,
         client      => $client
     }
-    file {"/etc/network/interfaces.d/$title":
+    file {"/etc/network/interfaces.d/$filename":
         content => template("network/if-debian"),
         mode => 644,
         owner => root,
