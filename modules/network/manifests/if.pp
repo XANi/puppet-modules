@@ -9,6 +9,7 @@ define network::if (
     $hwaddr = false,
     $netmask = false,# rarely needed, you shoudl use CIDR for visibility
     $broadcast = false, # let OS figure it out
+    $gateway = false,
     $metric = false,
     $mtu = false,
     # ppp options
@@ -26,6 +27,7 @@ define network::if (
         address     => $addr,
         hwaddress   => $hwaddr,
         netmask     => $netmask,
+        gateway     => $gateway,
         metric      => $metric,
         mtu         => $mtu,
         pointopoint => $ptp,
