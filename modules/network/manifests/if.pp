@@ -1,4 +1,3 @@
-
 define network::if (
     $ifname = $title,
     $type = "inet",
