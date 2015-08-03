@@ -19,3 +19,6 @@
 [submodule "modules/keepalived"]
 	path = modules/keepalived
 	url = https://github.com/arioch/puppet-keepalived
+[submodule "modules/network"]
+	path = modules/network
+	url = https://github.com/puppet-community/puppet-network.git
