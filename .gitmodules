@@ -24,4 +24,4 @@
 	url = https://github.com/puppet-community/puppet-network.git
 [submodule "modules/bird"]
 	path = modules/bird
-	url = https://github.com/XANi/puppet-bird
+	url = https://github.com/XANi/puppet-bird.git
