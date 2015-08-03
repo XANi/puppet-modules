@@ -2,12 +2,12 @@
 # <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
 
 # <%= @title %> <%= @caller_module_name %> -> <%= @module_name %>
-<% if @boot %>auto <%= @ifname %><% end -%>
-<% if @hotplug %>allow-hotplug <%= @ifname %><% end -%>
-iface <%= @ifname %> <%= @type %> <%= @method %>
+<% if @boot %>auto <%= @ifname %><% end %>
+<% if @hotplug %>allow-hotplug <%= @ifname %><% end %>
+<%- %>iface <%= @ifname %> <%= @type %> <%= @method %>
     address <%= @addr %>
 <%- @keys.each do |k, v|
-if k -%>
+if v -%>
     <%= k %> <%= v %>
 <%- end -%>
 <%- end -%>
