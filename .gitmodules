@@ -25,3 +25,6 @@
 [submodule "modules/bird"]
 	path = modules/bird
 	url = https://github.com/XANi/puppet-bird.git
+[submodule "modules/dnsmasq"]
+	path = modules/dnsmasq
+	url = https://github.com/rlex/puppet-dnsmasq.git
