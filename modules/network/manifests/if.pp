@@ -18,6 +18,7 @@ define network::if (
     $leasetime = false,
     $vendor = false,
     $client = false,
+    $dhcp_hostname = false,
 )   {
     require network
     $filename = regsubst($title,'[^a-zA-Z0-9_-]{1}','_','G')
@@ -33,7 +34,8 @@ define network::if (
         pointopoint => $ptp,
         leasetime   => $leasetime,
         vendor      => $vendor,
-        client      => $client
+        client      => $client,
+        hostname    => $dhcp_hostname,
     }
     file {"/etc/network/interfaces.d/$filename":
         content => template("network/if-debian"),
