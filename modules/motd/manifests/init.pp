@@ -1,13 +1,12 @@
 class motd::init {
+}
+
+class motd {
     concat { '/etc/motd':
         mode => 644,
         owner => root,
         order => numeric,
     }
-}
-
-class motd {
-    require motd::init
     concat::fragment {'motd-header':
         content => template("motd/header"),
         target  => '/etc/motd',
