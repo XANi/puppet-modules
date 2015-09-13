@@ -1,2 +1,2 @@
 #<%- -%>
-<%- if @location %> location:<%= "\e[92m" + @location + "\e[39m" %><% end %><% if @project %> project:<%= "\e[93m" + @project +"\e[39m" %><% end %>
+<%- if @location %> location:<%= "\e[92m" + @location + "\e[39m" %><% end %><% if @project && @project != "default" %> project:<%= "\e[93m" + @project +"\e[39m" %><% end %>
