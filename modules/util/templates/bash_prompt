@@ -138,7 +138,7 @@ alias kj="killall -9 java"
 alias ll='ls -l --color=auto'
 alias ls='ls --color=auto'
 alias varnishadm="rlwrap -pgreen -S'varnish> ' varnishadm"
-alias riak-admin="sudo -u riak riak-admin"
+alias sctl='systemctl'
 
 chmod go-rwx ~/.saved >/dev/null 2>&1
 
