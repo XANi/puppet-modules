@@ -115,7 +115,7 @@ repos:
         comment: Rasbian repo
         url:
             deb:
-                - http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi
+                - http://mirrordirector.raspbian.org/raspbian/ jessie main contrib non-free rpi
 
     jenkins:
         comment: jenkins repo
