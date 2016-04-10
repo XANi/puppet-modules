@@ -7,23 +7,23 @@ class common::utils {
     package {
         [
          'aptitude',
-         'bzip2',
          'bridge-utils',
          'bwm-ng',
+         'bzip2',
          'curl',
          'ethtool',
+         'locales-all', # so various tools can use it and non-english letters in console work
          'lsof',
-         'ncdu',
          'lvm2',
+         'mtr-tiny',
+         'ncdu',
          'nmap',
          'psmisc',
-         'screen',
          'sudo',
          'tcpdump',
+         'tmux',
          'tree',
-         'mtr-tiny',
          'xfsprogs',
-         'locales-all', # so various tools can use it and non-english letters in console work
          'zile',
          ]:
              ensure => installed,
