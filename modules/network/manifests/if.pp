@@ -39,7 +39,7 @@ define network::if (
     }
     file {"/etc/network/interfaces.d/$filename":
         content => template("network/if-debian"),
-        mode => 644,
+        mode => "644",
         owner => root,
     }
 }

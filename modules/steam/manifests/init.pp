@@ -6,7 +6,7 @@ class steam::batch (
 ) {
     file { "${home}/run_batch":
         content => template('steam/run_batch'),
-        mode    => 755,
+        mode    => "755",
         owner   => $user,
 
     }

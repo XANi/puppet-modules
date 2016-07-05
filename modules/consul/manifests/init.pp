@@ -16,30 +16,30 @@ class consul (
         ensure => directory,
         owner  => $user,
         group  => root,
-        mode   => 640,
+        mode   => "640",
     }
     file {'/etc/consul/conf.d':
         ensure => directory,
         owner  => $user,
         group  => root,
-        mode   => 640,
+        mode   => "640",
     }
     file {[
            '/usr/share/consul',
            '/usr/share/consul/ui',
            ]:
         ensure => directory,
-        mode   => 644,
+        mode   => "644",
         owner  => root,
     }
     file {'/var/lib/consul':
         ensure => directory,
         owner  => $user,
         group  => root,
-        mode   => 640,
+        mode   => "640",
     }
     file {'/etc/systemd/system/consul.service':
         content => template('consul/consul.systemd'),
-        mode    => 644,
+        mode    => "644",
     }
 }

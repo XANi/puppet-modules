@@ -13,7 +13,7 @@ define syncthing::instance {
     include syncthing
     file {"/etc/systemd/system/syncthing-${title}.service":
         content => template('syncthing/systemd'),
-        mode => 644,
+        mode => "644",
     }
     service {"syncthing-${title}":
         enable => true,

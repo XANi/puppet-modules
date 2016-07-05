@@ -11,6 +11,6 @@ class dhclient {
         content => template('dhclient/dhclient.conf.erb'),
         owner   => root,
         group   => root,
-        mode    => 644,
+        mode    => "644",
     }
 }

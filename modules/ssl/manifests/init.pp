@@ -13,7 +13,7 @@ define ssl::cert {
     include ssl
     file { "/usr/local/share/ca-certificates/puppet-${title}.crt":
         source => "puppet:///modules/ssl/certs/${title}.pem",
-        mode   => 644,
+        mode   => "644",
         owner  => root,
         notify => Exec['update-ca-certificates'],
     }

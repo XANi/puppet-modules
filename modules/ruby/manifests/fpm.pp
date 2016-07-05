@@ -8,7 +8,7 @@ class ruby::fpm (
     file { $install_path:
         ensure => directory,
         owner  => $user,
-        mode   => 750,
+        mode   => "750",
     }
     vcsrepo { $install_path:
         source   => "https://github.com/jordansissel/fpm",

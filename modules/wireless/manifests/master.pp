@@ -17,13 +17,13 @@ class wireless::master (
     }
     file {'/etc/hostapd/hostapd.conf':
         content => template('wireless/hostapd.conf'),
-        mode    => 600,
+        mode    => "600",
         owner   => root,
         notify  => Service['hostapd'],
     }
     file {'/etc/default/hostapd':
         content => template('wireless/hostapd.default'),
-        mode    => 644,
+        mode    => "644",
         owner   => root,
         notify  => Service['hostapd'],
     }
