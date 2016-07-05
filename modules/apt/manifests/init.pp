@@ -5,7 +5,7 @@ class apt (
     ) {
         file { '/etc/apt/apt.conf.d/99-zpuppet.conf':
             content => template('apt/apt.conf.erb'),
-            mode    => 644,
+            mode    => "644",
             owner   => root,
         }
     if $unattended_upgrade {
@@ -14,7 +14,7 @@ class apt (
         }
         file {'/etc/apt/apt.conf.d/99unattended-upgrade.conf':
             content => template('apt/unattended-upgrade.conf'),
-            mode    => 644,
+            mode    => "644",
             owner   => root,
         }
     }
@@ -40,7 +40,7 @@ class apt::common (
     file { apt-sources:
         path    => '/etc/apt/sources.list',
         owner   => root,
-        mode    => 644,
+        mode    => "644",
         content => template('apt/sources.list.erb'),
         notify  => Exec['apt-update'],
     }
@@ -48,14 +48,14 @@ class apt::common (
         path    => '/etc/apt/sources.list.d/local-sources.list',
         replace => no,
         content => "# /etc/apt/local-sources.list\n# put local, test or machine-specific repos here\n\n",
-        mode    => 644,
+        mode    => "644",
     }
 
     file {'/etc/apt/sources.list.d/':
         ensure  => directory,
         owner   => root,
         group   => root,
-        mode    => 644,
+        mode    => "644",
         purge   => true,
         recurse => true,
         force   => true,
@@ -94,7 +94,7 @@ class apt::update ($background_download=false) {
         path    => '/etc/cron.weekly/puppet-apt-updates',
         content => template('apt/apt-updates.erb'),
         owner   => root,
-        mode    => 755,
+        mode    => "755",
     }
     file { '/etc/cron.daily/puppet-apt-updates':
         ensure => absent,
@@ -119,7 +119,7 @@ define apt::repo (
     $repo_types = ['deb','deb-src'],
 ) {
     file { "/etc/apt/sources.list.d/${title}.list":
-        mode    => 644,
+        mode    => "644",
         content => template('apt/sources.list.part.erb'),
         notify  => Exec['apt-update'],
     }
