@@ -3,7 +3,7 @@
 	url = https://github.com/puppetlabs/puppetlabs-vcsrepo
 [submodule "modules/puppet-logrotate"]
 	path = modules/logrotate
-	url = https://github.com/rodjek/puppet-logrotate
+	url = https://github.com/efigence/puppet-logrotate
 [submodule "modules/docker"]
 	path = modules/docker
 	url = https://github.com/XANi/garethr-docker.git
