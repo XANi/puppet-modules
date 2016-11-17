@@ -18,7 +18,7 @@ class network::common::debian {
         recurse => true,
         purge   => true,
         owner   => root,
-        mode    => 644,
+        mode    => "644",
     }
     if $network::manage_global {
         concat { '/etc/network/interfaces':

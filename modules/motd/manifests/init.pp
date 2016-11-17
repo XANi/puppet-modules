@@ -3,7 +3,7 @@ class motd::init {
 
 class motd {
     concat { '/etc/motd':
-        mode => 644,
+        mode => "644",
         owner => root,
         order => numeric,
     }

@@ -4,7 +4,7 @@
 class systemd::poweroff_on_halt {
     file { '/lib/systemd/system/systemd-halt.service':
         source => '/lib/systemd/system/systemd-poweroff.service',
-        mode   => 644,
+        mode   => "644",
         owner  => root,
     }
 }

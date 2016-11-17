@@ -24,7 +24,7 @@ class dpp (
 
     file { '/etc/dpp.conf':
         content => template('dpp/dpp.conf.erb'),
-        mode => 600,
+        mode => "600",
         owner => root,
     }
 
@@ -36,7 +36,7 @@ class dpp (
     }
     file { '/etc/cron.daily/dpp_maint':
         content => template('dpp/cron.maint.erb'),
-        mode    => 755,
+        mode    => "755",
     }
     file { '/etc/cron.daily/dpp_cleanup':
         ensure => absent,
@@ -47,7 +47,7 @@ class dpp (
     }
     file { '/etc/systemd/system/dpp.service':
         content => template('dpp/dpp.service'),
-        mode    => 644,
+        mode    => "644",
         owner   => root,
         notify  => Exec['refresh-dpp-service'],
     }

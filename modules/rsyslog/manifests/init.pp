@@ -17,7 +17,7 @@ define rsyslog::log (
     $pad_prio = sprintf('%04d',$prio)
     file {"/etc/rsyslog.d/${pad_prio}-${title}.conf":
         content => template($template),
-        mode    => 644,
+        mode    => "644",
         notify  => Service['rsyslog'],
     }
 }

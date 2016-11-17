@@ -26,12 +26,12 @@ class starbound::server (
         file {"${steam_script_dir}/update_starbound.steam":
             content => template('starbound/update_starbound.steam'),
             owner   => $user,
-            mode    => 644,
+            mode    => "644",
         }
     }
     file { $path:
         ensure => directory,
-        mode   => 644,
+        mode   => "644",
         owner  => $user,
     }
 }

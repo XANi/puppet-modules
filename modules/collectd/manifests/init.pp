@@ -21,7 +21,7 @@ class collectd::common {
     }
     file {'/etc/collectd/conf.d':
         ensure  => directory,
-        mode    => 644,
+        mode    => "644",
         owner   => root,
         recurse => true,
         purge   => true,

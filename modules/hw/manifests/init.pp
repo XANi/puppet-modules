@@ -15,6 +15,6 @@ class hw::iwlwifi {
 class hw::w8192cu::power {
     file {'/etc/modprobe.d/8192cu.conf':
         content => template('hw/8192cu.conf'),
-        mode    => 644,
+        mode    => "644",
     }
 }

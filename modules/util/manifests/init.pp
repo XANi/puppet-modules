@@ -44,10 +44,10 @@ class util::etckeeper {
     }
     file {'/etc/cron.daily/etckeeper-cleanup':
         content => template('util/etckeeper-cleanup'),
-        mode    => 755,
+        mode    => "755",
     }
     file {'/etc/etckeeper/pre-commit.d/99cleanup-stale-index':
-        mode => 755,
+        mode => "755",
         content => "#!/bin/bash\n# puppet managed\nfind /etc/.git/ -type f -name index.lock -mmin +30 -delete\n"
     }
 
@@ -59,7 +59,7 @@ class util::fuse {
     }
     file {'/etc/fuse.conf':
         content => template('util/fuse.conf'),
-        mode    => 644,
+        mode    => "644",
         owner   => root,
     }
 }

@@ -16,7 +16,7 @@ class ntp::chrony (
     file {'/etc/chrony/chrony.conf':
         content => template('ntp/chrony.conf'),
         owner   => root,
-        mode    => 644,
+        mode    => "644",
         notify => Service['chrony'],
     }
     service {'chrony':
