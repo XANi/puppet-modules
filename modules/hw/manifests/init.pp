@@ -12,7 +12,7 @@ class hw::iwlwifi {
 }
 
 # disable power maangement, makes wifi on rpi awfully slow
-class hw::8192cu::power {
+class hw::w8192cu::power {
     file {'/etc/modprobe.d/8192cu.conf':
         content => template('hw/8192cu.conf'),
         mode    => 644,
