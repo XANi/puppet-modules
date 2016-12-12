@@ -21,11 +21,17 @@ class dpp (
     else {
         $use_repos_c = $use_repos
     }
-
-    file { '/etc/dpp.conf':
+    file {'/etc/dpp':
+        ensure => directory,
+        mode   => "700",
+    }
+    file { '/etc/dpp/config.yaml':
         content => template('dpp/dpp.conf.erb'),
         mode => "600",
         owner => root,
+    }
+    file {'/etc/dpp.conf':
+        ensure => absent
     }
 
     file { '/etc/cron.daily/dpp_maint':
