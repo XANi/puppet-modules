@@ -28,20 +28,9 @@ class dpp (
         owner => root,
     }
 
-    exec {'checkout-repo':
-        # use http, most "compatible" with crappy firewall/corporate networks
-        command => '/bin/bash -c "mkdir -p /opt;cd /opt;git clone http://github.com/XANi/dpp.git"',
-        creates => '/opt/dpp/.git/config',
-        logoutput => true,
-    }
     file { '/etc/cron.daily/dpp_maint':
-        content => template('dpp/cron.maint.erb'),
-        mode    => "755",
-    }
-    file { '/etc/cron.daily/dpp_cleanup':
         ensure => absent,
     }
-
     file { '/etc/init.d/dpp':
         ensure  => absent,
     }
@@ -60,11 +49,6 @@ class dpp (
         enable => true,
         provider => systemd,
         ensure => running,
-    }
-    if !defined(Package['libssl-dev']) {
-        package { 'libssl-dev':
-            ensure => installed,
-        }
     }
     util::service_disable {'puppet':;}
     logrotate::rule {'puppet_dpp':

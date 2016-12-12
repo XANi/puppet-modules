@@ -6,7 +6,7 @@ Description=DPP
 
 
 [Service]
-ExecStart=/opt/dpp/run
+ExecStart=/opt/dpp/dpp
 TimeoutStopSec=30
 Restart=always
 RestartSec=30s
