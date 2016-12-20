@@ -3,7 +3,7 @@ class dpp (
     $use_repos = false,
     $start_wait = 20,
     $minimum_interval = 120,
-    $schedule_run = fqdn_rand(600,3000),
+    $schedule_run = fqdn_rand(600)+3600,
     $poll_interval = 120,
 ) {
     $manager_url = hiera('manager_url',false)
