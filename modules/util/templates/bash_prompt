@@ -137,8 +137,19 @@ alias man="LC_ALL=C man"
 alias kj="killall -9 java"
 alias ll='ls -l --color=auto'
 alias ls='ls --color=auto'
-alias varnishadm="rlwrap -pgreen -S'varnish> ' varnishadm"
-alias sctl='systemctl'
+if [ -e /bin/systemctl ] || [ -e /usr/bin/systemctl ] ; then
+    alias sctl='systemctl'
+    alias stop='systemctl stop'
+    alias start='systemctl start'
+    alias ena='systemctl enable'
+    alias dis='systemctl disable'
+    alias re='systemctl restart'
+    alias rl='systemctl reload'
+    alias reload='systemctl reload'
+    alias s='systemctl -l status -n 20'
+    alias st='systemctl -l status -n 20'
+    alias log='journalctl -a -e -n10000 -u'
+fi
 
 chmod go-rwx ~/.saved >/dev/null 2>&1
 
