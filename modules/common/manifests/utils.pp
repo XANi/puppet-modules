@@ -7,6 +7,7 @@ class common::utils {
     package {
         [
          'aptitude',
+         'bc',
          'bridge-utils',
          'bwm-ng',
          'bzip2',

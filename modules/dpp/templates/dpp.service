@@ -9,7 +9,7 @@ Description=DPP
 ExecStart=/opt/dpp/dpp
 TimeoutStopSec=30
 Restart=always
-RestartSec=30s
+RestartSec=60s
 WorkingDirectory=/opt/dpp
 
 [Install]
