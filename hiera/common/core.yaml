@@ -3,13 +3,15 @@ repos:
     main-squeeze:
         comment: Main Debian repo - Squeeze
         location: http://ftp.pl.debian.org/debian/
-        repos: squeeze main non-free contrib
+        release: squeeze
+        repos: main non-free contrib
 
 
     main-wheezy:
         comment: Main Debian repo - Wheezy
         location: http://ftp.pl.debian.org/debian/
-        repos: wheezy main non-free contrib
+        release: wheezy
+        repos: main non-free contrib
         include:
             src: false
             deb: true
@@ -17,73 +19,87 @@ repos:
     main-testing:
         comment: Main Debian repo - Testing
         location: http://ftp.pl.debian.org/debian/
-        repos: testing main non-free contrib
+        release: testing
+        repos: main non-free contrib
 
     main-jessie:
         comment: Main Debian repo - Jessie
         location: http://ftp.pl.debian.org/debian/
-        repos: jessie main non-free contrib
+        release: jessie
+        repos: main non-free contrib
 
     emdebian:
         comment: GCC for other archs
         location: http://www.emdebian.org/debian
-        repos: jessie main
+        release: jessie
+        repos: main
 
     backports-squeeze:
         comment: squeeze backports
         location: http://backports.debian.org/debian-backports
-        repos: squeeze-backports main
+        release: squeeze-backports
+        repos: main
 
     crawl:
         comment: dungeon crawl
         location: http://crawl.develz.org/debian
-        repos: crawl 0.12
+        release: crawl
+        repos: 0.12
 
     spotify:
         comment: Spotify player
         location: http://repository.spotify.com
-        repos: stable non-free
+        release: stable
+        repos: non-free
 
     rabbitmq:
         comment: RabbitMQ
         location: http://www.rabbitmq.com/debian/
-        repos: testing main
+        release: testing
+        repos: main
 
     dropbox:
         comment: Dropbox
         location: http://linux.dropbox.com/debian
-        repos: wheezy main
+        release: jessie
+        repos: main
     puppet:
         comment: Puppet repo
         location: http://apt.puppetlabs.com
-        repos: wheezy main dependencies
+        release: jessie
+        repos: main dependencies
 
     mopidy:
         comment: Mopidy APT archive
         location: http://apt.mopidy.com/
-        repos: stable main contrib non-free
+        release: stable
+        repos: main contrib non-free
 
     longview:
         comment: Linode longview client
         location: http://apt-longview.linode.com/
-        repos: wheezy main
+        release: jessie
+        repos: main
     raspbian:
         comment: Rasbian repo
         location: http://mirrordirector.raspbian.org/raspbian/
-        repos: jessie main contrib non-free rpi
+        release: jessie
+        repos: main contrib non-free rpi
 
     jenkins:
         comment: jenkins repo
         location:  http://pkg.jenkins-ci.org/debian
-        repos: binary
+        release: binary
 
     syncthing:
         comment: syncthing
         location: http://apt.syncthing.net/
-        repos: syncthing release
+        release: syncthing
+        repos: release
 
     nodesource-5:
         comment: JS crap
         key: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
         location: https://deb.nodesource.com/node_5.x
-        repos: jessie main
+        release: jessie
+        repos: main
