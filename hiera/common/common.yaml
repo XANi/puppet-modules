@@ -1,2 +1,93 @@
 ---
 location: default
+repos:
+    main-squeeze:
+        comment: Main Debian repo - Squeeze
+        location: http://ftp.pl.debian.org/debian/
+        repos: squeeze main non-free contrib
+
+
+    main-wheezy:
+        comment: Main Debian repo - Wheezy
+        location: http://ftp.pl.debian.org/debian/
+        repos: wheezy main non-free contrib
+        include:
+            src: false
+            deb: true
+
+    main-testing:
+        comment: Main Debian repo - Testing
+        location: http://ftp.pl.debian.org/debian/
+        repos: testing main non-free contrib
+
+    main-jessie:
+        comment: Main Debian repo - Jessie
+        location: http://ftp.pl.debian.org/debian/
+        repos: jessie main non-free contrib
+
+    emdebian:
+        comment: GCC for other archs
+        location: http://www.emdebian.org/debian
+        repos: jessie main
+
+    backports-squeeze:
+        comment: squeeze backports
+        location: http://backports.debian.org/debian-backports
+        repos: squeeze-backports main
+
+    crawl:
+        comment: dungeon crawl
+        location: http://crawl.develz.org/debian
+        repos: crawl 0.12
+
+    spotify:
+        comment: Spotify player
+        location: http://repository.spotify.com
+        repos: stable non-free
+
+    rabbitmq:
+        comment: RabbitMQ
+        location: http://www.rabbitmq.com/debian/
+        repos: testing main
+
+    dropbox:
+        comment: Dropbox
+        location: http://linux.dropbox.com/debian
+        repos: wheezy main
+    puppet:
+        comment: Puppet repo
+        location: http://apt.puppetlabs.com
+        repos: wheezy main dependencies
+
+    mopidy:
+        comment: Mopidy APT archive
+        keyid: 271D2943
+        location: http://apt.mopidy.com/
+        repos: stable main contrib non-free
+
+    longview:
+        comment: Linode longview client
+        location: http://apt-longview.linode.com/
+        repos: wheezy main
+    raspbian:
+        comment: Rasbian repo
+        location: http://mirrordirector.raspbian.org/raspbian/
+        repos: jessie main contrib non-free rpi
+
+    jenkins:
+        comment: jenkins repo
+        keyid: D50582E6
+        location:  http://pkg.jenkins-ci.org/debian
+        repos: binary
+
+    syncthing:
+        comment: syncthing
+        keyid: 37C86D31
+        location: http://apt.syncthing.net/
+        repos: syncthing release
+
+    nodesource-5:
+        comment: JS crap
+        keyid: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
+        location: https://deb.nodesource.com/node_5.x
+        repos: jessie main
