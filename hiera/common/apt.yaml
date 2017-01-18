@@ -1,168 +1,92 @@
 ---
 repos:
     main-squeeze:
-        comment: Main Debian repo - Squeeze (oldstable)
-        url:
-            deb:
-                - http://ftp.pl.debian.org/debian/ squeeze main non-free contrib
-            deb-src:
-                - http://ftp.pl.debian.org/debian/ squeeze main non-free contrib
+        comment: Main Debian repo - Squeeze
+        location: http://ftp.pl.debian.org/debian/
+        repos: squeeze main non-free contrib
+
 
     main-wheezy:
-        comment: Main Debian repo - Wheezy (stable)
-        url:
-            deb:
-                - http://ftp.pl.debian.org/debian/ wheezy main non-free contrib
-                - http://security.debian.org/ wheezy/updates main contrib non-free
-            deb-src:
-                - http://ftp.pl.debian.org/debian/ wheezy main non-free contrib
+        comment: Main Debian repo - Wheezy
+        location: http://ftp.pl.debian.org/debian/
+        repos: wheezy main non-free contrib
+        include:
+            src: false
+            deb: true
 
     main-testing:
         comment: Main Debian repo - Testing
-        url:
-            deb:
-                - http://ftp.pl.debian.org/debian/ testing main non-free contrib
-            deb-src:
-                - http://ftp.pl.debian.org/debian/ testing main non-free contrib
+        location: http://ftp.pl.debian.org/debian/
+        repos: testing main non-free contrib
+
     main-jessie:
         comment: Main Debian repo - Jessie
-        url:
-            deb:
-                - http://ftp.pl.debian.org/debian/ jessie main non-free contrib
-            deb-src:
-                - http://ftp.pl.debian.org/debian/ jessie main non-free contrib
+        location: http://ftp.pl.debian.org/debian/
+        repos: jessie main non-free contrib
 
     emdebian:
         comment: GCC for other archs
-        url:
-            deb:
-                - http://www.emdebian.org/debian jessie main
+        location: http://www.emdebian.org/debian
+        repos: jessie main
 
     backports-squeeze:
         comment: squeeze backports
-        url:
-            deb:
-                - http://backports.debian.org/debian-backports squeeze-backports main
-
-    chromium:
-        comment: Chromium repos from ubuntu
-        keyid: 4E5E17B5
-        url:
-            deb:
-                - http://ppa.launchpad.net/chromium-daily/ppa/ubuntu lucid main
-            deb-src:
-                - http://ppa.launchpad.net/chromium-daily/ppa/ubuntu lucid main
-
-    firefox:
-        comment: Latest firefox releases
-        url:
-            deb:
-                - http://mozilla.debian.net/ wheezy-backports iceweasel-release
+        location: http://backports.debian.org/debian-backports
+        repos: squeeze-backports main
 
     crawl:
         comment: dungeon crawl
-        url:
-            deb:
-                - http://crawl.develz.org/debian crawl 0.12
+        location: http://crawl.develz.org/debian
+        repos: crawl 0.12
 
     spotify:
         comment: Spotify player
-        keyid: 94558F59
-        url:
-            deb:
-                - http://repository.spotify.com stable non-free
-
-    emacs-snapshot:
-        comment: Emacs snapshots
-        keyid: 2A41B42C
-        url:
-            deb:
-                - http://emacs.naquadah.org stable/
+        location: http://repository.spotify.com
+        repos: stable non-free
 
     rabbitmq:
         comment: RabbitMQ
-        keyid: 056E8E56
-        url:
-            deb:
-                - http://www.rabbitmq.com/debian/ testing main
+        location: http://www.rabbitmq.com/debian/
+        repos: testing main
 
     dropbox:
         comment: Dropbox
-        url:
-            deb:
-                - http://linux.dropbox.com/debian wheezy main
+        location: http://linux.dropbox.com/debian
+        repos: wheezy main
     puppet:
         comment: Puppet repo
-        keyid: 4BD6EC30
-        url:
-            deb:
-                - http://apt.puppetlabs.com wheezy main dependencies
+        location: http://apt.puppetlabs.com
+        repos: wheezy main dependencies
 
     mopidy:
         comment: Mopidy APT archive
         keyid: 271D2943
-        url:
-            deb:
-                - http://apt.mopidy.com/ stable main contrib non-free
-            deb-src:
-                - http://apt.mopidy.com/ stable main contrib non-free
+        location: http://apt.mopidy.com/
+        repos: stable main contrib non-free
+
     longview:
         comment: Linode longview client
-        url:
-            deb:
-                - http://apt-longview.linode.com/ wheezy main
+        location: http://apt-longview.linode.com/
+        repos: wheezy main
     raspbian:
         comment: Rasbian repo
-        url:
-            deb:
-                - http://mirrordirector.raspbian.org/raspbian/ jessie main contrib non-free rpi
+        location: http://mirrordirector.raspbian.org/raspbian/
+        repos: jessie main contrib non-free rpi
 
     jenkins:
         comment: jenkins repo
         keyid: D50582E6
-        url:
-            deb:
-                - http://pkg.jenkins-ci.org/debian binary/
+        location:  http://pkg.jenkins-ci.org/debian
+        repos: binary
 
-    bareos:
-        comment: bareos repo
-        keyid: E0F8EFD4
-        url:
-            deb:
-                - http://download.bareos.org/bareos/release/13.2/Debian_7.0/ /
-    elasticsearch09:
-        comment: elasticsearch 0.9
-        keyid: D88E42B4
-        url:
-            deb:
-                - http://packages.elasticsearch.org/elasticsearch/0.90/debian stable main
-    elasticsearch10:
-        comment: elasticsearch 1.0
-        keyid: D88E42B4
-        url:
-            deb:
-                - http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main
-    elasticsearch14:
-        comment: elasticsearch 1.4
-        keyid: D88E42B4
-        url:
-            deb:
-                - http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main
-    sensu:
-        comment: Sensu
-        keyid: 7580C77F
-        url:
-            deb:
-                - http://repos.sensuapp.org/apt sensu main
     syncthing:
         comment: syncthing
         keyid: 37C86D31
-        url:
-            deb:
-                - http://apt.syncthing.net/ syncthing release
+        location: http://apt.syncthing.net/
+        repos: syncthing release
+
     nodesource-5:
         comment: JS crap
         keyid: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
-        url:
-            deb:
-                - https://deb.nodesource.com/node_5.x jessie main
+        location: https://deb.nodesource.com/node_5.x
+        repos: jessie main
