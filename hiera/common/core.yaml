@@ -22,6 +22,12 @@ repos:
         release: testing
         repos: main non-free contrib
 
+    main-stretch:
+        comment: Main Debian repo - Stretch
+        location: http://ftp.pl.debian.org/debian/
+        release: stretch
+        repos: main non-free contrib
+
     main-jessie:
         comment: Main Debian repo - Jessie
         location: http://ftp.pl.debian.org/debian/
