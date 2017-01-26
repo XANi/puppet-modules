@@ -1,8 +1,6 @@
 
 class syncthing  {
-    apt::source {
-        'syncthing':;
-    }
+    realize Apt::Source['syncthing']
     package {'syncthing':
         ensure => 'latest';
     }
