@@ -6,7 +6,6 @@ repos:
         release: squeeze
         repos: main non-free contrib
 
-
     main-wheezy:
         comment: Main Debian repo - Wheezy
         location: http://ftp.pl.debian.org/debian/
