@@ -21,6 +21,7 @@ class core::server (
     $collectd_client = true,
 ) {
     include core::apt::base
+    include core::monitoring
     apt::conf {"no-suggested":
         content => 'APT::Install-Suggests "0";'
     }
@@ -53,4 +54,12 @@ class core::server (
         target => '/usr/bin/zile',
     }
 
+}
+
+
+class core::monitoring {
+    package {[
+        'monitoring-plugins'
+    ]: ensure => installed
+    }
 }
