@@ -2,12 +2,6 @@ class core::desktop {
     include core::apt::base
 }
 
-class core::server {
-    include core::apt::base
-    apt::conf {"no-suggested":
-        content => 'APT::Install-Suggests "0";'
-    }
-}
 
 class core {
     include core::apt::base
@@ -26,6 +20,10 @@ class core::server (
     $ntp_client = true,
     $collectd_client = true,
 ) {
+    include core::apt::base
+    apt::conf {"no-suggested":
+        content => 'APT::Install-Suggests "0";'
+    }
     if $collectd_client {
         include collectd::client
     }
