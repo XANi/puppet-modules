@@ -1,11 +1,14 @@
 class core::desktop {
-    include core::apt::base
+    include core
 }
 
 
 class core {
     include core::apt::base
-    notify {"Please use core::server or core::desktop":;}
+    file {'/root/.zile':
+       content => template('core/zile'),
+    }
+
 }
 
 class core::apt::base {
@@ -20,7 +23,7 @@ class core::server (
     $ntp_client = true,
     $collectd_client = true,
 ) {
-    include core::apt::base
+    include core
     include core::monitoring
     apt::conf {"no-suggested":
         content => 'APT::Install-Suggests "0";'
