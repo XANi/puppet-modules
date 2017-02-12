@@ -24,7 +24,7 @@ class core::server (
     $collectd_client = true,
 ) {
     include core
-    include core::monitoring
+    include monitor::client
     apt::conf {"no-suggested":
         content => 'APT::Install-Suggests "0";'
     }
@@ -60,12 +60,5 @@ class core::server (
 
 
 class core::monitoring {
-    package {[
-        'monitoring-plugins'
-    ]: ensure => installed
-    }
     include monitor::client
-    monitor::cmd {'disk':
-        command => 'check_disk -w 5% -c  3% -e -C -w 3072 -c 1024 -r ^/var -C -w 10240 -c 7000 -r ^/var/backup -x tmpfs',
-    }
 }
