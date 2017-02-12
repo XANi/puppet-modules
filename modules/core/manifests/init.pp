@@ -5,6 +5,10 @@ class core::desktop {
 
 class core {
     include core::apt::base
+    # for various packages
+    package {'lsb-release':
+        ensure => installed
+    }
     file {'/root/.zile':
        content => template('core/zile'),
     }
