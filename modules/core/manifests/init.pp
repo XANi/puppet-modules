@@ -56,7 +56,6 @@ class core::server (
         file {'/usr/local/bin/e':
         target => '/usr/bin/zile',
     }
-
 }
 
 
@@ -66,7 +65,7 @@ class core::monitoring {
     ]: ensure => installed
     }
     include monitor::client
-    monitor::cmd {'check_disk':
-        command => '/check_disk -w 5% -c  3% -e -C -w 3072 -c 1024 -r ^/var -C -w 10240 -c 7000 -r ^/var/backup -x tmpfs',
+    monitor::cmd {'disk':
+        command => 'check_disk -w 5% -c  3% -e -C -w 3072 -c 1024 -r ^/var -C -w 10240 -c 7000 -r ^/var/backup -x tmpfs',
     }
 }
