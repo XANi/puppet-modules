@@ -39,15 +39,17 @@ class core::server (
         include ntp::client
     }
     $interval = 600 + fqdn_rand(20)
-    class { dpp:
-        manifest_from => 'private',
-        poll_interval => $hostname ? {
-            default => $interval,
-        },
+    if !defined(Class['dpp']) {
+        class { dpp:
+            manifest_from => 'private',
+            poll_interval => $hostname ? {
+                default => $interval,
+            },
         minimum_interval => $hostname ? {
-           hastur => 120,
-           default => fqdn_rand(120,240),
+            hastur => 120,
+            default => fqdn_rand(120,240),
         },
+        }
     }
     include common::utils
     include common::cleanup
