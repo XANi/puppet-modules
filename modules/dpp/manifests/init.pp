@@ -62,26 +62,4 @@ class dpp (
         rotate       => 7,
         rotate_every => 'day',
     }
-    file {"/opt/dpp":
-        ensure => directory
-    }
-    if !defined(File['/opt']) {
-        file {"/opt":
-            ensure => directory
-        }
-    }
-    include '::archive'
-    archive {"/opt/dpp/dpp-${architecture}":
-        source => "https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture}",
-        checksum => $architecture ? {
-            'amd64' => 'b7e236dc61478dd756326d9f107e9e4ceacfadf06f0ef342944eb1121d2ae2de',
-            'arm'   => '68f6c61eec5faaa01022b66de2c69314312eefae7f5d4b1acb8730bfaf5bad1a',
-            'arm64' => 'a27155ed4c2459e4983540ccf6a9076455c75e83e0bbf2101978c2f585e9dfa0',
-        },
-    }
-    file {"/opt/dpp/dpp-${architecture}":
-        mode => "755",
-        owner => root,
-    }
-
 }
