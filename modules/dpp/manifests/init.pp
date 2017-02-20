@@ -71,7 +71,7 @@ class dpp (
         }
     }
     $checksum = $architecture ? {
-        'amd64' => 'b7e236dc61478dd756326d9f107e9e4ceacfadf06f0ef342944eb1121d2ae2de',
+        'amd64' => '53c30784921a6e3d4ef4a261482ed7538095a0916bcbefe9c9fc323277bc86e2',
         'arm'   => '68f6c61eec5faaa01022b66de2c69314312eefae7f5d4b1acb8730bfaf5bad1a',
         'arm64' => 'a27155ed4c2459e4983540ccf6a9076455c75e83e0bbf2101978c2f585e9dfa0',
     }
@@ -82,6 +82,7 @@ class dpp (
     exec {"get-dpp-archive":
         command => "wget -O /opt/dpp/dpp.${architecture}.tmp https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture} || rm /opt/dpp/dpp.${architecture}.tmp",
         creates => "/opt/dpp/dpp.${architecture}.tmp",
+        logoutput => true,
         notify => Exec['verify-dpp-archive'],
     }
     exec{ "verify-dpp-archive":
