@@ -31,3 +31,6 @@
 [submodule "modules/puppetlabs-apt"]
 	path = modules/apt
 	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "modules/archive"]
+	path = modules/archive
+	url = https://github.com/voxpupuli/puppet-archive
