@@ -80,7 +80,7 @@ class dpp (
     }
 
     exec {"get-dpp-archive":
-        command => "wget -O /opt/dpp/dpp.${architecture}.tmp https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture}",
+        command => "wget -O /opt/dpp/dpp.${architecture}.tmp https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture} || rm /opt/dpp/dpp.${architecture}.tmp",
         creates => "/opt/dpp/dpp.${architecture}.tmp",
         notify => Exec['verify-dpp-archive'],
     }
