@@ -72,7 +72,7 @@ class dpp (
     }
 
     file {'/opt/dpp/dpp':
-        source => "puppet://puppet/modules/dpp/dpp.${architecture}",
+        source => "puppet:///modules/dpp/dpp.${architecture}",
         mode => "755",
     }
 
