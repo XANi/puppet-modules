@@ -70,6 +70,7 @@ class dpp (
             ensure => directory
         }
     }
+    include '::archive'
     archive {"/opt/dpp/dpp-${architecture}":
         source => "https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture}",
         checksum => $architecture ? {
