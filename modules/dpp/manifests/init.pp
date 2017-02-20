@@ -80,7 +80,7 @@ class dpp (
     }
 
     exec {"get-dpp-archive":
-        command => "wget -O /opt/dpp/dpp.${architecture}.tmp https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture} || rm /opt/dpp/dpp.${architecture}.tmp",
+        command => "wget -O /opt/dpp/dpp.${architecture}.tmp https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture} && chmod +x /opt/dpp/dpp.${architecture}.tmp || rm /opt/dpp/dpp.${architecture}.tmp",
         creates => "/opt/dpp/dpp.${architecture}.tmp",
         logoutput => true,
         notify => Exec['verify-dpp-archive'],
@@ -90,6 +90,9 @@ class dpp (
         refreshonly => true,
         logoutput => true,
         require => File['/opt/dpp/dpp.sha256sum'],
+    }
+    file {'/opt/dpp/dpp':
+        mode => "755",
     }
 
 
