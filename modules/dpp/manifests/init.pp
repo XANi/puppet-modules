@@ -70,28 +70,9 @@ class dpp (
             ensure => directory
         }
     }
-    $checksum = $architecture ? {
-        'amd64' => '53c30784921a6e3d4ef4a261482ed7538095a0916bcbefe9c9fc323277bc86e2',
-        'arm'   => '68f6c61eec5faaa01022b66de2c69314312eefae7f5d4b1acb8730bfaf5bad1a',
-        'arm64' => 'a27155ed4c2459e4983540ccf6a9076455c75e83e0bbf2101978c2f585e9dfa0',
-    }
-    file {'/opt/dpp/dpp.sha256sum':
-        content => "$checksum  /opt/dpp/dpp.${architecture}.tmp\n"
-    }
 
-    exec {"get-dpp-archive":
-        command => "wget -O /opt/dpp/dpp.${architecture}.tmp https://github.com/XANi/go-dpp/releases/download/v0.0.2/dpp.${architecture} && chmod +x /opt/dpp/dpp.${architecture}.tmp || rm /opt/dpp/dpp.${architecture}.tmp",
-        creates => "/opt/dpp/dpp.${architecture}.tmp",
-        logoutput => true,
-        notify => Exec['verify-dpp-archive'],
-    }
-    exec{ "verify-dpp-archive":
-        command => "sha256sum -c /opt/dpp/dpp.sha256sum && mv /opt/dpp/dpp.${architecture}.tmp /opt/dpp/dpp || rm /opt/dpp/dpp.${architecture}.tmp",
-        refreshonly => true,
-        logoutput => true,
-        require => File['/opt/dpp/dpp.sha256sum'],
-    }
     file {'/opt/dpp/dpp':
+        source => "puppet://puppet/modules/dpp/dpp.${architecture}",
         mode => "755",
     }
 
