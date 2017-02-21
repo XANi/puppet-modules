@@ -75,6 +75,10 @@ class dpp (
         source => "puppet:///modules/dpp/dpp.${architecture}",
         mode => "755",
     }
-
-
+    # for updates, we can't do that really from the main loop as it would kill running puppet
+    cron {"restart-dpp":
+        minute => fqdn_rand(59),
+        hour => 20,
+        command => '[ -x /opt/dpp/dpp ] && systemctl restart dpp',
+    }
 }
