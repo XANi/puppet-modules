@@ -12,6 +12,12 @@ class core {
     file {'/root/.zile':
        content => template('core/zile'),
     }
+    file {[
+        '/root/emacs',
+        '/root/emacs/backup',
+    ]:
+        ensure => directory,
+    }
 
 }
 
