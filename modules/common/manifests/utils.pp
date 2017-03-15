@@ -25,6 +25,7 @@ class common::utils {
          'tmux',
          'tree',
          'xfsprogs',
+         'debsecan',
          'zile',
          ]:
              ensure => installed,
