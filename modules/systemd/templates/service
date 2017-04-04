@@ -1,0 +1,34 @@
+# <%= @puppet_header %>
+# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+<%- if @unit -%>
+[Unit]
+<%- @unit.each do |k,v| -%>
+<%-
+    v = @unit[k]
+    k = k.gsub(/^\d+\:/,'')
+-%>
+<%= k %>=<%= v %>
+<%- end -%>
+<%- end -%>
+
+<%- if @service -%>
+[Service]
+<%- @service.keys.each do |k| -%>
+<%-
+    v = @service[k]
+    k = k.gsub(/^\d+\:/,'')
+-%>
+<%= k %>=<%= v %>
+<%- end -%>
+<%- end -%>
+
+<%- if @install -%>
+[Install]
+<%- @install.each do |k,v| -%>
+<%-
+    v = @install[k]
+    k = k.gsub(/^\d+\:/,'')
+-%>
+<%= k %>=<%= v %>
+<%- end -%>
+<%- end -%>
