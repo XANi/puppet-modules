@@ -30,12 +30,12 @@ define systemd::service::override (
             ensure  => directory,
             recurse => true,
             purge   => true,
-            mode    => 644,
+            mode    => "644",
         }
     }
     file {"/etc/systemd/system/${service_name}.service.d/${padded_prio}-${title}.conf":
         content => template('systemd/service'),
-        mode => 644,
+        mode => "644",
         owner => root,
         group => root,
         notify => Exec["systemd-reload"],
@@ -58,7 +58,7 @@ define systemd::service (
     file {"/etc/systemd/system/${title}.service":
         content => $content_c,
         source  => $source,
-        mode    => 644,
+        mode    => "644",
         notify  => Exec["systemd-reload"]
     }
 }
