@@ -120,3 +120,4 @@ repos:
         key: 7EA2F89DFE8CE90BC1385D4D97E98EAFE52838E6
         location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_9.0
         repos: "/"
+        release: ""
