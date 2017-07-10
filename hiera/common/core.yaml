@@ -21,6 +21,12 @@ repos:
         release: testing
         repos: main non-free contrib
 
+    main-stable:
+        comment: Main Debian repo - Stable
+        location: http://ftp.pl.debian.org/debian/
+        release: testing
+        repos: main non-free contrib
+
     main-stretch:
         comment: Main Debian repo - Stretch
         location: http://ftp.pl.debian.org/debian/
@@ -106,5 +112,11 @@ repos:
         comment: JS crap
         key: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
         location: https://deb.nodesource.com/node_5.x
-        release: jessie
+        release: stretch
         repos: main
+
+    nextcloud:
+        comment: nextcloud
+        key: 7EA2F89DFE8CE90BC1385D4D97E98EAFE52838E6
+        location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_9.0
+        repos: "/"
