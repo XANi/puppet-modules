@@ -23,7 +23,7 @@ class core {
 
 class core::apt::base {
     file {'/etc/apt/gpg-keys-puppet':
-        source => 'puppet://puppet/modules/core/gpg/apt',
+        source => 'puppet:///modules/core/gpg/apt',
         recurse => true,
         purge => true
     }
