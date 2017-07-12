@@ -22,6 +22,11 @@ class core {
 }
 
 class core::apt::base {
+    file {'/etc/apt/gpg-keys-puppet':
+        source => 'puppet://puppet/modules/core/gpg/apt',
+        recurse => true,
+        purge => true
+    }
     create_resources("@apt::source",hiera('repos'))
     file {'/etc/apt/apt.conf.d/99-zpuppet.conf':
         ensure => absent,
