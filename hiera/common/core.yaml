@@ -62,6 +62,9 @@ repos:
         location: http://repository.spotify.com
         release: stable
         repos: non-free
+        key:
+            id: BBEBDCB318AD50EC6865090613B00F1FD2C19886
+            source: /etc/apt/gpg-keys-puppet/spotify.pub
 
     rabbitmq:
         comment: RabbitMQ
