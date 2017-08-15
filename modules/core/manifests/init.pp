@@ -5,6 +5,8 @@ class core::desktop {
 
 class core {
     include core::apt::base
+    realize Apt::Source['main-stretch']
+
     # for various packages
     package {'lsb-release':
         ensure => installed
