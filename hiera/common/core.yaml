@@ -94,6 +94,14 @@ repos:
         location: http://apt-longview.linode.com/
         release: jessie
         repos: main
+    openhab:
+        comment: OpenHAB
+        location: https://dl.bintray.com/openhab/apt-repo2
+        release: stable
+        repos: main
+        key:
+            id: EDB7D0304E2FCAF629DF1163075721F6A224060A
+            source:  /etc/apt/gpg-keys-puppet/openhab.pub
     raspbian:
         comment: Rasbian repo
         location: http://mirrordirector.raspbian.org/raspbian/
