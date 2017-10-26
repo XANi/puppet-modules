@@ -142,3 +142,11 @@ repos:
         location: http://ppa.launchpad.net/gns3/ppa/ubuntu
         release: xenial
         repos: main
+    zim:
+        comment: Zim desktop wiki
+        key:
+            id: DC4AC0EE92BC64ED020C1C637588B93F8F7DF243
+            source: /etc/apt/gpg-keys-puppet/zim.pub
+        location: eb http://ppa.launchpad.net/jaap.karssenberg/zim/ubuntu
+        release: zesty
+        repos: main
