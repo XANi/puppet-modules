@@ -134,3 +134,10 @@ repos:
         location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_9.0
         repos: "/"
         release: ""
+    stackstorm:
+        location: https://packagecloud.io/StackStorm/stable/debian/
+        release: stretch
+        repos: main
+        key:
+            id: 418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB
+            source: /etc/apt/gpg-keys-puppet/stackstorm.pub
