@@ -134,6 +134,14 @@ repos:
         location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_9.0
         repos: "/"
         release: ""
+    docker:
+        comment: Docker - %{::lsbdistcodename}
+        location: https://apt.dockerproject.org/repo
+        release: debian-%{::lsbdistcodename}
+        repos: main
+        key:
+            id: 58118E89F3A912897C070ADBF76221572C52609D
+            source: /etc/apt/gpg-keys-puppet/docker.pub
     gns3-stretch:
         comment: gns3 stretch repo
         key:
