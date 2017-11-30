@@ -150,6 +150,14 @@ repos:
         location: http://ppa.launchpad.net/gns3/ppa/ubuntu
         release: xenial
         repos: main
+    gns3-stretch:
+        comment: gns3 stretch repo
+        key:
+            id: F88F6D313016330404F710FC9A2FD067A2E3EF7B
+            source: /etc/apt/gpg-keys-puppet/gns3-stretch.pub
+        location: http://ppa.launchpad.net/gns3/ppa/ubuntu
+        release: xenial
+        repos: main
     zim:
         comment: Zim desktop wiki
         key:
@@ -158,3 +166,5 @@ repos:
         location: http://ppa.launchpad.net/jaap.karssenberg/zim/ubuntu
         release: zesty
         repos: main
+
+
