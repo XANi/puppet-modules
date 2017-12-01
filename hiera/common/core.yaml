@@ -166,5 +166,11 @@ repos:
         location: http://ppa.launchpad.net/jaap.karssenberg/zim/ubuntu
         release: zesty
         repos: main
-
-
+    yarn:
+        comment: facebook js crap
+        key:
+            id: 72ECF46A56B4AD39C907BBB71646B01B86E50310
+            source: /etc/apt/gpg-keys-puppet/yarn.pub
+        location: https://dl.yarnpkg.com/debian/
+        release: stable
+        repos: main
