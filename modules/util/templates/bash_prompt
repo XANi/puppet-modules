@@ -13,12 +13,6 @@ if [ $TERM = 'dumb' ] ; then
     echo -n ''
 else
 
-if [ $TERM = 'xterm-256color' ] ; then
-    export TERM=$ORIGTERM
-else
-    export ORIGTERM=$TERM
-fi
-
 home_host_regex='(spare2|arkham|vm-debian|hydra)'
 if [[ $HOSTNAME =~ $home_host_regex ]] ; then
     SHOW_HOSTNAME=0
@@ -41,7 +35,6 @@ good_env='(production|master)'
 if [[ $TERM =~ $bad_terms ]] ; then
     TERMTITLE=""
 else
-    export TERM=xterm-256color
     if [ $SHOW_HOSTNAME -eq 1 ] ; then
         TERMTITLE='\[\033]0;\h[\u]:\w\007\]'
     else
