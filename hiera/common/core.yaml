@@ -134,6 +134,14 @@ repos:
         location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_9.0
         repos: "/"
         release: ""
+    docker:
+        comment: Docker - %{::lsbdistcodename}
+        location: https://apt.dockerproject.org/repo
+        release: debian-%{::lsbdistcodename}
+        repos: main
+        key:
+            id: 58118E89F3A912897C070ADBF76221572C52609D
+            source: /etc/apt/gpg-keys-puppet/docker.pub
     gns3-stretch:
         comment: gns3 stretch repo
         key:
@@ -158,5 +166,11 @@ repos:
         location: http://ppa.launchpad.net/jaap.karssenberg/zim/ubuntu
         release: zesty
         repos: main
-
-
+    yarn:
+        comment: facebook js crap
+        key:
+            id: 72ECF46A56B4AD39C907BBB71646B01B86E50310
+            source: /etc/apt/gpg-keys-puppet/yarn.pub
+        location: https://dl.yarnpkg.com/debian/
+        release: stable
+        repos: main
