@@ -77,6 +77,7 @@ class dpp (
     file {'/opt/dpp/dpp':
         source => "puppet:///modules/dpp/dpp.${architecture}",
         mode => "755",
+        backup => false,
    }
     # for updates, we can't do that really from the main loop as it would kill running puppet
     cron {"restart-dpp":
