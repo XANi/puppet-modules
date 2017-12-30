@@ -72,10 +72,12 @@ class dpp (
     }
     #dpp-generated facts
     file {'/etc/facter/facts.d/puppet_basemodulepath.txt': replace => false;}
-#    file {'/opt/dpp/dpp':
-#        source => "puppet:///modules/dpp/dpp.${architecture}",
-#        mode => "755",
-#   }
+    # puppetlabs in 2017 still can't figure out how to download a fucking file from a fucking internet, just put it in repo
+    # PUP-8299 PUP-8300
+    file {'/opt/dpp/dpp':
+        source => "puppet:///modules/dpp/dpp.${architecture}",
+        mode => "755",
+   }
     # for updates, we can't do that really from the main loop as it would kill running puppet
     cron {"restart-dpp":
         minute => fqdn_rand(59),
