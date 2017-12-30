@@ -3,6 +3,7 @@
 
 [Unit]
 Description=DPP
+After=network.target
 
 
 [Service]
