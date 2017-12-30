@@ -1,14 +1,22 @@
-class collectd::client ($server) {
+class collectd::client ($server, $config = false) {
     include collectd::common
     service {'collectd':
         ensure => running,
         enable => true,
     }
-    file {'/etc/collectd/collectd.conf':
-        content => template('collectd/collectd.conf'),
-        owner   => root,
-        replace => false,
-        notify  => Service['collectd'],
+    if $config {
+        file { '/etc/collectd/collectd.conf':
+            content => $config,
+            owner   => root,
+            notify  => Service['collectd'],
+        }
+    } else {
+        file { '/etc/collectd/collectd.conf':
+            content => template('collectd/collectd.conf'),
+            owner   => root,
+            replace => false,
+            notify  => Service['collectd'],
+        }
     }
 }
 
