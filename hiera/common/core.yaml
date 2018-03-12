@@ -174,3 +174,11 @@ repos:
         location: https://dl.yarnpkg.com/debian/
         release: stable
         repos: main
+    mono:
+        comment: Mono for linux
+        location: http://download.mono-project.com/repo/debian
+        release: stable-stretch
+        repos: main
+        key:
+            id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+            source: /etc/apt/gpg-keys-puppet/mono.pub
