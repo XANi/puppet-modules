@@ -20,8 +20,12 @@ global
         #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
         # An alternative list with additional directives can be obtained from
         #  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy
-        ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!$
-        ssl-default-bind-options no-sslv3
+        # ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!$
+        # ssl-default-bind-options no-sslv3
+        tune.ssl.default-dh-param 2048
+        ssl-default-bind-ciphers ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+        ssl-default-bind-options no-sslv3 no-tlsv10 no-tlsv11 no-tls-tickets
+
 
 defaults
         log     global
