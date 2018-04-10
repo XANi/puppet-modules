@@ -11,7 +11,7 @@ define certbot::cert (
     $extra_domain,
 )   {
     include certbot::common
-    $domains = inline_template('<%= Array([@main_domain, @extra_domain]).flatten.join(" ")')
+    $domains = inline_template('<%= Array([@main_domain, @extra_domain]).flatten.join(" ") %>')
     cron{"certbot_${title}":
         command => "/usr/local/bin/get_a_cert.sh ${domains}",
         weekday => fqdn_rand(6),
