@@ -1,3 +1,4 @@
+# need to manually run certbot with email first
 class certbot::common {
     file { '/usr/local/bin/get_a_cert.sh':
         source => "puppet:///modules/certbot/get_a_cert.sh",

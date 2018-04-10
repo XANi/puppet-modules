@@ -1,6 +1,5 @@
 #!/bin/bash
 # puppet
-exit 1
 certs=$(perl -e 'print map {"-d $_ "} @ARGV' $@)
 /usr/bin/certbot certonly \
     --keep-until-expiring  \
