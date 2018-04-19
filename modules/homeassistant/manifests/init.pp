@@ -10,6 +10,12 @@ class homeassistant::server {
         owner  => "homeassistant",
         group => "homeassistant",
     }
+    file { '/opt/homeassistant/config':
+        ensure => directory,
+        mode   => "700",
+        owner  => "homeassistant",
+        group => "homeassistant",
+    }
     systemd::service { 'homeassistant':
         content => template('homeassistant/homeassistant.service'),
     }
@@ -19,5 +25,15 @@ class homeassistant::server {
     }
 
 
-    package {['python3-pip','python3-venv']: ensure => installed}
+    package {
+        [
+            'python3-pip',
+            'python3-venv'
+        ]:
+            ensure => installed
+    }
+    # C is required to compile some core modules
+    if !defined ( Package['build-essential'] ) {
+        package { 'build-essential': ensure => installed ;}
+    }
 }
