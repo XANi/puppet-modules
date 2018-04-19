@@ -1,0 +1,17 @@
+# <%= @puppet_header %>
+# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+
+[Unit]
+Description=Home Assistant
+After=network-online.target
+
+[Service]
+Type=simple
+User=homeassistant
+ExecStart=/opt/homeassistant/homeassistant/bin/hass -c /opt/homeassistant/config
+WorkingDirectory=/opt/homeassistant
+Restart=always
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target
