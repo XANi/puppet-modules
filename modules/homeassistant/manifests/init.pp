@@ -8,13 +8,13 @@ class homeassistant::server {
         ensure => directory,
         mode   => "700",
         owner  => "homeassistant",
-        group => "homeassistant",
+        group  => "homeassistant",
     }
     file { '/opt/homeassistant/config':
         ensure => directory,
         mode   => "700",
         owner  => "homeassistant",
-        group => "homeassistant",
+        group  => "homeassistant",
     }
     systemd::service { 'homeassistant':
         content => template('homeassistant/homeassistant.service'),
@@ -33,7 +33,9 @@ class homeassistant::server {
             ensure => installed
     }
     # C is required to compile some core modules
-    if !defined ( Package['build-essential'] ) {
-        package { 'build-essential': ensure => installed ;}
+    ['build-essential', 'python3-dev'].each |$idx, $pkg| {
+        if !defined(Package[$pkg]) {
+            package { $pkg: ensure => installed; }
+        }
     }
 }
