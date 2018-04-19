@@ -33,7 +33,7 @@ class homeassistant::server {
             ensure => installed
     }
     # C is required to compile some core modules
-    ['build-essential', 'python3-dev'].each |$idx, $pkg| {
+    ['build-essential', 'python3-dev'].each |$pkg| {
         if !defined(Package[$pkg]) {
             package { $pkg: ensure => installed; }
         }
