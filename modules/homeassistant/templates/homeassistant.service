@@ -12,6 +12,7 @@ ExecStart=/opt/homeassistant/homeassistant/bin/hass -c /opt/homeassistant/config
 WorkingDirectory=/opt/homeassistant
 Restart=always
 RestartSec=30s
+TimeoutStopSec=60s
 
 [Install]
 WantedBy=multi-user.target
