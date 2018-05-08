@@ -36,6 +36,7 @@ class collectd::common {
         force   => true,
     }
     file {'/etc/collectd/conf.d/local.conf':
+        replace => false,
         content => template('collectd/empty.conf');
     }
     file {'/etc/default/collectd':
