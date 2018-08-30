@@ -1,16 +1,20 @@
 #!/bin/bash
 # puppet
-certs=$(perl -e 'print map {"-d $_ "} @ARGV' $@)
-/usr/bin/certbot certonly \
-    --keep-until-expiring  \
-    --expand \
-    --agree-tos  \
-    --non-interactive \
-    --no-self-upgrade \
-    --post-hook "/bin/systemctl reload haproxy" \
-    --webroot -w /var/www/certbot  \
-    $certs
 
-for dir in $(ls -d /etc/letsencrypt/live/*); do
-    cat $dir/privkey.pem $dir/fullchain.pem > $dir/certandkey.pem
-done
+if [ "z$1" = "reload" ] ; then
+    for dir in $(ls -d /etc/letsencrypt/live/*); do
+        cat $dir/privkey.pem $dir/fullchain.pem > $dir/certandkey.pem
+    done
+    systemctl reload haproxy
+else
+    certs=$(perl -e 'print map {"-d $_ "} @ARGV' $@)
+    /usr/bin/certbot certonly \
+                     --keep-until-expiring  \
+                     --expand \
+                     --agree-tos  \
+                     --non-interactive \
+                     --no-self-upgrade \
+                     --post-hook "$0 reload" \
+                     --webroot -w /var/www/certbot  \
+                     $certs
+fi
