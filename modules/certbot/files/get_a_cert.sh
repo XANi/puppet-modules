@@ -1,7 +1,7 @@
 #!/bin/bash
 # puppet
 
-if [ "z$1" = "reload" ] ; then
+if [ "z$1" = "zreload" ] ; then
     for dir in $(ls -d /etc/letsencrypt/live/*); do
         cat $dir/privkey.pem $dir/fullchain.pem > $dir/certandkey.pem
     done
