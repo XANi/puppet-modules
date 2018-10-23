@@ -142,6 +142,13 @@ repos:
         key:
             id: 58118E89F3A912897C070ADBF76221572C52609D
             source: /etc/apt/gpg-keys-puppet/docker.pub
+    stackstorm:
+        location: https://packagecloud.io/StackStorm/stable/debian/
+        release: stretch
+        repos: main
+        key:
+            id: 418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB
+            source: /etc/apt/gpg-keys-puppet/stackstorm.pub
     gns3-stretch:
         comment: gns3 stretch repo
         key:
