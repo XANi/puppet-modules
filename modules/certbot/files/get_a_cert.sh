@@ -1,5 +1,6 @@
 #!/bin/bash
 # puppet
+SELF=$(readlink -f $0)
 
 if [ "z$1" = "zreload" ] ; then
     for dir in $(ls -d /etc/letsencrypt/live/*); do
@@ -14,7 +15,7 @@ else
                      --agree-tos  \
                      --non-interactive \
                      --no-self-upgrade \
-                     --post-hook "$0 reload" \
+                     --post-hook "$SELF reload" \
                      --webroot -w /var/www/certbot  \
                      $certs
 fi
