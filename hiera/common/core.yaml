@@ -110,8 +110,11 @@ repos:
 
     jenkins:
         comment: jenkins repo
-        location:  http://pkg.jenkins-ci.org/debian
+        location: https://pkg.jenkins.io/debian
         release: binary
+        key:
+            id: 150FDE3F7787E7D11EF4E12A9B7D32F2D50582E6
+            source: /etc/apt/gpg-keys-puppet/jenkins.pub
 
     syncthing:
         comment: syncthing
