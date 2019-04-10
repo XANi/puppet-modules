@@ -24,7 +24,7 @@ repos:
     main-stable:
         comment: Main Debian repo - Stable
         location: http://ftp.pl.debian.org/debian/
-        release: testing
+        release: buster
         repos: main non-free contrib
 
     main-stretch:
