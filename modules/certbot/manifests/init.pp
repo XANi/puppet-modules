@@ -30,9 +30,9 @@ define certbot::cert (
     $domains = inline_template('<%= Array([@main_domain, @extra_domain]).flatten.join(" ") %>')
     cron{"certbot_${title}":
         command => "/usr/local/bin/get_a_cert.sh ${domains}",
-        weekday => fqdn_rand(6),
-        hour    => fqdn_rand(6),
-        minute  => fqdn_rand(59),
+        weekday => fqdn_rand(6,$title),
+        hour    => fqdn_rand(6,$title),
+        minute  => fqdn_rand(59,$title),
     }
     file { "/etc/pki/certbot/${title}.pem":
         source => "/etc/letsencrypt/live/${main_domain}/certandkey.pem",
