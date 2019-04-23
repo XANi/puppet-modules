@@ -10,6 +10,7 @@ if [ "z$1" = "zreload" ] ; then
 else
     certs=$(perl -e 'print map {"-d $_ "} @ARGV' $@)
     /usr/bin/certbot certonly \
+                     --cert-name $1 \
                      --keep-until-expiring  \
                      --expand \
                      --agree-tos  \
