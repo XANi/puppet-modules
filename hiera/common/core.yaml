@@ -60,10 +60,10 @@ repos:
     spotify:
         comment: Spotify player
         location: http://repository.spotify.com
-        release: stable
+        release: testing
         repos: non-free
         key:
-            id: BBEBDCB318AD50EC6865090613B00F1FD2C19886
+            id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
             source: /etc/apt/gpg-keys-puppet/spotify.pub
 
     rabbitmq:
