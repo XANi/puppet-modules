@@ -33,7 +33,12 @@ class core::apt::base {
     file {'/etc/apt/apt.conf.d/99-zpuppet.conf':
         ensure => absent,
     }
-
+    cron { 'apt-cache-autoclean':
+        command => '/usr/bin/apt-get autoclean >/dev/null 2>&1',
+        hour    => fqdn_rand(5),
+        minute  => fqdn_rand(59),
+        weekday => fqdn_rand(4),
+    }
 }
 
 class core::server (
