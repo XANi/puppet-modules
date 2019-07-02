@@ -5,7 +5,7 @@ class core::desktop {
 
 class core {
     include core::apt::base
-    realize Apt::Source['main-stretch']
+    realize Apt::Source['main-stable']
 
     # for various packages
     package {'lsb-release':

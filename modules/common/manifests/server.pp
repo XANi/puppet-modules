@@ -12,7 +12,7 @@ class common::server (
     }
     include core
     include core::monitoring
-    realize Apt::Source['main-stretch']
+    realize Apt::Source['main-stable']
     include puppet
     include common::utils
     include common::cleanup
