@@ -193,3 +193,11 @@ repos:
         key:
             id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
             source: /etc/apt/gpg-keys-puppet/mono.pub
+    asbru:
+        comment: Asbru Connection Manager
+        location: https://packagecloud.io/asbru-cm/asbru-cm/debian/
+        release: buster
+        repos: main
+        key:
+            id: 7777FC8EDA8E1B250D1CC787531B2912A3EC6B28
+            source: /etc/apt/gpg-keys-puppet/asbru.pub
