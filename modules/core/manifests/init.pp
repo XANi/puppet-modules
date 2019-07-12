@@ -34,10 +34,11 @@ class core::apt::base {
         ensure => absent,
     }
     cron { 'apt-cache-autoclean':
-        command => '/usr/bin/apt-get autoclean >/dev/null 2>&1',
-        hour    => fqdn_rand(5),
-        minute  => fqdn_rand(59),
-        weekday => fqdn_rand(4),
+        ensure => absent
+    }
+    file {'/etc/cron.weekly/puppet-apt-cleanup'
+        content => "#!/bin/bash\n# puppet managed\napt-cache autoclean >/dev/null 2>&1\nfind /var/cache/apt/archives -mtime +90 -type f -delete >/dev/null 2>&1\n",
+        mode => "755"
     }
 }
 
