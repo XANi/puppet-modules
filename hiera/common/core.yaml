@@ -135,7 +135,7 @@ repos:
         key:
             id: 7EA2F89DFE8CE90BC1385D4D97E98EAFE52838E6
             source: /etc/apt/gpg-keys-puppet/nextcloud.pub
-        location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_9.0
+        location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_10.0
         repos: "/"
         release: ""
     docker:
