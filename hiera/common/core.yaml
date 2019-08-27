@@ -135,7 +135,7 @@ repos:
         key:
             id: 1FCD77DD0DBEF5699AD2610160EE47FBAD3DD469
             source: /etc/apt/gpg-keys-puppet/nextcloud.pub
-        location: deb http://ppa.launchpad.net/nextcloud-devs/client/ubuntu bionic main
+        location: deb http://ppa.launchpad.net/nextcloud-devs/client/ubuntu
         repos: "bionic"
         release: "main"
     docker:
