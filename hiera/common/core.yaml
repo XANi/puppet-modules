@@ -133,11 +133,11 @@ repos:
     nextcloud:
         comment: nextcloud
         key:
-            id: 7EA2F89DFE8CE90BC1385D4D97E98EAFE52838E6
+            id: 1FCD77DD0DBEF5699AD2610160EE47FBAD3DD469
             source: /etc/apt/gpg-keys-puppet/nextcloud.pub
-        location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_10.0
-        repos: "/"
-        release: ""
+        location: deb http://ppa.launchpad.net/nextcloud-devs/client/ubuntu bionic main
+        repos: "bionic"
+        release: "main"
     docker:
         comment: Docker - %{::lsbdistcodename}
         location: https://apt.dockerproject.org/repo
