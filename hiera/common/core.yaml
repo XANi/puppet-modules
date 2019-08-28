@@ -136,8 +136,8 @@ repos:
             id: 1FCD77DD0DBEF5699AD2610160EE47FBAD3DD469
             source: /etc/apt/gpg-keys-puppet/nextcloud.pub
         location: http://ppa.launchpad.net/nextcloud-devs/client/ubuntu
-        repos: "bionic"
-        release: "main"
+        repos: "main"
+        release: "buster"
     docker:
         comment: Docker - %{::lsbdistcodename}
         location: https://apt.dockerproject.org/repo
