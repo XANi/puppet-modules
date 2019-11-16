@@ -3,3 +3,13 @@
 if ( ($programname == 'miniupnpd') )
 then /var/log/tmp/miniupnpd.log
 & stop
+
+if ( ($programname == 'nrpe') )
+then /var/log/tmp/nrpe.log
+& stop
+
+if ( ($programname == 'cron')
+or ($programname == 'crontab')
+)
+then /var/log/tmp/cron.log
+& stop
