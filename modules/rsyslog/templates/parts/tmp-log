@@ -10,6 +10,7 @@ then /var/log/tmp/nrpe.log
 
 if ( ($programname == 'cron')
 or ($programname == 'crontab')
+or ($programname == 'CRON')
 )
 then /var/log/tmp/cron.log
 & stop
@@ -19,5 +20,16 @@ then /var/log/tmp/cron.log
 if ( ($programname == 'puppet')
 or ($programname == 'dpp')
 )
-then /var/log/tmp/cron.log
+then /var/log/tmp/puppet.log
+& stop
+
+if ( ($programname == 'smartd')
+or ($programname == 'dpp')
+)
+then /var/log/tmp/syslog.log
+& stop
+
+
+if ( ($programname contains 'dnsmasq'))
+then /var/log/tmp/dnsmasq.log
 & stop
