@@ -63,7 +63,7 @@ repos:
         release: testing
         repos: non-free
         key:
-            id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+            id: 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
             source: /etc/apt/gpg-keys-puppet/spotify.pub
 
     rabbitmq:
@@ -133,11 +133,11 @@ repos:
     nextcloud:
         comment: nextcloud
         key:
-            id: 7EA2F89DFE8CE90BC1385D4D97E98EAFE52838E6
+            id: 1FCD77DD0DBEF5699AD2610160EE47FBAD3DD469
             source: /etc/apt/gpg-keys-puppet/nextcloud.pub
-        location: http://download.opensuse.org/repositories/home:/ivaradi/Debian_9.0
-        repos: "/"
-        release: ""
+        location: http://ppa.launchpad.net/nextcloud-devs/client/ubuntu
+        repos: "bionic"
+        release: "main"
     docker:
         comment: Docker - %{::lsbdistcodename}
         location: https://apt.dockerproject.org/repo
@@ -193,3 +193,11 @@ repos:
         key:
             id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
             source: /etc/apt/gpg-keys-puppet/mono.pub
+    asbru:
+        comment: Asbru Connection Manager
+        location: https://packagecloud.io/asbru-cm/asbru-cm/debian/
+        release: buster
+        repos: main
+        key:
+            id: 7777FC8EDA8E1B250D1CC787531B2912A3EC6B28
+            source: /etc/apt/gpg-keys-puppet/asbru.pub
