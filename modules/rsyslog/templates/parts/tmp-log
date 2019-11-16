@@ -13,3 +13,11 @@ or ($programname == 'crontab')
 )
 then /var/log/tmp/cron.log
 & stop
+
+
+
+if ( ($programname == 'puppet')
+or ($programname == 'dpp')
+)
+then /var/log/tmp/cron.log
+& stop

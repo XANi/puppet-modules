@@ -98,7 +98,10 @@ class core::ssdsave {
         sharedscripts => true,
         postrotate => 'find /var/log/tmp -mtime +30 -delete',
     }
-    rsyslog::log {'tmp-log':;}
+    rsyslog::log {'tmp-log':
+        prio => 10,
+        ;
+    }
 
 }
 
