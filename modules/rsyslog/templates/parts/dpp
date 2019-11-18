@@ -1,5 +1,5 @@
 # <%= @puppet_header %>
 # <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
 if ( ($programname == 'dpp') )
-then -/var/log/puppet.log
+then /var/log/puppet.log
 & stop

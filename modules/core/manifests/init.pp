@@ -82,7 +82,28 @@ class core::server (
         target => '/usr/bin/zile',
     }
 }
+class core::ssdsave {
+    mount { '/var/log/tmp':
+        options => 'size=100m',
+        device      => 'none',
+        fstype      => 'tmpfs',
+        ensure      => mounted,
+    }
+    logrotate::rule {'log-tmp':
+        path => '/var/log/tmp/*.log',
+        rotate => 24,
+        rotate_every => 'day',
+        minsize => '20M',
+        compress => true,
+        sharedscripts => true,
+        postrotate => 'find /var/log/tmp -mtime +30 -delete',
+    }
+    rsyslog::log {'tmp-log':
+        prio => 10,
+        ;
+    }
 
+}
 
 class core::monitoring {
     include monitor::client

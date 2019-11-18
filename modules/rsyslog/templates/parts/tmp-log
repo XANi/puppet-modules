@@ -1,0 +1,35 @@
+# <%= @puppet_header %>
+# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+if ( ($programname == 'miniupnpd') )
+then /var/log/tmp/miniupnpd.log
+& stop
+
+if ( ($programname == 'nrpe') )
+then /var/log/tmp/nrpe.log
+& stop
+
+if ( ($programname == 'cron')
+or ($programname == 'crontab')
+or ($programname == 'CRON')
+)
+then /var/log/tmp/cron.log
+& stop
+
+
+
+if ( ($programname == 'puppet')
+or ($programname == 'dpp')
+)
+then /var/log/tmp/puppet.log
+& stop
+
+if ( ($programname == 'smartd')
+or ($programname == 'dpp')
+)
+then /var/log/tmp/syslog.log
+& stop
+
+
+if ( ($programname contains 'dnsmasq'))
+then /var/log/tmp/dnsmasq.log
+& stop
