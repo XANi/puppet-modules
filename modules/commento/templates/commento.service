@@ -12,9 +12,11 @@ TimeoutStopSec=30
 Restart=always
 RestartSec=60s
 EnvironmentFile=/opt/commento/cfg/env.cfg
-Environment=COMMENTO_PORT=${port}
-Environment=COMMENTO_ORIGIN=${origin_domain}
-WorkingDirectory=/opt/commento
+Environment=COMMENTO_PORT=<%= @port %>
+Environment=COMMENTO_ORIGIN=<%= @origin_domain %>
+Environment=COMMENTO_STATIC=/opt/commento/static
+Environment=COMMENTO_GZIP_STATIC=true
+WorkingDirectory=/opt/commento/app
 User=commento
 Group=commento
 
