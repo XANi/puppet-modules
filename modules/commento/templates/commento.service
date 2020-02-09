@@ -7,11 +7,14 @@ After=network.target
 
 
 [Service]
-ExecStart=/opt/dpp/dpp
+ExecStart=/opt/commento/app/commento
 TimeoutStopSec=30
 Restart=always
 RestartSec=60s
-WorkingDirectory=/opt/dpp
+EnvironmentFile='/opt/commento/cfg/env.cfg'
+Environment=COMMENTO_PORT=${port}
+Environment=COMMENTO_ORIGIN=${origin_domain}
+WorkingDirectory=/opt/commento
 
 [Install]
 WantedBy=multi-user.target

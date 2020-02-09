@@ -2,18 +2,16 @@
 # <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
 
 [Unit]
-Description=Commento
+Description=DPP
 After=network.target
 
 
 [Service]
-ExecStart=/opt/commento/app/commento
+ExecStart=/opt/dpp/dpp
 TimeoutStopSec=30
 Restart=always
 RestartSec=60s
-WorkingDirectory=/opt/commento/app
-User=commento
-Group=commento
+WorkingDirectory=/opt/dpp
 
 [Install]
 WantedBy=multi-user.target
