@@ -2,6 +2,10 @@ class commento::server (
     $origin_domain,
     $port = 3010,
     $postgres_url = "postgres:///commento?host=/var/run/postgresql/",
+    $google_key = false,
+    $google_secret = false,
+    $github_key = false,
+    $github_secret = false,
 ) {
     realize Group["commento"]
     realize User["commento"]
@@ -15,9 +19,7 @@ class commento::server (
         mode   => "700",
     }
     file { '/opt/commento/cfg/env.cfg':
-        content => "# puppet managed file
-COMMENTO_POSTGRES=${postgres_url}
-",
+        content => template("commento/commento.env"),
         owner => "commento",
         mode => "0600",
     }

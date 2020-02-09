@@ -16,6 +16,8 @@ Environment=COMMENTO_PORT=<%= @port %>
 Environment=COMMENTO_ORIGIN=<%= @origin_domain %>
 Environment=COMMENTO_STATIC=/opt/commento/static
 Environment=COMMENTO_GZIP_STATIC=true
+Environment=COMMENTO_SMTP_HOST=127.0.0.1
+Environment=COMMENTO_SMTP_PORT=25
 WorkingDirectory=/opt/commento/app
 User=commento
 Group=commento
