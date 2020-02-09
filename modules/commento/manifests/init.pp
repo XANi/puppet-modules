@@ -1,7 +1,7 @@
 class commento::server (
     $origin_domain,
     $port = 3010,
-    $postgres_url = "postgres://localhost:5432",
+    $postgres_url = "postgres:///commento?host=/var/run/postgresql/",
 ) {
     realize Group["commento"]
     realize User["commento"]
