@@ -14,8 +14,8 @@ class haproxy::server (
         owner => root,
     }
     file { '/etc/haproxy/haproxy.cfg':
-        subscribe => Concat['/etc/haproxy/.haproxy.cfg'],
-        source    => '/etc/haproxy/.haproxy.cfg',
+        subscribe => Concat['/etc/haproxy/.haproxy.cfg.v'],
+        source    => '/etc/haproxy/.haproxy.cfg.v',
         mode      => "640",
         owner     => "haproxy",
         group     => "haproxy",
