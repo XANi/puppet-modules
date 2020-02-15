@@ -16,14 +16,14 @@ class haproxy::server (
     if $global_content {
         concat::fragment { 'haproxy_global':
             target  => '/etc/haproxy/haproxy.cfg',
-            content => $global_content + "\n",
+            content => "${global_content}\n",
             order   => 0,
         }
     }
     if $global_content {
         concat::fragment { 'haproxy_defaults':
             target  => '/etc/haproxy/haproxy.cfg',
-            content => $defaults_content + "\n",
+            content => "${defaults_content}\n",
             order   => 1,
         }
     }
