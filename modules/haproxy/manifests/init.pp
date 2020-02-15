@@ -1,5 +1,8 @@
 
-class haproxy::server {
+class haproxy::server (
+    $global_content = template('haproxy/global.haproxy'),
+    $defaults_content = template('haproxy/defaults.haproxy'),
+) {
     package {'haproxy': ensure => installed}
     service { 'haproxy':
         ensure => running,
@@ -8,11 +11,21 @@ class haproxy::server {
     concat { '/etc/haproxy/haproxy.cfg':
         mode => "644",
         notify => Service['haproxy'],
+
     }
-    concat::fragment{ 'haproxy_header':
-        target  => '/etc/haproxy/haproxy.cfg',
-        content => template('haproxy/header'),
-        order   => 0,
+    if $global_content {
+        concat::fragment { 'haproxy_global':
+            target  => '/etc/haproxy/haproxy.cfg',
+            content => $global_content + "\n",
+            order   => 0,
+        }
+    }
+    if $global_content {
+        concat::fragment { 'haproxy_defaults':
+            target  => '/etc/haproxy/haproxy.cfg',
+            content => $defaults_content + "\n",
+            order   => 1,
+        }
     }
 }
 
