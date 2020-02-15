@@ -11,6 +11,7 @@ class haproxy::server (
     concat { '/etc/haproxy/.haproxy.cfg.v':
         mode => "600",
         notify => Service['haproxy'],
+        order => "numeric",
         owner => root,
     }
     file { '/etc/haproxy/haproxy.cfg':
