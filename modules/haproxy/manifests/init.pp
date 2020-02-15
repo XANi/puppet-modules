@@ -26,14 +26,14 @@ class haproxy::server (
         concat::fragment { 'haproxy_global':
             target  => '/etc/haproxy/.haproxy.cfg.v',
             content => "${global_content}\n",
-            order   => 0,
+            order   => "0000",
         }
     }
     if $global_content {
         concat::fragment { 'haproxy_defaults':
             target  => '/etc/haproxy/.haproxy.cfg.v',
             content => "${defaults_content}\n",
-            order   => 1,
+            order   => "0001",
         }
     }
 }
