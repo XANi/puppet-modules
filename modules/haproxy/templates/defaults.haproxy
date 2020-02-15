@@ -4,6 +4,7 @@
 defaults
         log     global
         mode    http
+        option	httpchk GET /
         option  httplog
         option  dontlognull
         timeout connect 5000

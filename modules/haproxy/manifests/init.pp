@@ -7,10 +7,10 @@ class haproxy::server (
     service { 'haproxy':
         ensure => running,
         enable => true,
+
     }
     concat { '/etc/haproxy/.haproxy.cfg.v':
         mode => "600",
-        notify => Service['haproxy'],
         order => "numeric",
         owner => root,
     }
@@ -21,6 +21,7 @@ class haproxy::server (
         owner     => "haproxy",
         group     => "haproxy",
         validate_cmd => '/usr/sbin/haproxy -c -f %',
+        notify => Service['haproxy'],
     }
     if $global_content {
         concat::fragment { 'haproxy_global':
