@@ -54,7 +54,7 @@ class util::etckeeper {
 }
 
 class util::fuse {
-    package {'fuse':
+    package {'fuse3':
         ensure => installed,
     }
     file {'/etc/fuse.conf':
