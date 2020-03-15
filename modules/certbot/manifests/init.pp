@@ -21,7 +21,7 @@ class certbot::common {
 
 define certbot::cert (
     $main_domain,
-    $extra_domain,
+    $extra_domain = [],
     $owner = 'root',
     $group = 'root',
     $mode  = '600',
