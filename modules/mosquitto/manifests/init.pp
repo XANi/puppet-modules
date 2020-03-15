@@ -15,7 +15,7 @@ class mosquitto::server (
     file { '/etc/mosquitto/conf.d/1000-general.conf':
         owner => mosquitto,
         mode => "640",
-        content => template('mosquitto-general.conf')
+        content => template('mosquitto/general.conf')
     }
     service { 'mosquitto':
         ensure => running,
