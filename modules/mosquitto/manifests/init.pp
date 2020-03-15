@@ -5,9 +5,9 @@ class mosquitto::client {
 
 class mosquitto::server (
     Boolean $allow_anonymous = false,
-    Variant[Bool[false],String] $persistent_client_expiration = "90d",
-    Variant[Bool[false],String] $password_file = "/etc/mosquitto/passwd",
-    Variant[Bool[false],String] $server_cert,
+    Variant[Boolean[false],String] $persistent_client_expiration = "90d",
+    Variant[Boolean[false],String] $password_file = "/etc/mosquitto/passwd",
+    Variant[Boolean[false],String] $server_cert,
 ){
     ensure_packages(['mosquitto'])
     include mosquitto::client
