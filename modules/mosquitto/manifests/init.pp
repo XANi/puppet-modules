@@ -25,6 +25,9 @@ class mosquitto::server (
             mode   => "0600",
             notify => Service['mosquitto'],
         }
+        concat::fragment { "${password_file}_header":
+            content => "# puppet managed file\n",
+        }
     }
 
     service { 'mosquitto':
