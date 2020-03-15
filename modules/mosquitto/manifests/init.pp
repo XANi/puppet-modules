@@ -18,7 +18,8 @@ class mosquitto::server (
     file { '/etc/mosquitto/conf.d/1000-general.conf':
         owner => mosquitto,
         mode => "640",
-        content => template('mosquitto/general.conf')
+        content => template('mosquitto/general.conf'),
+        notify => Service['mosquitto'],
     }
     if $password_file and $manage_password_file {
         concat { $password_file:

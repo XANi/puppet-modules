@@ -5,6 +5,7 @@ class dpp (
     $minimum_interval = 120,
     $schedule_run = fqdn_rand(600)+3600,
     $poll_interval = 600,
+    $mq_url = "tcp://127.0.0.1", #tls:// for encrypted, add user:pass@ before hostname
 ) {
     $manager_url = hiera('manager_url',false)
     $repo_config = hiera('repo')

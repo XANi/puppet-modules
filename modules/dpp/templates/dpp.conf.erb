@@ -39,6 +39,10 @@ pid_file: /var/run/dpp.pid
 # shows if last poll gave us new commit or if it failed
 status_file: /tmp/dpp.status
 
+<% if @mq_url %>
+mq:
+  address: <%= @mq_addr %>
+<% end %>
 
 log:
 #    ansicolor: 0
