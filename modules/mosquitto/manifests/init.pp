@@ -23,7 +23,7 @@ class mosquitto::server (
             owner  => mosquitto,
             group  => mosquitto,
             mode   => "0600",
-            notify => Class['mosquitto'],
+            notify => Service['mosquitto'],
         }
     }
 
