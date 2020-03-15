@@ -19,7 +19,7 @@ class common::server (
     include util::shell
     include user::common
     include motd
-    include utils::tmpreaper
+    include util::tmpreaper
     include
     if ($hostname != 'cthulhu') {
         include collectd::client

@@ -1,4 +1,4 @@
-class utils::tmpreaper {
+class util::tmpreaper {
     ensure_packages(['tmpreaper'])
     file { '/etc/tmpreaper':
         mode => "644",
