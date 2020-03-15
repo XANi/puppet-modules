@@ -28,6 +28,7 @@ class mosquitto::server (
             notify => Service['mosquitto'],
         }
         concat::fragment { "${password_file}_header":
+            target => $password_file,
             content => "# puppet managed file\n",
         }
     }
