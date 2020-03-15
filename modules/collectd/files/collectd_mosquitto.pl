@@ -110,11 +110,7 @@ my $stat_map = {
     # $SYS/broker/load/connections/1min 1.82
     # $SYS/broker/load/connections/5min 0.64
     # $SYS/broker/load/connections/15min 0.31'
-    '$SYS/broker/messages/stored' => {
-        'type'            => 'gauge',
-        'type-instance'   => 'stored',
-        'plugin-instance' => 'messages',
-    },
+    # '$SYS/broker/messages/stored'  dup
     '$SYS/broker/messages/received' => {
         'type'            => 'derive',
         'type-instance'   => 'received',
@@ -133,14 +129,14 @@ my $stat_map = {
     },
     '$SYS/broker/store/messages/count' => {
         'type'            => 'gauge',
-        'type-instance'   => 'stored',
-        'plugin-instance' => 'messages_store',
+        'type-instance'   => 'messages',
+        'plugin-instance' => 'store',
 
     },
     '$SYS/broker/store/messages/bytes' => {
         'type'            => 'bytes',
-        'type-instance'   => 'stored',
-        'plugin-instance' => 'messages_store',
+        'type-instance'   => 'messages',
+        'plugin-instance' => 'store',
     },
     '$SYS/broker/subscriptions/count' => {
         'type'            => 'gauge',
@@ -172,10 +168,11 @@ my $stat_map = {
         'type-instance'   => 'sent',
         'plugin-instance' => 'messages_publish',
     },
-    '$SYS/broker/publish/messages/sent' => {
+    '$SYS/broker/publish/messages/dropped' => {
         'type'            => 'derive',
         'type-instance'   => 'dropped',
         'plugin-instance' => 'messages_publish',
+        'emit-0-if-missing' => 1,
     },
     '$SYS/broker/publish/bytes/received' => {
         'type'            => 'total_bytes',
@@ -200,6 +197,7 @@ my $stat_map = {
     },
 };
 
+# some events are emitted only when connecting so we just exit after 25s to reconnect
 open(my $mosquitto, '-|',
     'mosquitto_sub','-W','25', '-v', '-h', $cfg->{'host'}, '-t', '$SYS/#', '-u', $cfg->{'user'}, '-P', $cfg->{'pass'},
 );
@@ -209,7 +207,16 @@ while(<$mosquitto>) {
     my $t = time;
     if (defined ($stat_map->{$k})) {
         my $s =  $stat_map->{$k};
-        print "PUTVAL $cfg->{'collectd-host'}/mosquitto-$s->{'plugin-instance'}/$s->{'type'}-$s->{'type-instance'} interval=60 $t:$v\n";
+        delete($stat_map->{$k}{'emit-0-if-missing'});
+        print "PUTVAL $cfg->{'collectd-host'}/mosquitto-$s->{'plugin-instance'}/$s->{'type'}-$s->{'type-instance'} interval=30 $t:$v\n";
+    }
+}
+# some are not emitted if zero, for graphs to not look fucky we send zero for those
+
+while ( my ($k, $s) = each ( %{ $stat_map })) {
+    if ($s->{'emit-0-if-missing'}) {
+        my $t = time;
+        print "PUTVAL $cfg->{'collectd-host'}/mosquitto-$s->{'plugin-instance'}/$s->{'type'}-$s->{'type-instance'} interval=30 $t:0\n";
     }
 }
 
