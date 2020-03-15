@@ -4,6 +4,8 @@ class mosquitto::client {
 }
 
 class mosquitto::server (
+    $listener = "1883",
+    Variant[Boolean[false],String,Integer] $ws_listener = false,
     Boolean $allow_anonymous = false,
     Variant[Boolean[false],String] $persistent_client_expiration = "90d",
     Variant[Boolean[false],String] $password_file = "/etc/mosquitto/passwd",
