@@ -101,8 +101,10 @@ class dpp (
         checksum_type => "sha256",
         checksum => $source_map["checksum"],
         checksum_verify => true,
+        notify => File['/opt/dpp/dpp'],
     }
     file {'/opt/dpp/dpp':
+        ensure => file,
         source => '/opt/dpp/dpp.current',
         checksum => "sha256",
         checksum_value => $source_map["checksum"],
