@@ -97,7 +97,6 @@ class dpp (
     # puppetlabs in 2017 still can't figure out how to download a fucking file from a fucking internet, so use module that can
     # PUP-8299 PUP-8300
     archive { '/opt/dpp/dpp.current':
-        mode => "0755",
         source => $source_map["url"],
         checksum_type => "sha256",
         checksum => $source_map["checksum"],
