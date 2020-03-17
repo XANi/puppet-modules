@@ -109,7 +109,6 @@ class dpp (
         checksum => "sha256",
         checksum_value => $source_map["checksum"],
         mode => "755",
-        validate_cmd => "% --version",
         backup => false,
     }
     # for updates, we can't do that really from the main loop as it would kill running puppet
