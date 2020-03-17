@@ -71,15 +71,42 @@ class dpp (
             ensure => directory
         }
     }
+
+    $source_map = $os['architecture'] ? {
+        'amd64'   => {
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.0.5/dpp.amd64',
+            checksum => '2c323b4a9c78cecb35e28aa60a037ab2875cc419e299e0b7ee05af96c2451b3a',
+        },
+        'aarch64' => {
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.0.5/dpp.aarch64',
+            checksum => 'e29480ac929bedd125c2993d5da0a0b036c959c71b906a00dc3103f9f91a40ef',
+        },
+        'arm'     => {
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.0.5/dpp.arm',
+            checksum => 'c01132064e5d6e509e08b9d7265f53c160b51bea41115fc344e8b82687fd1217',
+        },
+    }
+
+
+    ensure_packages(['wget'])
+
+
     #dpp-generated facts
     file {'/etc/facter/facts.d/puppet_basemodulepath.txt': replace => false;}
+
     # puppetlabs in 2017 still can't figure out how to download a fucking file from a fucking internet, just put it in repo
     # PUP-8299 PUP-8300
-    file {'/opt/dpp/dpp':
-        source => "puppet:///modules/dpp/dpp.${architecture}",
-        mode => "755",
-        backup => false,
-   }
+    archive { '/opt/dpp/dpp.download':
+        source => $source_map["url"],
+        checksum_type => "sha256",
+        checksum => $source_map["checksum"],
+        checksum_verify => true,
+    }
+   #  file {'/opt/dpp/dpp':
+   #      source => $source_map["url"],
+   #      mode => "755",
+   #      backup => false,
+   # }
     # for updates, we can't do that really from the main loop as it would kill running puppet
     cron {"restart-dpp":
         minute => fqdn_rand(59),
