@@ -29,12 +29,15 @@ class haproxy::server (
             content => "${global_content}\n",
             order   => "0000",
         }
-    }
-    if $global_content {
         concat::fragment { 'haproxy_defaults':
             target  => '/etc/haproxy/.haproxy.cfg.v',
             content => "${defaults_content}\n",
             order   => "0001",
+        }
+        concat::fragment { 'haproxy_footer':
+            target  => '/etc/haproxy/.haproxy.cfg.v',
+            content => "\n# 9999-end \n",
+            order   => "9999",
         }
     }
 }
