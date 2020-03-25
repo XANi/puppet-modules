@@ -1,7 +1,7 @@
 class kanboard::common {
     ensure_packages(['php-sqlite', 'php-gd', 'php-mbstring', 'php-xml','php-zip'])
     file { '/etc/cron.daily/kanboard':
-        source => 'puppet://puppet/modules/kanboard/cron.sh',
+        source => 'puppet:///modules/kanboard/cron.sh',
         mode   => "0755",
     }
 }
