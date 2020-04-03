@@ -3,6 +3,7 @@ class kanboard::common {
     file { '/etc/cron.daily/kanboard':
         source => 'puppet:///modules/kanboard/cron.sh',
         mode   => "0755",
+        ensure => present,
     }
 }
 
