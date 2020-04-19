@@ -4,6 +4,12 @@ class collectd::client ($server, $config = false) {
         ensure => running,
         enable => true,
     }
+    # some plugins get wonky sadly
+    cron { 'restart-collectd':
+        command => "/bin/systemctl restart collectd",
+        hour    => fqdn_rand(23),
+        minute  => fqdn_rand(59),
+    }
     if $config {
         file { '/etc/collectd/collectd.conf':
             content => $config,
