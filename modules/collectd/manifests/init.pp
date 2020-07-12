@@ -4,7 +4,7 @@ class collectd::client ($server, $config = false) {
         ensure => running,
         enable => true,
     }
-    # some plugins get wonky sadly
+    # some plugins get wonky sadly (mqtt in 5.7 have problems reconnecting)
     cron { 'restart-collectd':
         command => "/bin/systemctl restart collectd",
         hour    => fqdn_rand(23),
@@ -48,5 +48,4 @@ class collectd::common {
     file {'/etc/default/collectd':
         content => template('collectd/default'),
     }
-
 }

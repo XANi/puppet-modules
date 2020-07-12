@@ -85,6 +85,10 @@ class dpp (
             url      => 'https://github.com/XANi/go-dpp/releases/download/v0.0.6/dpp.arm',
             checksum => '36242c72b228b5e3010b31587fc5b68a3a8b1bb69314a084dc78f89dc7a76ec3',
         },
+        'i386'    => {
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.0.6/dpp.386',
+            checksum => '097da00c7956b33f09560217beb85e758e938b45ca01795ecb9232650d1f5458',
+        }
     }
 
 
