@@ -11,7 +11,7 @@ Puppet::Functions.create_function(:local_pwgen) do
     passfile = File.join(Puppet[:vardir],'local_pwgen','passfile.pass')
     if String($_x_pwgen_hashing_key).length < 16
       if File.readable?(passfile)
-        $_x_pwgen_hashing_key = File.read(path)
+        $_x_pwgen_hashing_key = File.read(passfile)
         $_x_pwgen_hashing_key.gsub!(/\s+/,'')
         if $_x_pwgen_hashing_key.length > 256
           $_x_pwgen_hashing_key = SecureRandom.alphanumeric(64)
