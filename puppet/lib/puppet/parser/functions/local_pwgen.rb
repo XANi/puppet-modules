@@ -1,6 +1,6 @@
 require 'securerandom'
 require 'openssl'
-Puppet::Functions.create_function(:'local_pwgen') do
+Puppet::Functions.create_function(:local_pwgen) do
   dispatch :pwgen do
     param 'String', :key
     param 'Integer', :length
