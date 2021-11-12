@@ -6,7 +6,7 @@ Puppet::Functions.create_function(:local_pwgen) do
     param 'Integer', :length
   end
 
-  def pwgen(key, length)
+  def pwgen(pw_key, length)
     basedir = File.join(Puppet[:vardir],'local_pwgen')
     passfile = File.join(Puppet[:vardir],'local_pwgen','passfile.pass')
     if String($_x_pwgen_hashing_key).length < 16
@@ -26,7 +26,7 @@ Puppet::Functions.create_function(:local_pwgen) do
       File.chmod(0700,passfile)
     end
     key = Digest::SHA512.digest($_x_pwgen_hashing_key + "aes")
-    data = Digest::SHA512.digest($_x_pwgen_hashing_key + key ) + ('p' * (length/2))
+    data = Digest::SHA512.digest($_x_pwgen_hashing_key + pw_key ) + ('p' * (length/2))
     $_x_pwgen_cipher =  OpenSSL::Cipher::AES.new(256,:CBC)
     $_x_pwgen_cipher_enc = $_x_pwgen_cipher.encrypt
     $_x_pwgen_cipher_enc.key = key[0..31]
