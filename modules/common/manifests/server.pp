@@ -20,7 +20,7 @@ class common::server (
     include user::common
     include motd
     include util::tmpreaper
-    include bareos::fd
+    #include bareos::fd
     if ($hostname != 'cthulhu') {
         include collectd::client
     }
