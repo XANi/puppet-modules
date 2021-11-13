@@ -18,12 +18,13 @@ Puppet::Functions.create_function(:local_pwgen) do
           File.write(passfile,$_x_pwgen_hashing_key, mode: "w",)
           File.chmod(0700,passfile)
         end
+      else
+        FileUtils.mkdir_p basedir
+        File.chmod(0700,basedir)
+        $_x_pwgen_hashing_key = SecureRandom.alphanumeric(64)
+        File.write(passfile,$_x_pwgen_hashing_key,mode: "w", )
+        File.chmod(0700,passfile)
       end
-      FileUtils.mkdir_p basedir
-      File.chmod(0700,basedir)
-      $_x_pwgen_hashing_key = SecureRandom.alphanumeric(64)
-      File.write(passfile,$_x_pwgen_hashing_key,mode: "w", )
-      File.chmod(0700,passfile)
     end
     key = Digest::SHA512.digest($_x_pwgen_hashing_key + "aes")
     data = Digest::SHA512.digest($_x_pwgen_hashing_key + pw_key ) + ('p' * (length/2))
