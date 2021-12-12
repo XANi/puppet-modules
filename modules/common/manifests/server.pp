@@ -10,6 +10,9 @@ class common::server (
             'preferences.d'  => false,
         }
     }
+    apt::conf {"no-suggested":
+        content => 'APT::Install-Suggests "0";'
+    }
     include core
     include core::monitoring
     realize Apt::Source['main-stable']
