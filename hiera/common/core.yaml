@@ -210,8 +210,8 @@ repos:
             source: /etc/apt/gpg-keys-puppet/google-cloud-sdk.pub
     bareos:
         comment: Bareos
-        location: https://download.bareos.org/bareos/experimental/nightly
-        release: Debian_11
+        location: https://download.bareos.org/bareos/experimental/nightly/Debian_11
+        release: /
         repos: ""
         key:
             id: 82834CF002D89BA55C1ED0AA42DA24A6DFEF9127
