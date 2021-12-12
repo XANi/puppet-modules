@@ -40,6 +40,13 @@ class core::apt::base {
         content => "#!/bin/bash\n# puppet managed\napt-cache autoclean >/dev/null 2>&1\nfind /var/cache/apt/archives -mtime +90 -type f -delete >/dev/null 2>&1\n",
         mode => "755",
     }
+    package { [
+        'debian-keyring',
+        'debian-archive-keyring',
+    ]:
+        ensure => latest
+    }
+
 }
 
 class core::server (
