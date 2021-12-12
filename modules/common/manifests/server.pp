@@ -49,7 +49,4 @@ class common::server (
     }
     rsyslog::log {'puppet':;}
     rsyslog::log {'dpp':;}
-    $k = local_pwgen('testpass',32)
-    $k2 = local_pwgen('testpass1',32)
-    notify {"test |${k} |${k2}":;}
 }
