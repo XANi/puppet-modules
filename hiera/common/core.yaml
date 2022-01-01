@@ -214,5 +214,5 @@ repos:
         release: /
         repos: ""
         key:
-            id: 82834CF002D89BA55C1ED0AA42DA24A6DFEF9127
+            id: 91DA1DC3564AE20A76C4CA88E01957D6C9FED482
             source: /etc/apt/gpg-keys-puppet/bareos.pub
