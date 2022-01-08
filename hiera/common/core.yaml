@@ -71,12 +71,6 @@ repos:
         location: http://www.rabbitmq.com/debian/
         release: testing
         repos: main
-
-    dropbox:
-        comment: Dropbox
-        location: http://linux.dropbox.com/debian
-        release: "%{::lsbdistcodename}"
-        repos: main
     puppet:
         comment: Puppet repo
         location: http://apt.puppetlabs.com
@@ -146,13 +140,6 @@ repos:
         key:
             id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
             source: /etc/apt/gpg-keys-puppet/docker.pub
-    stackstorm:
-        location: https://packagecloud.io/StackStorm/stable/debian/
-        release: "%{::lsbdistcodename}"
-        repos: main
-        key:
-            id: 418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB
-            source: /etc/apt/gpg-keys-puppet/stackstorm.pub
     gns3-stretch:
         comment: gns3 stretch repo
         key:
@@ -196,7 +183,7 @@ repos:
     grafana:
         comment: Grafana
         location: https://packages.grafana.com/oss/deb
-        release: "%{::lsbdistcodename}"
+        release: stable
         repos: main
         key:
             id: 4E40DDF6D76E284A4A6780E48C8C34C524098CB6
