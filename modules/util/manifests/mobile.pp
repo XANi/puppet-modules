@@ -5,4 +5,5 @@ class util::mobile::laptop {
               ]:
                   ensure => installed,
     }
+    puppet::lazyfact{'laptop': val => true}
 }
