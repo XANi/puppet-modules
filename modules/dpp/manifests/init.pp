@@ -1,6 +1,6 @@
 class dpp (
     $manifest_from = 'shared',
-    $use_repos = false,
+    Array[String] $use_repos = ['private','shared'],
     $start_wait = 20,
     $minimum_interval = 120,
     $schedule_run = fqdn_rand(600)+3600,
@@ -8,20 +8,8 @@ class dpp (
     $mq_url = "tcp://127.0.0.1", #tls:// for encrypted, add user:pass@ before hostname
 ) {
     $manager_url = hiera('manager_url',false)
-    $repo_config = hiera('repo')
+    $repo_config = hiera('repo',false)
 
-    if !$use_repos {
-        $use_repos_a = hiera('dpp::use_repos',false)
-        if !$use_repos_a {
-            $use_repos_c = ['private','shared']
-        } else {
-            notify{'Upgrade to something newer pls':;}
-            $use_repos_c = $use_repos_a
-        }
-    }
-    else {
-        $use_repos_c = $use_repos
-    }
     file {'/etc/dpp':
         ensure => directory,
         mode   => "700",
