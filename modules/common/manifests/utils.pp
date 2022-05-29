@@ -6,7 +6,6 @@ class common::utils {
     include util::etckeeper
     ensure_packages([
         'aptitude',
-        'bc',
         'bridge-utils',
         'bwm-ng',
         'bzip2',
