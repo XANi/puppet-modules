@@ -12,6 +12,7 @@ TimeoutStopSec=30
 Restart=always
 RestartSec=60s
 WorkingDirectory=/opt/dpp
-
+MemoryMax=1G
+IOWeight=1
 [Install]
 WantedBy=multi-user.target
