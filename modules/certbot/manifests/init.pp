@@ -36,6 +36,9 @@ define certbot::cert (
     }
     file { "/etc/pki/certbot/${title}.pem":
         source => "/etc/letsencrypt/live/${main_domain}/certandkey.pem",
+        owner => $owner,
+        group => $group,
+        mode => $mode,
         notify => $notify,
     }
 
