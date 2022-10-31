@@ -43,7 +43,8 @@ status_file: /tmp/dpp.status
 mq:
   address: <%= @mq_url %>
 <% end %>
-
+web:
+  listen_addr: 127.0.0.1:4001
 log:
 #    ansicolor: 0
 #    target: syslog
