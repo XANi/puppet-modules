@@ -37,8 +37,11 @@ class core::apt::base {
         ensure => absent
     }
     file {'/etc/cron.weekly/puppet-apt-cleanup':
-        content => "#!/bin/bash\n# puppet managed\napt-cache autoclean >/dev/null 2>&1\nfind /var/cache/apt/archives -mtime +90 -type f -delete >/dev/null 2>&1\n",
+        content => "#!/bin/bash\n# puppet managed\napt-get autoclean >/dev/null 2>&1\nfind /var/cache/apt/archives -mtime +90 -type f -delete >/dev/null 2>&1\n",
         mode => "755",
+    }
+    file { '/etc/cron.weekly/puppet-apt-updates':
+        ensure => absent
     }
     package { [
         'debian-keyring',

@@ -50,3 +50,4 @@ class common::server (
     rsyslog::log {'puppet':;}
     rsyslog::log {'dpp':;}
 }
+

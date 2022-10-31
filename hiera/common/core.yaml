@@ -66,11 +66,6 @@ repos:
             id: F9A211976ED662F00E59361E5E3C45D7B312C643
             source: /etc/apt/gpg-keys-puppet/spotify.pub
 
-    rabbitmq:
-        comment: RabbitMQ
-        location: http://www.rabbitmq.com/debian/
-        release: testing
-        repos: main
     puppet:
         comment: Puppet repo
         location: http://apt.puppetlabs.com
