@@ -52,7 +52,20 @@ class collectd::common {
         'exec':;
     }
 }
-
+define collectd::plugin (
+    $prio = 1000,
+    $params = {},
+    $template = $title,
+)  {
+    $padded_prio = sprintf('%04d',$prio)
+    $file_content = template("collectd/plugins/${template}.erb")
+    file { "/etc/collectd/conf.d/${padded_prio}-${title}.conf":
+        content => "${file_content}\n", # always add trailing newline
+        mode    => "600",
+        owner   => root,
+        notify  => Service['collectd'],
+    }
+}
 define collectd::plugin::load (
     $interval = false,
 )   {
