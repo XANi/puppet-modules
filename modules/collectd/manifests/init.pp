@@ -48,4 +48,39 @@ class collectd::common {
     file {'/etc/default/collectd':
         content => template('collectd/default'),
     }
+    @collectd::plugin::load {
+        'exec':;
+    }
+}
+
+define collectd::plugin::load (
+    $interval = false,
+)   {
+    $padded_prio ="0000"
+    $plugin = $title
+    $file_content = template("collectd/load_plugin.conf")
+    file { "/etc/collectd/conf.d/${padded_prio}-load_${title}.conf":
+        content => "${file_content}\n", # always add trailing newline
+        mode    => "600",
+        owner   => root,
+        notify  => Service['collectd'],
+    }
+}
+
+define collectd::plugin::exec (
+    $command,
+    $user = 'nobody',
+    $args = false,
+)  {
+    realize Collectd::Plugin::Load[exec]
+    collectd::plugin {
+        "exec_${title}":
+            template => 'exec_generic',
+            params => {
+                command => $command,
+                user    => $user,
+                args    => $args,
+            },
+            notify => Service['collectd'],
+    }
 }

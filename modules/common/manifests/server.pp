@@ -24,6 +24,7 @@ class common::server (
     include motd
     include util::tmpreaper
     include bareos::fd
+    include unattended_upgrades
     if ($hostname != 'cthulhu') {
         include collectd::client
     }
