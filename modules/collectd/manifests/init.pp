@@ -58,7 +58,7 @@ define collectd::plugin (
     $template = $title,
 )  {
     $padded_prio = sprintf('%04d',$prio)
-    $file_content = template("collectd/plugins/${template}.erb")
+    $file_content = template("collectd/plugins/${template}.conf")
     file { "/etc/collectd/conf.d/${padded_prio}-${title}.conf":
         content => "${file_content}\n", # always add trailing newline
         mode    => "600",
