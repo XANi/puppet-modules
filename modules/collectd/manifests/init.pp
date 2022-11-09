@@ -36,6 +36,7 @@ class collectd::server($config) {
         replace => false,
         notify  => Service['collectd'],
     }
+    notify{"test:":;}
 }
 
 class collectd::common {
