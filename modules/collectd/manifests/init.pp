@@ -109,6 +109,7 @@ define collectd::plugin::exec (
     $user = 'nobody',
     $args = false,
 )  {
+    require collectd::common
     realize Collectd::Plugin::Load[exec]
     collectd::plugin {
         "exec_${title}":
