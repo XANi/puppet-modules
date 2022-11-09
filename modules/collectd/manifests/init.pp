@@ -33,10 +33,8 @@ class collectd::server($config) {
     file { '/etc/collectd/collectd.conf':
         content => $config,
         owner   => root,
-        replace => false,
         notify  => Service['collectd'],
     }
-    notify{"test:":;}
 }
 
 class collectd::common {
