@@ -1,9 +1,5 @@
 class collectd::client ($server, $config = false) {
     include collectd::common
-    service {'collectd':
-        ensure => running,
-        enable => true,
-    }
     # some plugins get wonky sadly (mqtt in 5.7 have problems reconnecting)
     cron { 'restart-collectd':
         command => "/bin/systemctl restart collectd",
@@ -28,10 +24,6 @@ class collectd::client ($server, $config = false) {
 
 class collectd::server($config) {
     include collectd::common
-    service {'collectd':
-        ensure => running,
-        enable => true,
-    }
     # some plugins get wonky sadly (mqtt in 5.7 have problems reconnecting)
     cron { 'restart-collectd':
         command => "/bin/systemctl restart collectd",
@@ -47,6 +39,10 @@ class collectd::server($config) {
 }
 
 class collectd::common {
+    service {'collectd':
+        ensure => running,
+        enable => true,
+    }
     package {'collectd':
         ensure => latest,
     }
