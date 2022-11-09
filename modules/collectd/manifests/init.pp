@@ -73,6 +73,7 @@ class collectd::common {
     }
     user { 'collectd':
         system => true,
+        ensure => present
     }
 }
 define collectd::plugin (
