@@ -18,11 +18,31 @@ class collectd::client ($server, $config = false) {
         }
     } else {
         file { '/etc/collectd/collectd.conf':
-            content => template('collectd/collectd.conf'),
+            content => template('collectd/config/default.conf'),
             owner   => root,
             replace => false,
             notify  => Service['collectd'],
         }
+    }
+}
+
+class collectd::server($config) {
+    include collectd::common
+    service {'collectd':
+        ensure => running,
+        enable => true,
+    }
+    # some plugins get wonky sadly (mqtt in 5.7 have problems reconnecting)
+    cron { 'restart-collectd':
+        command => "/bin/systemctl restart collectd",
+        hour    => fqdn_rand(23),
+        minute  => fqdn_rand(59),
+    }
+    file { '/etc/collectd/collectd.conf':
+        content => $config,
+        owner   => root,
+        replace => false,
+        notify  => Service['collectd'],
     }
 }
 
