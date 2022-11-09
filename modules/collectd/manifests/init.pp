@@ -88,7 +88,7 @@ define collectd::plugin::exec (
     realize Collectd::Plugin::Load[exec]
     collectd::plugin {
         "exec_${title}":
-            template => 'exec_generic',
+            template => 'exec',
             params => {
                 command => $command,
                 user    => $user,
