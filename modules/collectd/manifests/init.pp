@@ -51,6 +51,9 @@ class collectd::common {
     @collectd::plugin::load {
         'exec':;
     }
+    user { 'collectd':
+        system => true,
+    }
 }
 define collectd::plugin (
     $prio = 1000,
