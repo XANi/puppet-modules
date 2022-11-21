@@ -2,13 +2,13 @@
 repos:
     main-squeeze:
         comment: Main Debian repo - Squeeze
-        location: http://ftp.pl.debian.org/debian/
+        location: http://ftp.de.debian.org/debian/
         release: squeeze
         repos: main non-free contrib
 
     main-wheezy:
         comment: Main Debian repo - Wheezy
-        location: http://ftp.pl.debian.org/debian/
+        location: http://ftp.de.debian.org/debian/
         release: wheezy
         repos: main non-free contrib
         include:
@@ -17,25 +17,25 @@ repos:
 
     main-testing:
         comment: Main Debian repo - Testing
-        location: http://ftp.pl.debian.org/debian/
+        location: http://ftp.de.debian.org/debian/
         release: testing
         repos: main non-free contrib
 
     main-stable:
         comment: Main Debian repo - Stable
-        location: http://ftp.pl.debian.org/debian/
+        location: http://ftp.de.debian.org/debian/
         release: bullseye
         repos: main non-free contrib
 
     main-stretch:
         comment: Main Debian repo - Stretch
-        location: http://ftp.pl.debian.org/debian/
+        location: http://ftp.de.debian.org/debian/
         release: stretch
         repos: main non-free contrib
 
     main-jessie:
         comment: Main Debian repo - Jessie
-        location: http://ftp.pl.debian.org/debian/
+        location: http://ftp.de.debian.org/debian/
         release: jessie
         repos: main non-free contrib
 
