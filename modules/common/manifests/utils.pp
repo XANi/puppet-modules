@@ -23,7 +23,6 @@ class common::utils {
         'tmux',
         'tree',
         'xfsprogs',
-        'debsecan',
         'apt-transport-https',
         'zile',
     ])

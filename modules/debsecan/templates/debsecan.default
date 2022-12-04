@@ -1,0 +1,19 @@
+# puppet managed template, for more info 'puppet-find-resources $filename'
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+# Configuration file for debsecan.  Contents of this file should
+# adhere to the KEY=VALUE shell syntax.  This file may be edited by
+# debsecan's scripts, but your modifications are preserved.
+
+# If true, enable daily reports, sent by email.
+REPORT=true
+
+# For better reporting, specify the correct suite here, using the code
+# name (that is, "sid" instead of "unstable").
+SUITE=<%= @os["distro"]["codename"] %>
+
+# Mail address to which reports are sent.
+MAILTO=server@devrandom.pl
+
+# The URL from which vulnerability data is downloaded.  Empty for the
+# built-in default.
+SOURCE=

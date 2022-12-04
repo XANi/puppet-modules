@@ -25,6 +25,7 @@ class common::server (
     include util::tmpreaper
     include bareos::fd
     include unattended_upgrades
+    include debsecan
     if ($hostname != 'cthulhu') {
         include collectd::client
     }
