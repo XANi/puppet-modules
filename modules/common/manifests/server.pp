@@ -1,6 +1,7 @@
 class common::server (
     # serve ntp to others
     $ntp_server = false,
+    $backup = true,
 )  {
     class { 'apt':
         purge => {
@@ -23,7 +24,9 @@ class common::server (
     include user::common
     include motd
     include util::tmpreaper
-    include bareos::fd
+    if $backup {
+        include bareos::fd
+    }
     include unattended_upgrades
     include debsecan
     if ($hostname != 'cthulhu') {
