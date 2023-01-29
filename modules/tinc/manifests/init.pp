@@ -14,6 +14,10 @@ define tinc::net($network=$title) {
         creates => "/etc/tinc/${network}/rsa_key.priv",
     }
     tinc::deploy_keys {$network:;}
+    service { "tinc@${network}":
+        ensure => running,
+        enable => true,
+    }
 }
 
 define tinc::deploy_keys($network=$title) {
