@@ -1,6 +1,7 @@
 #!/bin/bash
-# DPP/Puppet managed file at location home, DO NOT EDIT BY HAND, changes will be overwritten.
-# vm-debian.devrandom.pl:modules/home/templates/bash_prompt.erb
+# puppet managed template, for more info 'puppet-find-resources $filename'
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+
 # restore original term if its set to xterm-256, and save orig. term otherwise
 # needed for sudo passing $TERM in env
 # fixing centos 6 default crap

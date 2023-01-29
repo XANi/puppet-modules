@@ -17,6 +17,10 @@ use_repos:<% repos_list = Array(@use_repos) %><% repos_list.each do |repo| %>
 
 manifest_from: <%= @manifest_from %>
 repo_dir: /var/lib/dpp/repos
+extra_module_path:
+  -  /usr/share/puppet/modules
+
+
 
 <%- if @manager_url -%>
 # manager url
