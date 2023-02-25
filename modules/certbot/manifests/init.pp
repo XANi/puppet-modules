@@ -25,6 +25,7 @@ define certbot::cert (
     $owner = 'root',
     $group = 'root',
     $mode  = '600',
+    $notify = false,
 )   {
     include certbot::common
     $domains = inline_template('<%= Array([@main_domain, @extra_domain]).flatten.join(" ") %>')
