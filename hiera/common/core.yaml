@@ -33,6 +33,12 @@ repos:
         release: bullseye
         repos: main non-free contrib
 
+    main-bullseye:
+        comment: Main Debian repo - Stable
+        location: http://ftp.de.debian.org/debian/
+        release: bullseye
+        repos: main non-free contrib
+
     main-stretch:
         comment: Main Debian repo - Stretch
         location: http://ftp.de.debian.org/debian/
