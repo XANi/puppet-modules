@@ -15,6 +15,12 @@ repos:
             src: false
             deb: true
 
+    main-bookworm:
+        comment: Main Debian repo - Testing
+        location: http://ftp.de.debian.org/debian/
+        release: bookworm
+        repos: main non-free contrib
+
     main-testing:
         comment: Main Debian repo - Testing
         location: http://ftp.de.debian.org/debian/
