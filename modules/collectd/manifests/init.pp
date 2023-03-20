@@ -81,7 +81,7 @@ define collectd::network::send(
     $port=25826,
 ) {
     collectd::conf { "network-${title}":
-        content => "<Plugin network>\nServer \"<%= @address %>\" \"<%= @port %>\"\n</Plugin>\n"
+        content => "<Plugin network>\nServer \"${address}\" \"${port}\"\n</Plugin>\n"
     }
 }
 
