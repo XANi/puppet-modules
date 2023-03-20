@@ -11,12 +11,16 @@ class collectd::common (
 #        hour    => fqdn_rand(23),
 #        minute  => fqdn_rand(59),
 #    }
-    file {[
-        '/etc/collectd',
-        '/etc/collectd/collectd.conf.d',
-    ]:
+    file {'/etc/collectd':
         ensure => directory,
         mode   => "711", # +x so we can use this dir for non-root-running plugin config
+    }
+    file {'/etc/collectd/collectd.conf.d':
+        ensure => directory,
+        mode   => "700",
+        purge => true,
+        recurse => true,
+        force => true,
     }
     service { 'collectd':
         ensure => running,
@@ -44,7 +48,7 @@ class collectd::common (
         mode    => "600",
         notify => Service['collectd'],
     }
-    file { '/etc/collectd/collectd.conf/0000-filters.conf':
+    file { '/etc/collectd/collectd.conf.d/0000-filters.conf':
         content => template('collectd/filters.conf'),
         mode    => "600",
         notify => Service['collectd'],
@@ -64,7 +68,7 @@ define collectd::conf(
     if $content {
         $content_c = "# ${title}\n${content}\n"
     }
-    file { "/etc/collectd/collectd.conf/${padded_prio}-${title}.conf":
+    file { "/etc/collectd/collectd.conf.d/${padded_prio}-${title}.conf":
         source  => $source,
         content => $content_c,
         mode    => "600",
