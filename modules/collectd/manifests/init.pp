@@ -58,7 +58,7 @@ define collectd::conf(
 ) {
     $padded_prio = sprintf('%04d', $prio)
 
-    if !$content or !$source {
+    if !$content and !$source {
         fail('need $content or $source')
     }
     if $content {
