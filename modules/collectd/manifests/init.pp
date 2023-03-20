@@ -39,7 +39,7 @@ class collectd::common (
         mode   => "771",
     }
     file { '/etc/collectd/custom_types.db':
-        source   => "puppet://puppet/modules/collectd/custom_types.db",
+        source   => "puppet:///modules/collectd/custom_types.db",
         mode     => "644",
         notify => Service['collectd'],
     }
