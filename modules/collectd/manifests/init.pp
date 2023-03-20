@@ -93,7 +93,6 @@ define collectd::plugin::exec (
     $args = false,
 )  {
     include collectd::common
-    realize Collectd::Plugin::Load[exec]
     collectd::conf { "exec_${title}":
         content => template('collectd/p/exec.conf')
     }
