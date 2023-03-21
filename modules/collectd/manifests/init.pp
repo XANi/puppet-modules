@@ -5,6 +5,11 @@ class collectd::common (
     package {"collectd":
         ensure => $version,
     }
+    user { "collectd":
+        system => true,
+        managehome => false,
+        home =>  "/var/lib/collectd/home", # dummy
+    }
 #    # some plugins get wonky sadly (mqtt in 5.7 have problems reconnecting)
 #    cron { 'restart-collectd':
 #        command => "/bin/systemctl restart collectd",
