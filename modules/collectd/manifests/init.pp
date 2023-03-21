@@ -26,14 +26,14 @@ class collectd::common (
         ensure => running,
         enable => true,
     }
-    file { '/usr/share/collectd/types.db':
-        source   => "puppet://puppet/modules/collectd/types.db",
-        mode     => "644",
-        owner    => root,
-        group    => root,
-        require  => Package['collectd'],
-        notify => Service['collectd'],
-    }
+    # file { '/usr/share/collectd/types.db':
+    #     source   => "puppet:///modules/collectd/types.db",
+    #     mode     => "644",
+    #     owner    => root,
+    #     group    => root,
+    #     require  => Package['collectd'],
+    #     notify => Service['collectd'],
+    # }
     file { '/var/lib/collectd':
         ensure => directory,
         mode   => "771",
