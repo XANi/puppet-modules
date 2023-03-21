@@ -85,6 +85,13 @@ define collectd::network::send(
     }
 }
 
+define collectd::plugin::load (
+) {
+    collectd::conf { "plugin-${title}":
+        content => "LoadPlugin ${title}\n",
+        prio => 0,
+    }
+}
 
 
 class collectd::client ($server) {
