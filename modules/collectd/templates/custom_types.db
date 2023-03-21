@@ -1,0 +1,2 @@
+# puppet managed template, for more info 'puppet-find-resources $filename'
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
