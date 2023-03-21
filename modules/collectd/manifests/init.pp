@@ -58,6 +58,9 @@ class collectd::common (
         mode    => "600",
         notify => Service['collectd'],
     }
+    if $virtual == "physical" {
+        ensure_packages(['libsensors5'])
+    }
 }
 
 define collectd::conf(
