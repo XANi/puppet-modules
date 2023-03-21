@@ -88,7 +88,7 @@ define collectd::network::send(
 
 
 class collectd::client ($server) {
-    collectd::network::send{'cthulhu': address => $server}
+    collectd::network::send{'server': address => $server}
     include collectd::common
 }
 
