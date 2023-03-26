@@ -116,6 +116,23 @@ define collectd::plugin::exec (
     collectd::conf { "exec_${title}":
         content => template('collectd/p/exec.conf')
     }
+}
+
+
+
+define collectd::plugin::mqtt(
+    $host,
+    $port = 1883,
+    $user = "mqtt",
+    $pass = "mqtt",
+    $topic = 'collectd/#',
+    $clean_session= true,
+) {
+    collectd::conf { "mqtt_${title}":
+        content => template('collectd/p/mqtt.conf')
+    }
 
 }
+
+
 
