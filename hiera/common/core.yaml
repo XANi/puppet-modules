@@ -30,7 +30,7 @@ repos:
     main-stable:
         comment: Main Debian repo - Stable
         location: http://ftp.de.debian.org/debian/
-        release: bullseye
+        release: bookworm
         repos: main non-free contrib
 
     main-bullseye:
