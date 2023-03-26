@@ -108,7 +108,7 @@ class dpp (
     cron {"restart-dpp":
         minute => fqdn_rand(59),
         hour => 20,
-        day => 5,
+        weekday => 5,
         command => '[ -x /opt/dpp/dpp ] && systemctl restart dpp',
     }
     exec { 'restart-dpp':
