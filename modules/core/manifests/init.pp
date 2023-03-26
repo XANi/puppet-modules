@@ -29,7 +29,7 @@ class core::apt::base {
         recurse => true,
         purge => true
     }
-    create_resources("@apt::source",hiera('repos'))
+    create_resources("@apt::source",lookup('repos'))
     file {'/etc/apt/apt.conf.d/99-zpuppet.conf':
         ensure => absent,
     }
