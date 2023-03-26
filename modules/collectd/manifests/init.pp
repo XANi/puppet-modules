@@ -143,6 +143,7 @@ class collectd::plugin::ping::common (
     }
 }
 define collectd::plugin::ping {
+    include collectd::plugin::ping::common
     collectd::conf { "ping_common":
         content => template('collectd/p/ping.conf'),
     }
