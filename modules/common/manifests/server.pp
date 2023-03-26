@@ -29,9 +29,7 @@ class common::server (
     }
     include unattended_upgrades
     include debsecan
-    if ($hostname != 'cthulhu') {
-        include collectd::client
-    }
+    include collectd::client
     if $ntp_server {
         include ntp::server
     } else {
