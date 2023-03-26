@@ -6,7 +6,7 @@
 #       host-name: sth-else
 
 class dhclient {
-    $dhcp = hiera('dhcp', false)
+    $dhcp = lookup('dhcp',undef,undef, false)
     file { '/etc/dhcp/dhclient.conf':
         content => template('dhclient/dhclient.conf.erb'),
         owner   => root,

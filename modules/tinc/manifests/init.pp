@@ -2,7 +2,7 @@ class tinc  {
     package {tinc:
         ensure => installed;
     }
-    $config = hiera('tinc')
+    $config = lookup('tinc')
 }
 
 define tinc::net($network=$title) {
