@@ -59,7 +59,11 @@ class collectd::common (
         notify => Service['collectd'],
     }
     if $virtual == "physical" {
-        ensure_packages(['libsensors5','lm-sensors'])
+        ensure_packages([
+            'libsensors5',
+            'lm-sensors',
+            'libatasmart4',
+        ])
     }
 }
 
