@@ -62,20 +62,20 @@ class dpp (
 
     $source_map = $os['architecture'] ? {
         'i386'    => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.2/dpp.386',
-            checksum => '3f5fd9eea185bc1a96bb3897cc18bb46d61b351e91f145be61499c74737904e7',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.3/dpp.386',
+            checksum => '7aa0d1fc9067e21a0b38657fd23c948c1e08555feabe785604ebccb85dd46fe2',
         },
         'aarch64' => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.2/dpp.aarch64',
-            checksum => 'd39306b1f541b492dab28f6190da3e8bb1c676d09d179254c34b22f8e8a07d44',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.3/dpp.aarch64',
+            checksum => '989594ad855029b209a2c5176b21a43b482fcd4d9d0e8512b5d2b02c7bdb59a6',
         },
         'amd64'   => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.2/dpp.amd64',
-            checksum => 'c78d824eacb027ee7989fb33041e2586fa6bd83ea88e08de4ee1df3592a6880c',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.3/dpp.amd64',
+            checksum => 'bb2d2d06e4d9eebee401b4fe5a0739f51d2240e9141f595a13863102463dc1f2',
         },
         'arm'     => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.2/dpp.arm',
-            checksum => '372d04f0c762f20ad88bf44a7a8f19faefd5a96b66a32a0775a1fbd7692e5b5f',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.3/dpp.arm',
+            checksum => 'c9f514034ef742d0b44c2f74c78f401969e2405b22cf0844a24d9da3de5f107b',
         },
     }
 
@@ -102,11 +102,17 @@ class dpp (
         checksum_value => $source_map["checksum"],
         mode => "755",
         backup => false,
+        notify => Exec['restart-dpp'],
     }
     # for updates, we can't do that really from the main loop as it would kill running puppet
     cron {"restart-dpp":
         minute => fqdn_rand(59),
         hour => 20,
+        day => 5,
         command => '[ -x /opt/dpp/dpp ] && systemctl restart dpp',
+    }
+    exec { 'restart-dpp':
+        command => '/usr/bin/killall -USR2 dpp',
+        refreshonly => true,
     }
 }
