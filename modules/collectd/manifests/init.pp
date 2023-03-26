@@ -101,7 +101,6 @@ define collectd::plugin::load (
     }
 }
 
-
 class collectd::client ($server) {
     collectd::network::send{'server': address => $server}
     include collectd::common
@@ -134,5 +133,19 @@ define collectd::plugin::mqtt(
 
 }
 
+class collectd::plugin::ping::common (
+    $interval = 2.0,
+    $timeout = 1.9,
+) {
+    collectd::conf { "ping_common":
+        content => template('collectd/p/ping_common.conf'),
+        prio => 500,
+    }
+}
+define collectd::plugin::ping {
+    collectd::conf { "ping_common":
+        content => template('collectd/p/ping.conf'),
+    }
+}
 
 
