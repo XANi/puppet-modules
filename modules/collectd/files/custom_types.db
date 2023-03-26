@@ -1,2 +1,16 @@
 # puppet managed template, for more info 'puppet-find-resources $filename'
 # <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+# our generic types; for specific ones use cystom_types.db
+ops                            value:DERIVE:0:U
+milliseconds                   value:DERIVE:0:U
+ms                             value:GAUGE:U:U
+us                             value:GAUGE:U:U
+ns                             value:GAUGE:U:U
+percentile                     value:GAUGE:U:U
+stddev                         value:GAUGE:U:U
+ppm                            value:GAUGE:U:U
+total_errors                   value:GAUGE:0:U
+# laser power in dbm
+laser_power_dbm                 rx:GAUGE:U:U, tx:GAUGE:U:U
+# laser bias in miliamperes
+laser_bias_ma                  value:GAUGE:0:U
