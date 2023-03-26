@@ -157,7 +157,7 @@ class collectd::plugin::perl::common (
     $interval = 2.0,
     $timeout = 1.9,
 ) {
-    collectd::conf { "ping_common":
+    collectd::conf { "perl_common":
         content => template('collectd/p/perl_common.conf'),
         prio => 500,
     }
