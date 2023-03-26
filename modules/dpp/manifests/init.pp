@@ -7,7 +7,7 @@ class dpp (
     $poll_interval = 600,
     $mq_url = "tcp://127.0.0.1", #tls:// for encrypted, add user:pass@ before hostname
 ) {
-    $manager_url = hiera('manager_url',false)
+    $manager_url = lookup('manager_url',undef,undef,false)
     $repo_config = lookup('repo')
 
     file {'/etc/dpp':
