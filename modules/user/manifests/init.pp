@@ -1,6 +1,6 @@
 class user::common {
-    $users = hiera_hash('users',{})
-    $groups = hiera_hash('groups',{})
+    $users = lookup('users',undef,undef,{})
+    $groups = lookup('groups',undef,undef,{})
 
     create_resources('@user',$users)
     create_resources('@group',$groups)
