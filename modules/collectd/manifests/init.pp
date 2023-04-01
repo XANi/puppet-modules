@@ -168,3 +168,10 @@ define collectd::plugin::perl {
         content => template('collectd/p/perl.conf'),
     }
 }
+class collectd::plugin::sensors (
+    $ignored_sensors = [],
+) {
+    collectd::conf { "sensors":
+        content => template('collectd/p/sensors.conf'),
+    }
+}
