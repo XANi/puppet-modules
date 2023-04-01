@@ -18,6 +18,7 @@ class vmetrics::common (
         home    => '/opt/vmetrics',
     }
     file { '/opt/vmetrics/bin':
+        ensure => 'directory',
         owner => 'vmetrics',
         group => 'vmetrics',
         mode => "750",
