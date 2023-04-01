@@ -1,0 +1,24 @@
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+[Unit]
+Description=VictoriaMetrics vminsert
+After=syslog.target network.target
+
+
+[Service]
+Type=simple
+User=vmetrics
+Group=vmetrics
+WorkingDirectory=/opt/vmetrics
+ExecStart=/opt/vmetrics/bin/vmselect-prod \
+    -pushmetrics.extraLabel='host=\"%H\",service=\"%p\"' \
+    -pushmetrics.url=http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/import/prometheus \
+    -storageNode <%= @storage_nodes.join(',') %> \
+    -selectNode <%= @storage_nodes.join(',') %> \
+    -cacheDataPath "<%= @path %>/cache" \
+    -replicationFactor <%= @replication_factor %> \
+    -dedup.minScrapeInterval=1s
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

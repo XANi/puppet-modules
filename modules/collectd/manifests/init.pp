@@ -8,7 +8,7 @@ class collectd::common (
     user { "collectd":
         system => true,
         managehome => false,
-        home =>  "/var/lib/collectd/home", # dummy
+        home =>  "/var/lib/collectd/home",
     }
 #    # some plugins get wonky sadly (mqtt in 5.7 have problems reconnecting)
 #    cron { 'restart-collectd':
