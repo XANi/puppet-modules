@@ -1,0 +1,17 @@
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+[Unit]
+Description=VictoriaMetrics vminsert
+After=syslog.target network.target
+
+
+[Service]
+Type=simple
+User=vmetrics
+Group=vmetrics
+WorkingDirectory=/opt/vmetrics
+ExecStart=/opt/vmetrics/bin/collectd2metric -listen-addr 127.0.0.1:3002 --config-file /opt/vmetrics/cfg/config.yaml
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

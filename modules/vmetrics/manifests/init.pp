@@ -113,3 +113,14 @@ class vmetrics::insert (
         enable => true,
     }
 }
+
+class vmetrics::collectd2metric {
+    systemd::service { 'collectd2metric':
+        content => template('vmetrics/collectd2metric.service'),
+        notify => Service['collectd2metric'],
+    }
+    service { "collectd2vmetrics":
+        ensure => running,
+        enable => true,
+    }
+}
