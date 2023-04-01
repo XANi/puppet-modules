@@ -15,6 +15,7 @@ ExecStart=/opt/vmetrics/bin/vminsert-prod \
     -pushmetrics.url=http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/import/prometheus \
     -influxSkipSingleField \
     -replicationFactor <%= @replication_factor %> \
+    -opentsdbHTTPListenAddr 127.0.0.1:4242 \
     -sortLabels
 
 
