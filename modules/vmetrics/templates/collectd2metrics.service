@@ -1,6 +1,6 @@
 # <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
 [Unit]
-Description=VictoriaMetrics vminsert
+Description=collectd2metrics converter
 After=syslog.target network.target
 
 
@@ -9,7 +9,7 @@ Type=simple
 User=vmetrics
 Group=vmetrics
 WorkingDirectory=/opt/vmetrics
-ExecStart=/opt/vmetrics/bin/collectd2metric -listen-addr 127.0.0.1:3002 --config-file /opt/vmetrics/cfg/config.yaml
+ExecStart=/opt/vmetrics/bin/collectd2metrics -listen-addr 127.0.0.1:3002 --config-file /opt/vmetrics/cfg/config.yaml
 Restart=always
 RestartSec=30
 
