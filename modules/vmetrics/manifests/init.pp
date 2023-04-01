@@ -119,7 +119,7 @@ class vmetrics::collectd2metric {
         content => template('vmetrics/collectd2metric.service'),
         notify => Service['collectd2metric'],
     }
-    service { "collectd2vmetrics":
+    service { "collectd2metric":
         ensure => running,
         enable => true,
     }
