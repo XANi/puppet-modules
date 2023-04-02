@@ -157,6 +157,16 @@ class collectd::plugin::perl::common (
     $interval = 2.0,
     $timeout = 1.9,
 ) {
+    file { [
+        '/etc/collectd/perl',
+        '/etc/collectd/perl/Collectd',
+        '/etc/collectd/perl/Collectd/Plugins',
+    ]:
+        ensure => directory,
+        owner => 'root',
+        group => 'root',
+        mode => "750",
+    }
     collectd::conf { "perl_common":
         content => template('collectd/p/perl_common.conf'),
         prio => 500,
@@ -164,6 +174,11 @@ class collectd::plugin::perl::common (
 }
 define collectd::plugin::perl {
     include collectd::plugin::perl::common
+    file { "/etc/collectd/perl/Collectd/Plugins/${title}.pm":
+        source => "puppet:///modules/collectd/perl/${title}.pm",
+        owner => "root",
+        mode => "640",
+    }
     collectd::conf { "perl_${title}":
         content => template('collectd/p/perl.conf'),
     }
