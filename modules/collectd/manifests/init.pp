@@ -64,7 +64,14 @@ class collectd::common (
             'lm-sensors',
             'libatasmart4',
         ])
+        if $processors['models'][0] =~ /Intel/ {
+            file { '/etc/modules-load.d/collectd-msr.conf':
+                content => "msr\n",
+                owner   => root,
+            }
+        }
     }
+
 }
 
 define collectd::conf(
