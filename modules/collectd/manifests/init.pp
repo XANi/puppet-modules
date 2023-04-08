@@ -27,6 +27,11 @@ class collectd::common (
         recurse => true,
         force => true,
     }
+    file { '/etc/collectd/collectd.conf.d/local.conf':
+        replace => false,
+        owner   => root,
+        mode => "644",
+    }
     service { 'collectd':
         ensure => running,
         enable => true,
