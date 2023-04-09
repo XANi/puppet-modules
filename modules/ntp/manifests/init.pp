@@ -27,6 +27,7 @@ class ntp::chrony (
         ensure => absent,
 
     }
+    collectd::plugin::load {'chrony':;}
 }
 
 
