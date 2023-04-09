@@ -25,6 +25,7 @@ class common::utils {
         'xfsprogs',
         'apt-transport-https',
         'zile',
+        'zstd',
     ])
 
 }
