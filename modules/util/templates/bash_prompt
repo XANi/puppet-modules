@@ -118,7 +118,7 @@ export PS1="${TERMTITLE}${PROMPT_NO_HOST}\[${PROMPT_LOAD_COLOR}\]${TIME}${PROMPT
 
 export PATH="/usr/kerberos/sbin:/usr/kerberos/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 <%= scope.function_template(['common/sh-alias-portable']) %>
-i
+
 
 chmod go-rwx ~/.saved >/dev/null 2>&1
 
