@@ -164,6 +164,11 @@ define collectd::plugin::ping {
         content => template('collectd/p/ping.conf'),
     }
 }
+class collectd::plugin::virt {
+    collectd::conf { "virt":
+        content => template('collectd/p/virt.conf'),
+    }
+}
 
 class collectd::plugin::perl::common (
     $interval = 2.0,
