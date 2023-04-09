@@ -117,33 +117,8 @@ export PROMPT_EXIT_COLOR='\033[1;33m'
 export PS1="${TERMTITLE}${PROMPT_NO_HOST}\[${PROMPT_LOAD_COLOR}\]${TIME}${PROMPT_USER}${PROMPT_HOSTNAME}:$PROMPT_DIR${PROMPT_GIT}\[$PROMPT_EXIT_COLOR\]\$_RES_STR${PROMPT_END}"
 
 export PATH="/usr/kerberos/sbin:/usr/kerberos/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
-
-if [ -e /etc/redhat-release ] ; then # yum is yuck
-    alias apt-get="yum"
-    alias aptitude="yum"
-    alias apt-cache="yum"
-fi
-alias d="if [ -e .svn ] ; then svn diff | colordiff |less -R ; else git diff --word-diff ; fi"
-alias g='git'
-alias s='svn'
-alias svn-addprop="svn propset svn:keywords \"Revision LastChangedBy Date URL\""
-alias man="LC_ALL=C man"
-alias kj="killall -9 java"
-alias ll='ls -l --color=auto'
-alias ls='ls --color=auto'
-if [ -e /bin/systemctl ] || [ -e /usr/bin/systemctl ] ; then
-    alias sctl='systemctl'
-    alias stop='systemctl stop'
-    alias start='systemctl start'
-    alias ena='systemctl enable'
-    alias dis='systemctl disable'
-    alias re='systemctl restart'
-    alias rl='systemctl reload'
-    alias reload='systemctl reload'
-    alias s='systemctl -l status -n 20'
-    alias st='systemctl -l status -n 20'
-    alias log='journalctl -a -e -n10000 -u'
-fi
+<%= scope.function_template(['common/sh-alias-portable']) %>
+i
 
 chmod go-rwx ~/.saved >/dev/null 2>&1
 

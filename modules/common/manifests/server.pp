@@ -24,6 +24,7 @@ class common::server (
     include user::common
     include motd
     include util::tmpreaper
+    include tmux
     if $backup {
         include bareos::fd
     }
