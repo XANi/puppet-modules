@@ -13,6 +13,20 @@ my $page_size = 4096;
 
 
 sub ksm_read {
+    # how many unique deduped pages there are
+    if ( -e '/sys/kernel/mm/ksm/pages_shared') {
+        my $data = read_file('/sys/kernel/mm/ksm/pages_shared');
+        chomp($data);
+        plugin_dispatch_values {
+            values              => [ $data * $page_size ],
+                # interval => plugin_get_interval(),
+                # host => "localhost",
+                plugin          => "ksm",
+                type            => "bytes",
+                type_instance   => 'shared',
+        };
+    }
+    # how much that saved
     if ( -e '/sys/kernel/mm/ksm/pages_sharing') {
         my $data = read_file('/sys/kernel/mm/ksm/pages_sharing');
         chomp($data);
