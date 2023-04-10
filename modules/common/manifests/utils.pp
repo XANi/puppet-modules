@@ -25,7 +25,7 @@ class common::utils {
         'xfsprogs',
         'apt-transport-https',
         'zile',
-        'zstd',
+        'zstd', # kernel uses it to make images smaller
     ])
 
 }
