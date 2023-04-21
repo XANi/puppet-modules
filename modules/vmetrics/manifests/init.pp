@@ -128,6 +128,17 @@ class vmetrics::insert (
     }
 }
 
+class vmetrics::agent (
+) {
+    include vmetrics::common
+    file { '/var/lib/vmetrics/agent':
+        ensure => directory,
+        owner  => vmetrics,
+        group  => vmetrics,
+        mode   => "750",
+    }
+}
+
 class vmetrics::collectd2metrics {
     systemd::service { 'collectd2metrics':
         content => template('vmetrics/collectd2metrics.service'),
@@ -138,3 +149,4 @@ class vmetrics::collectd2metrics {
         enable => true,
     }
 }
+

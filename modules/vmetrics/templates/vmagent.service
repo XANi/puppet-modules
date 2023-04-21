@@ -1,0 +1,23 @@
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+[Unit]
+Description=VictoriaMetrics vmagent
+After=syslog.target network.target
+
+
+[Service]
+Type=simple
+User=vmetrics
+Group=vmetrics
+WorkingDirectory=/opt/vmetrics
+ExecStart=/opt/vmetrics/bin/vmagent \
+    -remoteWrite.maxDiskUsagePerURL=500MB \
+    -memory.allowedBytes=100MB \
+    -remoteWrite.tmpDataPath=/var/lib/vmetrics/agent \
+    -remoteWrite.url=http://127.0.0.1:8480/insert/999:0/api/v1/write \
+    -promscrape.config=/opt/vmetrics/cfg/scrape.yaml
+
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
