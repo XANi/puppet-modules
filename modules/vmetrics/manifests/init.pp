@@ -12,41 +12,56 @@
 class vmetrics::common (
 ) {
     # TODO autoinstall
-    user {'vmetrics':
+    user { 'vmetrics':
         system  => true,
         comment => 'VictoriaMetrics',
         home    => '/opt/vmetrics',
     }
     file { '/opt/vmetrics/bin':
-        ensure => 'directory',
-        owner => 'vmetrics',
-        group => 'vmetrics',
-        mode => "750",
+        ensure  => 'directory',
+        owner   => 'vmetrics',
+        group   => 'vmetrics',
+        mode    => "750",
         require => User['vmetrics'],
     }
     # remember to change checksums too!
-    $version='1.89.1'
+    $version = '1.89.1'
     archive { '/opt/vmetrics/utils.tar.gz':
-        source => "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${version}/vmutils-linux-amd64-v${version}.tar.gz",
-        checksum => '967ac15c48874fba2e0ee673b6d1437566590fc85fce46bdbff47c9029f3a9af',
+        source        => "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${version}/vmutils-linux-amd64-v${version}.tar.gz",
+        checksum      => '967ac15c48874fba2e0ee673b6d1437566590fc85fce46bdbff47c9029f3a9af',
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
-        creates => '/opt/vmetrics/bin/vmagent-prod',
-        cleanup => true,
-        require => File['/opt/vmetrics/bin'],
+        creates       => '/opt/vmetrics/bin/vmagent-prod',
+        cleanup       => true,
+        require       => File['/opt/vmetrics/bin'],
     }
     archive { '/opt/vmetrics/cluster.tar.gz':
-        source => "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${version}/victoria-metrics-linux-amd64-v${version}-cluster.tar.gz",
-        checksum => '9b5e53054607f758205e978befd53be49d6eee28c03151d749684e0aa673feeb',
+        source        => "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${version}/victoria-metrics-linux-amd64-v${version}-cluster.tar.gz",
+        checksum      => '9b5e53054607f758205e978befd53be49d6eee28c03151d749684e0aa673feeb',
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
-        cleanup => true,
-        creates => '/opt/vmetrics/bin/vmstorage-prod',
-        require => File['/opt/vmetrics/bin'],
+        cleanup       => true,
+        creates       => '/opt/vmetrics/bin/vmstorage-prod',
+        require       => File['/opt/vmetrics/bin'],
+    }
+    [
+        'vmagent-prod',
+        'vmalert-prod',
+        'vmauth-prod',
+        'vmbackup-prod',
+        'vmctl-prod',
+        'vminsert-prod',
+        'vmrestore-prod',
+        'vmselect-prod',
+        'vmstorage-prod',
+    ].each |$f| {
+        file { "/opt/vmetrics/bin/${f}": target => "/opt/vmetrics/bin/${f}.prod" }
     }
 }
+
+
 class vmetrics::select (
     Array $storage_nodes,
     Integer $replication_factor=1,
@@ -96,7 +111,6 @@ class vmetrics::storage (
         ensure => running,
         enable => true,
     }
-
     include vmetrics::common
 }
 

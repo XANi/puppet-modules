@@ -10,7 +10,7 @@ Type=simple
 User=vmetrics
 Group=vmetrics
 WorkingDirectory=/opt/vmetrics
-ExecStart=/opt/vmetrics/bin/vmstorage-prod \
+ExecStart=/opt/vmetrics/bin/vmstorage \
     -pushmetrics.extraLabel='host=\"%H\",service=\"%p\"' \
     -pushmetrics.url=http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/import/prometheus \
     -storageDataPath "<%= @path %>/data" \
