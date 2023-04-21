@@ -137,6 +137,14 @@ class vmetrics::agent (
         group  => vmetrics,
         mode   => "750",
     }
+    systemd::service { 'vmagent':
+        content => template('vmetrics/vmagent.service'),
+        notify => Service['vmagent'],
+    }
+    service { "vmagent":
+        ensure => running,
+        enable => true,
+    }
 }
 
 class vmetrics::collectd2metrics {
