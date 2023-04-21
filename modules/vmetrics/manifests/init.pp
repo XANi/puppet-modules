@@ -47,17 +47,17 @@ class vmetrics::common (
         require       => File['/opt/vmetrics/bin'],
     }
     [
-        'vmagent-prod',
-        'vmalert-prod',
-        'vmauth-prod',
-        'vmbackup-prod',
-        'vmctl-prod',
-        'vminsert-prod',
-        'vmrestore-prod',
-        'vmselect-prod',
-        'vmstorage-prod',
+        'vmagent',
+        'vmalert',
+        'vmauth',
+        'vmbackup',
+        'vmctl',
+        'vminsert',
+        'vmrestore',
+        'vmselect',
+        'vmstorage',
     ].each |$f| {
-        file { "/opt/vmetrics/bin/${f}": target => "/opt/vmetrics/bin/${f}.prod" }
+        file { "/opt/vmetrics/bin/${f}": target => "/opt/vmetrics/bin/${f}-prod" }
     }
 }
 
