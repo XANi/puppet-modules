@@ -19,19 +19,19 @@ repos:
         comment: Main Debian repo - Testing
         location: http://ftp.de.debian.org/debian/
         release: bookworm
-        repos: main non-free contrib
+        repos: main non-free non-free-firmware contrib
 
     main-testing:
         comment: Main Debian repo - Testing
         location: http://ftp.de.debian.org/debian/
         release: testing
-        repos: main non-free contrib
+        repos: main non-free non-free-firmware contrib
 
     main-stable:
         comment: Main Debian repo - Stable
         location: http://ftp.de.debian.org/debian/
         release: bookworm
-        repos: main non-free contrib
+        repos: main non-free non-free-firmware contrib
 
     main-bullseye:
         comment: Main Debian repo - Stable
