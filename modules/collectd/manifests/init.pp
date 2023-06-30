@@ -1,6 +1,7 @@
 class collectd::common (
     $version = "installed",
     $interval = 10,
+    $run = true,
 ) {
     package {"collectd":
         ensure => $version,
@@ -33,8 +34,11 @@ class collectd::common (
         mode => "644",
     }
     service { 'collectd':
-        ensure => running,
-        enable => true,
+        ensure => $run ? {
+            true  => running,
+            false => stopped,
+        },
+        enable => $run,
     }
     # file { '/usr/share/collectd/types.db':
     #     source   => "puppet:///modules/collectd/types.db",
