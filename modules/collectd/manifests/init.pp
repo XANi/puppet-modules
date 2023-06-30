@@ -85,7 +85,7 @@ define collectd::conf(
     $prio = 1000,
 ) {
     $padded_prio = sprintf('%04d', $prio)
-
+    include collectd::common
     if !$content and !$source {
         fail('need $content or $source')
     }
