@@ -36,9 +36,12 @@ class collectd::common (
     service { 'collectd':
         ensure => $run ? {
             true  => running,
-            false => stopped,
+            false => undef,
         },
         enable => $run,
+    }
+    if !$run {
+        notify{"collectd autostart disabled":;}
     }
     # file { '/usr/share/collectd/types.db':
     #     source   => "puppet:///modules/collectd/types.db",
