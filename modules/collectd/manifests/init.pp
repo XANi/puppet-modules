@@ -214,3 +214,17 @@ class collectd::plugin::sensors (
         content => template('collectd/p/sensors.conf'),
     }
 }
+
+class collectd::plugin::turbostat {
+    file { '/usr/local/bin/collectd_turbostat.pl':
+        source => 'puppet://puppet/modules/collectd/collectd_turbostat.pl',
+        mode => "0755",
+        owner => "root",
+        notify => Service['collectd'],
+    }
+    # need sudo on turbostat
+    collectd::plugin::exec { 'turbostat':
+        command => '/usr/local/bin/collectd_turbostat.pl',
+        user    => 'collectd',
+    }
+}
