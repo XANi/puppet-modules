@@ -217,7 +217,7 @@ class collectd::plugin::sensors (
 
 class collectd::plugin::turbostat {
     file { '/usr/local/bin/collectd_turbostat.pl':
-        source => 'puppet://puppet/modules/collectd/collectd_turbostat.pl',
+        source => 'puppet:///modules/collectd/collectd_turbostat.pl',
         mode => "0755",
         owner => "root",
         notify => Service['collectd'],
