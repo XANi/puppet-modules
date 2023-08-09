@@ -19,12 +19,13 @@ define network::if (
     $vendor = false,
     $client = false,
     $dhcp_hostname = false,
+    $extra = {},
 )   {
     require network
     $filename = regsubst($title,'[^a-zA-Z0-9_-]{1}','_','G')
 
     # so we can easily use shortcuts and add/rename/del vars without touching erbs
-    $keys = {
+    $keys_c = {
         address     => $addr,
         hwaddress   => $hwaddr,
         netmask     => $netmask,
@@ -37,6 +38,7 @@ define network::if (
         client      => $client,
         hostname    => $dhcp_hostname,
     }
+    $keys = $keys_c + $extra
     file {"/etc/network/interfaces.d/$filename":
         content => template("network/if-debian"),
         mode => "644",
