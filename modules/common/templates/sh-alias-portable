@@ -2,6 +2,7 @@
 
 alias d="git diff --word-diff --no-prefix"
 alias df="df -P -h"
+alias di="dig +noall +answer"
 alias g='git'
 alias ack='ag -U'
 alias man="LC_ALL=C man"
