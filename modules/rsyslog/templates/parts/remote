@@ -1,0 +1,5 @@
+# puppet managed template, for more info 'puppet-find-resources $filename'
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+
+*.* action(type="omfwd" target="<%= @params['host'] %>" port="514" protocol="udp")
+<% %>
