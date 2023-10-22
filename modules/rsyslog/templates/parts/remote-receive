@@ -4,15 +4,17 @@
 $template RemoteLog,"/var/log/remote/%fromhost%/%syslogfacility-text%.log"
 $template RemoteLogChain,"/var/log/remote/%fromhost%-%hostname%/%syslogfacility-text%.log"
 
-# for direct hosts
-if (
-    ($fromhost-ip != '127.0.0.1')
-    and ($fromhost == $hostname) )
-then -?RemoteLog;RSYSLOG_FileFormat
-& stop
-
 # hosts chained thru another syslog
 if (
     ($fromhost-ip != '127.0.0.1') )
 then -?RemoteLogChain;RSYSLOG_FileFormat
 & stop
+
+if ( ($inputname == 'imudp'))
+then -?RemoteLog;RSYSLOG_FileFormat
+& stop
+
+if ( ($inputname == 'imtcp'))
+then -?RemoteLog;RSYSLOG_FileFormat
+& stop
+
