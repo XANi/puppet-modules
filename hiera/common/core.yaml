@@ -21,6 +21,12 @@ repos:
         release: bookworm
         repos: main non-free non-free-firmware contrib
 
+    main-trixie:
+        comment: Main Debian repo - Testing
+        location: http://ftp.de.debian.org/debian/
+        release: trixie
+        repos: main non-free non-free-firmware contrib
+
     main-testing:
         comment: Main Debian repo - Testing
         location: http://ftp.de.debian.org/debian/
