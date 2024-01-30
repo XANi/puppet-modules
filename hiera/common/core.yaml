@@ -1,4 +1,11 @@
 ---
+# deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+# deb-src http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+
+# bookworm-updates, to get updates before a point release is made;
+# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
+# deb http://ftp.pl.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+
 repos:
     main-squeeze:
         comment: Main Debian repo - Squeeze
@@ -214,7 +221,7 @@ repos:
         release: /
         repos: ""
         key:
-            id: 91DA1DC3564AE20A76C4CA88E01957D6C9FED482
+            id: 82834CF002D89BA55C1ED0AA42DA24A6DFEF9127
             source: /etc/apt/gpg-keys-puppet/bareos.pub
     elk-7.x:
         comment: ELK packages
