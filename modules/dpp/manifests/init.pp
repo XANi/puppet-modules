@@ -8,7 +8,7 @@ class dpp (
     $mq_url = "tcp://127.0.0.1", #tls:// for encrypted, add user:pass@ before hostname
 ) {
     $manager_url = lookup('manager_url',undef,undef,false)
-    $repo_config = lookup('repo')
+    $repo_config = lookup('dpp::repo')
 
     file {'/etc/dpp':
         ensure => directory,
