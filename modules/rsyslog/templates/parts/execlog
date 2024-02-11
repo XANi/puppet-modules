@@ -1,0 +1,18 @@
+# puppet managed template, for more info 'puppet-find-resources $filename'
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+
+template(name="jsonout" type="list" option.jsonf="on") {
+         property(outname="ts" name="timereported" dateFormat="rfc3339" format="jsonf")
+         property(outname="host" name="hostname" format="jsonf")
+         property(outname="severity" name="syslogseverity" caseConversion="upper" format="jsonf" datatype="number")
+         property(outname="facility" name="syslogfacility" format="jsonf" datatype="number")
+         property(outname="tag" name="syslogtag" format="jsonf")
+         property(outname="source" name="app-name" format="jsonf" onEmpty="null")
+         property(outname="message" name="msg" format="jsonf")
+ }
+module(load="omprog")
+action(type="omprog"
+       binary="/usr/local/bin/logger.sqlite"
+       template="jsonout")
+
+
