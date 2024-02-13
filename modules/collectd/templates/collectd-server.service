@@ -5,7 +5,7 @@ Description=collectd server
 
 
 [Service]
-ExecStart=/usr/sbin/collectd -f -C /etc/collectd/collectd-srv.conf
+ExecStart=/usr/sbin/collectd -f -C /etc/collectd/collectd-server.conf
 TimeoutStopSec=30s
 Restart=always
 RestartSec=30s
