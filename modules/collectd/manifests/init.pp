@@ -228,3 +228,18 @@ class collectd::plugin::turbostat {
         user    => 'collectd',
     }
 }
+
+class collectd::server {
+    file { '/etc/collectd/collectd-server.conf':
+        content => template('collectd/collectd-server.conf'),
+        notify => Service['collectd-server'],
+    }
+    systemd::service { 'collectd-server':
+        content => template('collectd/collectd-server.service'),
+        notify => Service['collectd-server'],
+    }
+    service { 'collectd-server':
+        ensure => running,
+        enable => true,
+    }
+}
