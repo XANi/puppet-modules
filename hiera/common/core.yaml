@@ -206,7 +206,7 @@ repos:
         release: stable
         repos: main
         key:
-            id: 0E22EB88E39E12277A7760AE9E439B102CF3C0C6
+            id: B53AE77BADB630A683046005963FA27710458545
             source: /etc/apt/gpg-keys-puppet/grafana.pub
     google-cloud-sdk:
         location: https://packages.cloud.google.com/apt
