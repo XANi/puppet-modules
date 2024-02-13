@@ -230,6 +230,7 @@ class collectd::plugin::turbostat {
 }
 
 class collectd::server {
+    ensure_packages(['libyajl2'])
     file { '/etc/collectd/collectd-server.conf':
         content => template('collectd/collectd-server.conf'),
         notify => Service['collectd-server'],
