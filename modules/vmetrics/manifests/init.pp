@@ -17,7 +17,11 @@ class vmetrics::common (
         comment => 'VictoriaMetrics',
         home    => '/opt/vmetrics',
     }
-    file { '/opt/vmetrics/bin':
+    file {
+        [
+            '/opt/vmetrics',
+            '/opt/vmetrics/bin',
+        ]:
         ensure  => 'directory',
         owner   => 'vmetrics',
         group   => 'vmetrics',
