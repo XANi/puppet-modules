@@ -92,7 +92,8 @@ class vmetrics::select (
 class vmetrics::storage (
     $path='/var/lib/vmetrics',
     $manage_dir=false,
-    $retention="7d"
+    $retention="7d",
+    $data_flush_interval="10s", # 10s is default
 ) {
     if $manage_dir {
         file { $path:
