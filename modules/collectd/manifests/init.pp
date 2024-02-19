@@ -254,6 +254,8 @@ class collectd::ssd {
             "# puppet managed file",
             'collectd ALL=(root) NOPASSWD: /usr/sbin/smartctl',
             'collectd ALL=(root) NOPASSWD: /usr/sbin/nvme',
+            'collectd ALL=(root) NOPASSWD: /sbin/smartctl',
+            'collectd ALL=(root) NOPASSWD: /sbin/nvme',
             ""
         ], "\n"),
         validate_cmd => '/usr/sbin/visudo -c %'
