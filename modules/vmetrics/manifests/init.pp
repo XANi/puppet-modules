@@ -21,6 +21,7 @@ class vmetrics::common (
         [
             '/opt/vmetrics',
             '/opt/vmetrics/bin',
+            '/opt/vmetrics/tmp',
         ]:
         ensure  => 'directory',
         owner   => 'vmetrics',
@@ -36,8 +37,9 @@ class vmetrics::common (
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
-        creates       => '/opt/vmetrics/bin/vmagent-prod',
-        cleanup       => true,
+        temp_dir      => '/opt/vmetrics/tmp',
+        cleanup       => false,
+        #creates       => '/opt/vmetrics/bin/vmagent-prod',
         require       => File['/opt/vmetrics/bin'],
     }
     archive { '/opt/vmetrics/cluster.tar.gz':
@@ -46,8 +48,9 @@ class vmetrics::common (
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
-        cleanup       => true,
-        creates       => '/opt/vmetrics/bin/vmstorage-prod',
+        temp_dir      => '/opt/vmetrics/tmp',
+        cleanup       => false,
+        #creates       => '/opt/vmetrics/bin/vmstorage-prod',
         require       => File['/opt/vmetrics/bin'],
     }
     [

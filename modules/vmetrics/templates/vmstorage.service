@@ -15,6 +15,7 @@ ExecStart=/opt/vmetrics/bin/vmstorage \
     -pushmetrics.url=http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/import/prometheus \
     -storageDataPath "<%= @path %>/data" \
     -retentionPeriod <%= @retention %> \
+    -inmemoryDataFlushInterval 5m \
     -storage.minFreeDiskSpaceBytes "100MB"
 
 
