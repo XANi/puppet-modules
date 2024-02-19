@@ -79,7 +79,7 @@ class vmetrics::select (
     service { "vmselect":
         ensure => running,
         enable => true,
-        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
+        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
     }
     file { "${path}/cache":
         ensure => directory,
@@ -117,7 +117,7 @@ class vmetrics::storage (
     service { "vmstorage":
         ensure => running,
         enable => true,
-        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
+        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
     }
     include vmetrics::common
 }
@@ -133,7 +133,7 @@ class vmetrics::insert (
     service { "vminsert":
         ensure => running,
         enable => true,
-        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
+        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
     }
 }
 
@@ -153,7 +153,7 @@ class vmetrics::agent (
     service { "vmagent":
         ensure => running,
         enable => true,
-        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
+        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
     }
 }
 
