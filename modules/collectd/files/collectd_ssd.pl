@@ -149,8 +149,6 @@ sub print_ssd_status {
         if (!defined($dev_status->{$dev}{'write_bytes'})
             && defined($dev_status->{$dev}{'lba_written'})) {
             $dev_status->{$dev}{'write_bytes'} = $dev_status->{$dev}{'lba_written'} * 512;
-            print  $dev_status->{$dev}{'lba_written'};
-            print "\n"
         }
         close($smart);
         waitpid($pid, 0);
@@ -168,8 +166,14 @@ sub print_ssd_status {
                 carp($@);
                 next;
             }
-            $dev_status->{$dev}{'write_bytes'} ||= $nvme_data->{'data_units_written'};
-            $dev_status->{$dev}{'read_bytes'} ||= $nvme_data->{'data_units_read'};
+            # the unit is "thousand 512 byte sectors"
+            # fuck whichever twat invented it
+            if ($nvme_data->{'data_units_written'}) {
+                $dev_status->{$dev}{'write_bytes'} = $nvme_data->{'data_units_written'} * 512 * 1000;
+            }
+            if ($nvme_data->{'data_units_read'}) {
+                $dev_status->{$dev}{'read_bytes'} = $nvme_data->{'data_units_read'} * 512 * 1000;
+            }
             $dev_status->{$dev}{'media_errors'} ||= $nvme_data->{'media_errors'};
             $dev_status->{$dev}{'error_log_entries'} ||= $nvme_data->{'num_err_log_entries'};
             $dev_status->{$dev}{'power_on_hours'} ||= $nvme_data->{'power_on_hours'};
