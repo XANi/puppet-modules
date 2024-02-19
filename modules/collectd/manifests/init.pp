@@ -244,3 +244,28 @@ class collectd::server {
         enable => true,
     }
 }
+
+class collectd::ssd {
+    ensure_packages(['nvme-cli','libjson-perl','smartmontools'])
+    file { '/etc/sudoers.d/collectd_ssd':
+        mode         => '644',
+        owner        => root,
+        content      => join([
+            "# puppet managed file",
+            'collectd ALL=(root) NOPASSWD: /usr/sbin/smartctl',
+            'collectd ALL=(root) NOPASSWD: /usr/sbin/nvme',
+            ""
+        ], "\n"),
+        validate_cmd => '/usr/sbin/visudo -c %'
+    }
+    file { '/usr/local/bin/collectd_ssd.pl':
+        source => 'puppet:///modules/collectd/collectd_ssd.pl',
+        mode => '755',
+        owner => 'root',
+    }
+    collectd::plugin::exec { 'ssd':
+        command => '/usr/local/bin/collectd_ssd.pl',
+        user    => 'collectd',
+    }
+
+}

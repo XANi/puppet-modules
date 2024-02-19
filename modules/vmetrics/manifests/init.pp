@@ -151,7 +151,7 @@ class vmetrics::agent (
     }
 }
 
-class vmetrics::collectd2metrics {
+class vmetrics::collectd2metrics  {
     systemd::service { 'collectd2metrics':
         content => template('vmetrics/collectd2metrics.service'),
         notify => Service['collectd2metrics'],
