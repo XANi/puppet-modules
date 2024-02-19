@@ -37,8 +37,7 @@ class vmetrics::common (
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
-        temp_dir      => '/opt/vmetrics/tmp',
-        cleanup       => false,
+        cleanup       => false, # so puppet doesn't re-download it, as it needs file to know whether checksum is current
         #creates       => '/opt/vmetrics/bin/vmagent-prod',
         require       => File['/opt/vmetrics/bin'],
     }
@@ -48,7 +47,6 @@ class vmetrics::common (
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
-        temp_dir      => '/opt/vmetrics/tmp',
         cleanup       => false,
         #creates       => '/opt/vmetrics/bin/vmstorage-prod',
         require       => File['/opt/vmetrics/bin'],
@@ -81,6 +79,7 @@ class vmetrics::select (
     service { "vmselect":
         ensure => running,
         enable => true,
+        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
     }
     file { "${path}/cache":
         ensure => directory,
@@ -117,6 +116,7 @@ class vmetrics::storage (
     service { "vmstorage":
         ensure => running,
         enable => true,
+        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
     }
     include vmetrics::common
 }
@@ -132,6 +132,7 @@ class vmetrics::insert (
     service { "vminsert":
         ensure => running,
         enable => true,
+        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
     }
 }
 
@@ -151,6 +152,7 @@ class vmetrics::agent (
     service { "vmagent":
         ensure => running,
         enable => true,
+        subscribe => Archive['opt/vmetrics/cluster.tar.gz'],
     }
 }
 
