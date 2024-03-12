@@ -84,7 +84,7 @@ class collectd::common (
         }
     }
     $::disks.each |$n,$disk| {
-        if $disk['type'] == 'ssd' and !defined($has_ssd) {
+        if $disk['type'] == 'ssd' and !$has_ssd {
             $has_ssd=1
         }
     }
