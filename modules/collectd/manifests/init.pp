@@ -83,6 +83,14 @@ class collectd::common (
             }
         }
     }
+    $::disks.each |$disk| {
+        if $disk['type'] == 'ssd' and !defined($has_ssd) {
+            $has_ssd=1
+        }
+    }
+    if $has_ssd == 1 {
+        include collectd::ssd
+    }
 
 }
 
