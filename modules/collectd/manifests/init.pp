@@ -246,7 +246,12 @@ class collectd::server {
 }
 
 class collectd::ssd {
-    ensure_packages(['nvme-cli','libjson-perl','smartmontools'])
+    ensure_packages([
+        'nvme-cli',
+        'libjson-perl',
+        'smartmontools',
+        'libfile-slurp-perl',
+    ])
     file { '/etc/sudoers.d/collectd_ssd':
         mode         => '644',
         owner        => root,

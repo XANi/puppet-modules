@@ -181,7 +181,8 @@ sub print_ssd_status {
             $dev_status->{$dev}{'power_loss'} ||= $nvme_data->{'unsafe_shutdowns'};
             if ($nvme_data->{'avail_spare'})  {
                 $dev_status->{$dev}{'available_spare'} = $nvme_data->{'avail_spare'};
-            } elsif ($nvme_data->{'percent_used'}) {
+            }
+            if ($nvme_data->{'percent_used'}) {
                 $dev_status->{$dev}{'ssd_life_left'} = 100 - $nvme_data->{'percent_used'};
             }
             if($nvme_data->{'temperature'}) {
