@@ -84,6 +84,7 @@ class collectd::common (
         }
     }
     $::disks.each |$n,$disk| {
+        notify{"${n} : ${disk['type']}":;}
         if $disk['type'] == 'ssd' and !$has_ssd {
             $has_ssd=1
         }
