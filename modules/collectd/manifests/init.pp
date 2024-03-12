@@ -83,11 +83,10 @@ class collectd::common (
             }
         }
     }
-    $has_ssd = $::disks.filter |$n,$disk| {
+    $ssds = $::disks.filter |$n,$disk| {
         $disk['type'] == 'ssd'
     }
-    notify {"ssd: ${has_ssd}":;}
-    if $has_ssd {
+    if length($ssds) > 0 {
         include collectd::ssd
     }
 
