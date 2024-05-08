@@ -76,12 +76,6 @@ repos:
         release: squeeze-backports
         repos: main
 
-    crawl:
-        comment: dungeon crawl
-        location: http://crawl.develz.org/debian
-        release: crawl
-        repos: 0.12
-
     spotify:
         comment: Spotify player
         location: http://repository.spotify.com
