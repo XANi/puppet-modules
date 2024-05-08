@@ -1,9 +1,6 @@
 [submodule "modules/vcsrepo"]
 	path = modules/vcsrepo
 	url = https://github.com/puppetlabs/puppetlabs-vcsrepo
-[submodule "modules/puppet-logrotate"]
-	path = modules/logrotate
-	url = https://github.com/efigence/puppet-logrotate
 [submodule "modules/docker"]
 	path = modules/docker
 	url = https://github.com/XANi/garethr-docker.git
@@ -34,3 +31,6 @@
 [submodule "modules/puppet-archive"]
 	path = modules/archive
 	url = https://github.com/voxpupuli/puppet-archive
+[submodule "modules/logrotate"]
+	path = modules/logrotate
+	url = https://github.com/voxpupuli/puppet-logrotate
