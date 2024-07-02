@@ -49,7 +49,7 @@ repos:
     main-stable-security:
         comment: Main Debian repo - Stable
         location: http://deb.debian.org/debian-security/
-        release: bookworm
+        release: bookworm-security
         repos: main non-free non-free-firmware contrib
 
     main-bullseye:
