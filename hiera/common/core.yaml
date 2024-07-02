@@ -46,6 +46,12 @@ repos:
         release: bookworm
         repos: main non-free non-free-firmware contrib
 
+    main-stable-security:
+        comment: Main Debian repo - Stable
+        location: http://deb.debian.org/debian-security/
+        release: bookworm
+        repos: main non-free non-free-firmware contrib
+
     main-bullseye:
         comment: Main Debian repo - Stable
         location: http://ftp.de.debian.org/debian/
