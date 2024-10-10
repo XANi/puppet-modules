@@ -247,3 +247,11 @@ repos:
         key:
             id: DBA36B5181D0C816F630E889D980A17457F6FB06
             source: /etc/apt/gpg-keys-puppet/signal.pub
+    firefox:
+        comment: firefox
+        location: https://packages.mozilla.org/apt
+        release: mozilla
+        repos: main
+        key:
+            id: 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3
+            source: /etc/apt/gpg-keys-puppet/firefox.pub

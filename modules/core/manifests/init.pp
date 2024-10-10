@@ -7,6 +7,7 @@ class core {
     include core::apt::base
     realize Apt::Source['main-stable']
     realize Apt::Source['main-stable-security']
+    realize Apt::Source['firefox']
 
     # for various packages
     package {'lsb-release':
