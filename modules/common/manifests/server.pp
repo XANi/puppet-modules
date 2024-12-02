@@ -3,12 +3,14 @@ class common::server (
     $ntp_server = false,
     $backup = true,
 )  {
-    class { 'apt':
-        purge => {
-            'sources.list'   => true,
-            'sources.list.d' => true,
-            'preferences'    => false,
-            'preferences.d'  => false,
+    if !defined(Class['apt']) {
+        class { 'apt':
+            purge => {
+                'sources.list'   => true,
+                'sources.list.d' => true,
+                'preferences'    => false,
+                'preferences.d'  => false,
+            }
         }
     }
     apt::conf {"no-suggested":
