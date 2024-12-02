@@ -67,7 +67,7 @@ class core::ssdsave {
         rotate_every => 'day',
         minsize => '1M',
         su => true,
-        su_owner => "root",
+        su_user => "root",
         su_group => "adm",
         compress => true,
         sharedscripts => true,
