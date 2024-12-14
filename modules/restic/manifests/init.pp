@@ -42,7 +42,7 @@ class restic::backup::common(
         content => template('restic/restic-maintenance.timer'),
     }
     file { '/usr/local/bin/check_restic_backup':
-        source => 'puppet://puppet/modules/restic/check_restic_backup.sh',
+        source => 'puppet:///modules/restic/check_restic_backup.sh',
         mode   => "755",
         owner  => root,
     }
