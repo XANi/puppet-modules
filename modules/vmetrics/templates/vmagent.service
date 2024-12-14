@@ -13,7 +13,7 @@ ExecStart=/opt/vmetrics/bin/vmagent \
     -remoteWrite.maxDiskUsagePerURL=500MB \
     -memory.allowedBytes=100MB \
     -remoteWrite.tmpDataPath=/var/lib/vmetrics/agent \
-    -remoteWrite.url=http://127.0.0.1:8480/insert/999:0/prometheus/api/v1/write \
+    -remoteWrite.url=http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/write \
     -promscrape.config=/opt/vmetrics/cfg/scrape.yaml
 
 Restart=always
