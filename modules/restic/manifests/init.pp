@@ -20,6 +20,10 @@ class restic::backup::common(
     file { '/etc/restic/env.template':
         content => template('restic/env.template')
     }
+    file { '/etc/restic/env':
+        mode  => "600",
+        owner => root,
+    }
     exec { 'generate-restic-secrets':
         command  => '/etc/restic/init-env.sh',
         require => [File['/etc/restic/init-env.sh'], File['/etc/restic/env.template']],
