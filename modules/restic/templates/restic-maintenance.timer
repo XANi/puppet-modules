@@ -9,7 +9,7 @@ FixedRandomDelay=true
 # run if host was restarted in meantime
 Persistent=true
 #systemd-analyze calendar --iterations=5 *-*-* 3:00 to validate
-OnCalendar=*-*-* 3:00
+OnCalendar=Sun *-*-* 3:00
 Unit=restic-maintenance.service
 
 [Install]
