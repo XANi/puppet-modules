@@ -2,6 +2,7 @@
 # puppet managed template, for more info 'puppet-find-resources $filename'
 # <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
 export PATH="$PATH:/usr/local/bin"
+export HOME=/root
 source /etc/restic/env
 # just in case/for first run
 restic unlock || restic init
