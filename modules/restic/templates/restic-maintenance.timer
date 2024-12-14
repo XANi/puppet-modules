@@ -6,8 +6,8 @@ OnBootSec=5min
 OnUnitActiveSec=5m
 RandomizedDelaySec=3m
 # run if host was restartd in meantime
-# Persistent=true
-# OnCalendar=*-*-* *:*/5:00
+Persistent=true
+OnCalendar=*-*-* *:*/3:00
 Unit=restic-maintenance.service
 
 [Install]
