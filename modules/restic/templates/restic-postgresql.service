@@ -1,5 +1,5 @@
 [Unit]
-Description=restic postgresql [<%= @title %>]
+Description=restic postgresql
 
 [Service]
 Type=oneshot
