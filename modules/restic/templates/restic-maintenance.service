@@ -2,6 +2,6 @@
 Description=restic backup maintenance
 
 [Service]
-Type=simple
+Type=oneshot
 #Restart=always
 ExecStart=/etc/restic/maintenance.sh

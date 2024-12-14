@@ -47,3 +47,19 @@ class restic::backup::common(
         owner  => root,
     }
 }
+
+define restic::backup::file (
+    # verify with systemd-analyze calendar --iterations=5 *-*-* 4:00
+    $schedule =  '*-*-* 4:00',
+    $randomized_delay = "120m",
+    $directory,
+    $extra_flags='',
+    $backup_tag='daily',
+) {
+    systemd::service { "restic-file-${title}":
+        content => template('restic/restic-file.service'),
+    }
+    systemd::timer { "restic-file-${title}":
+        content => template('restic/restic-file.timer'),
+    }
+}

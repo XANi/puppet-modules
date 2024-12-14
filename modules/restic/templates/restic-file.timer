@@ -1,16 +1,15 @@
 [Unit]
-Description=Run restic maintenance
+Description=Run restic file [<%= @title %>]
 
 [Timer]
 #OnBootSec=5min
 #OnUnitActiveSec=5m
-RandomizedDelaySec=120m
-FixedRandomDelay=true
+RandomizedDelaySec=<%= @randomized_delay %>
 # run if host was restarted in meantime
 Persistent=true
 #systemd-analyze calendar --iterations=5 *-*-* 3:00 to validate
-OnCalendar=*-*-* 3:00
-Unit=restic-maintenance.service
+OnCalendar=<%= @schedule %>
+Unit=restic-file-<%= @title %>.service
 
 [Install]
 WantedBy=timers.target
