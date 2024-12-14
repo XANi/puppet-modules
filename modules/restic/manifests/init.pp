@@ -2,6 +2,9 @@ class restic::backup::common(
     $s3_server,
 )  {
     file { '/etc/restic':
+        ensure => directory,
+        force => true,
+        recurse => true,
         owner => 'root',
         mode  => '700'
     }
