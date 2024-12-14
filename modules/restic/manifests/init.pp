@@ -56,6 +56,9 @@ define restic::backup::file (
     $extra_flags='',
     $backup_tag='daily',
 ) {
+    if $title !~ /^[a-zA-Z0-9_\-]+$/ {
+        fail("only alphanumeric plus -_ names for systemd units sake")
+    }
     systemd::service { "restic-file-${title}":
         content => template('restic/restic-file.service'),
     }

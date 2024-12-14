@@ -8,7 +8,7 @@ RandomizedDelaySec=<%= @randomized_delay %>
 # run if host was restarted in meantime
 Persistent=true
 #systemd-analyze calendar --iterations=5 *-*-* 3:00 to validate
-OnCalendar=<%= @schedule %>
+OnCalendar=<%= @backup_schedule %>
 Unit=restic-file-<%= @title %>.service
 
 [Install]
