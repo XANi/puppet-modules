@@ -18,7 +18,7 @@ class restic::backup::common(
         content => template('restic/env.template')
     }
     exec { 'generate-restic-secrets':
-        command  => '/etc/restic-init-env.sh',
+        command  => '/etc/restic/init-env.sh',
         require => [File['/etc/restic/init-env.sh'], File['/etc/restic/env.template']],
         creates  => '/etc/restic/env'
     }
