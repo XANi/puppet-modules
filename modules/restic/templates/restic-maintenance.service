@@ -1,0 +1,7 @@
+[Unit]
+Description=restic backup maintenance
+
+[Service]
+Type=simple
+#Restart=always
+ExecStart=/etc/restic/maintenance.sh

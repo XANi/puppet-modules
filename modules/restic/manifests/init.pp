@@ -1,5 +1,7 @@
 class restic::backup::common(
     $s3_server,
+    $monthly = 3,
+    $weekly = 4,
 )  {
     file { '/etc/restic':
         ensure => directory,
@@ -29,5 +31,14 @@ class restic::backup::common(
         require => [File['/etc/restic/init-env.sh'], File['/etc/restic/env.template']],
         creates  => '/etc/restic/env'
     }
-
+    file { '/etc/restic/maintenance.sh':
+        content => template('restic/maintenance.sh'),
+        mode    => "700",
+    }
+    systemd::service { 'restic-maintenance':
+        content => template('restic/maintenance.service'),
+    }
+    systemd::timer { 'restic-maintenance':
+        content => template('restic/maintenance.timer'),
+    }
 }

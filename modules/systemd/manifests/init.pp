@@ -62,3 +62,25 @@ define systemd::service (
         notify  => Exec["systemd-reload"]
     }
 }
+define systemd::timer (
+    $content = undef,
+    $source  = undef,
+) {
+    include systemd::common
+    if !$content and !$source {
+        $content_c = template("systemd/timer/${title}.conf")
+    }
+    else {
+        $content_c = $content
+    }
+
+    file {"/etc/systemd/system/${title}.timer":
+        content => $content_c,
+        source  => $source,
+        mode    => "644",
+        notify  => Exec["systemd-reload"]
+    }
+    service { "${title}.timer":
+        enable => true,
+    }
+}
