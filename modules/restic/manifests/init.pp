@@ -2,6 +2,7 @@ class restic::backup::common(
     $s3_server,
     $monthly = 3,
     $weekly = 4,
+    $backup_check = true,
 )  {
     file { '/etc/restic':
         ensure => directory,
@@ -46,7 +47,11 @@ class restic::backup::common(
         mode   => "755",
         owner  => root,
     }
+    if $backup_check {
+        monitor::cmd { 'backup': command => "/usr/local/bin/check_restic_backup ${backup_job_count}"; }
+    }
 }
+
 
 define restic::backup::file (
     # verify with systemd-analyze calendar --iterations=5 *-*-* 4:00
