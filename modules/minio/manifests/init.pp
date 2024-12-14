@@ -19,6 +19,12 @@ class minio::server(
         }
     }
     $data_dir = "${base_dir}/data"
+    file { $data_dir:
+        ensure => directory,
+        owner  => $user,
+        group  => $group,
+        mode   => "750",
+    }
     systemd::service {'minio':
         content => template('minio/minio.service');
     }
