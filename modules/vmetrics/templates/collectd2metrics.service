@@ -9,7 +9,7 @@ Type=simple
 User=vmetrics
 Group=vmetrics
 WorkingDirectory=/opt/vmetrics
-ExecStart=/opt/vmetrics/bin/collectd2metrics -listen-addr 127.0.0.1:3002 --config-file /opt/vmetrics/cfg/config.yaml
+ExecStart=/opt/vmetrics/bin/collectd2metrics -listen-addr 127.0.0.1:3002 --config-file /etc/collectd2metrics.yaml
 Restart=always
 RestartSec=30
 

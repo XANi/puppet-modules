@@ -146,5 +146,9 @@ class vmetrics::collectd2metrics  {
         ensure => running,
         enable => true,
     }
+    file { '/etc/collectd2metrics.yaml':
+        content => template('vmetrics/collectd2metrics.yaml'),
+    }
+        
 }
 
