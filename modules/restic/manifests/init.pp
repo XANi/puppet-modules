@@ -73,9 +73,6 @@ class restic::backup::postgresql (
     $extra_flags='',
     $backup_tag='daily',
 ) {
-    if $title !~ /^[a-zA-Z0-9_\-]+$/ {
-        fail("only alphanumeric plus -_ names for systemd units sake")
-    }
     systemd::service { "restic-postgresql-${title}":
         content => template('restic/restic-postgresql.service'),
     }
