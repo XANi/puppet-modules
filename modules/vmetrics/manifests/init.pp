@@ -137,26 +137,6 @@ class vmetrics::insert (
     }
 }
 
-class vmetrics::agent (
-) {
-    include vmetrics::common
-    file { '/var/lib/vmetrics/agent':
-        ensure => directory,
-        owner  => vmetrics,
-        group  => vmetrics,
-        mode   => "750",
-    }
-    systemd::service { 'vmagent':
-        content => template('vmetrics/vmagent.service'),
-        notify => Service['vmagent'],
-    }
-    service { "vmagent":
-        ensure => running,
-        enable => true,
-        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
-    }
-}
-
 class vmetrics::collectd2metrics  {
     systemd::service { 'collectd2metrics':
         content => template('vmetrics/collectd2metrics.service'),
