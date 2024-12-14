@@ -70,6 +70,7 @@ define restic::backup::file (
     systemd::timer { "restic-file-${title}":
         content => template('restic/restic-file.timer'),
     }
+
 }
 class restic::backup::postgresql (
     # verify with systemd-analyze calendar --iterations=5 *-*-* 4:00

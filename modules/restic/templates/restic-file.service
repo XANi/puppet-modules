@@ -5,5 +5,5 @@ Description=restic file [<%= @title %>]
 Type=oneshot
 #Restart=always
 EnvironmentFile=/etc/restic/env
-ExecStart=/usr/local/bin/restic backup --tag <%= @backup_tag %> <%= @extra_flags %> "<%= @directory %>"
+ExecStart=restic backup --tag <%= @backup_tag %> <%= @extra_flags %> "<%= @directory %>"
 
