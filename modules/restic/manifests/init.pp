@@ -8,7 +8,10 @@ class restic::backup::common(
         owner => 'root',
         mode  => '700'
     }
-    stdlib::ensure_packages(['pwgen'])
+    stdlib::ensure_packages([
+        'pwgen',
+        'restic',
+    ])
     file { '/etc/restic/init-env.sh':
         content => template('restic/init-env.sh'),
         mode => "755"
