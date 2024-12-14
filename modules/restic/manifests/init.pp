@@ -73,10 +73,10 @@ class restic::backup::postgresql (
     $extra_flags='',
     $backup_tag='daily',
 ) {
-    systemd::service { "restic-postgresql-${title}":
+    systemd::service { "restic-postgresql":
         content => template('restic/restic-postgresql.service'),
     }
-    systemd::timer { "restic-postgresql-${title}":
+    systemd::timer { "restic-postgresql":
         content => template('restic/restic-postgresql.timer'),
     }
 }
