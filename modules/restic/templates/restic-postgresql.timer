@@ -1,0 +1,15 @@
+[Unit]
+Description=Run restic postgresql [<%= @title %>]
+
+[Timer]
+#OnBootSec=5min
+#OnUnitActiveSec=5m
+RandomizedDelaySec=<%= @randomized_delay %>
+# run if host was restarted in meantime
+Persistent=true
+#systemd-analyze calendar --iterations=5 *-*-* 3:00 to validate
+OnCalendar=<%= @backup_schedule %>
+Unit=restic-postgresql-<%= @title %>.service
+
+[Install]
+WantedBy=timers.target

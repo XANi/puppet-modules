@@ -1,0 +1,8 @@
+[Unit]
+Description=restic postgresql [<%= @title %>]
+
+[Service]
+Type=oneshot
+#Restart=always
+EnvironmentFile=/etc/restic/env
+ExecStart=/bin/bash -c 'sudo -u postgres pg_dumpall  | /usr/local/bin/restic backup --tag <%= @backup_tag %> <%= @extra_flags %> --stdin --stdin-filename postgres.sql'

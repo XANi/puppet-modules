@@ -66,3 +66,21 @@ define restic::backup::file (
         content => template('restic/restic-file.timer'),
     }
 }
+class restic::backup::postgresql (
+    # verify with systemd-analyze calendar --iterations=5 *-*-* 4:00
+    $backup_schedule =  '*-*-* 4:00',
+    $randomized_delay = "30m",
+    $directory,
+    $extra_flags='',
+    $backup_tag='daily',
+) {
+    if $title !~ /^[a-zA-Z0-9_\-]+$/ {
+        fail("only alphanumeric plus -_ names for systemd units sake")
+    }
+    systemd::service { "restic-postgresql-${title}":
+        content => template('restic/restic-postgresql.service'),
+    }
+    systemd::timer { "restic-postgresql-${title}":
+        content => template('restic/restic-postgresql.timer'),
+    }
+}
