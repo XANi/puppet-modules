@@ -36,9 +36,9 @@ class restic::backup::common(
         mode    => "700",
     }
     systemd::service { 'restic-maintenance':
-        content => template('restic/maintenance.service'),
+        content => template('restic/restic-maintenance.service'),
     }
     systemd::timer { 'restic-maintenance':
-        content => template('restic/maintenance.timer'),
+        content => template('restic/restic-maintenance.timer'),
     }
 }
