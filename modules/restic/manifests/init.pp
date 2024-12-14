@@ -51,7 +51,7 @@ class restic::backup::common(
 define restic::backup::file (
     # verify with systemd-analyze calendar --iterations=5 *-*-* 4:00
     $backup_schedule =  '*-*-* 4:00',
-    $randomized_delay = "120m",
+    $randomized_delay = "30m",
     $directory,
     $extra_flags='',
     $backup_tag='daily',
