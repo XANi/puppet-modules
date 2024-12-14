@@ -11,7 +11,7 @@ User=minio
 Group=minio
 Environment=MINIO_ROOT_USER=<%= @access_key %>
 Environment=MINIO_ROOT_PASSWORD=<%= @secret_key %>
-ExecStart=/usr/local/bin/minio server "<%= @minio_server_path %>"
+ExecStart=/usr/local/bin/minio server "<%= @data_dir %>"
 Restart=always
 RestartSec=30
 LimitNOFILE=40000

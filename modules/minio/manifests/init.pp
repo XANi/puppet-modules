@@ -1,7 +1,7 @@
 class minio::server(
     $access_key,
     $secret_key,
-    $data_dir,
+    $base_dir,
     $user,
     $group,
     $manage_user = true
@@ -10,7 +10,7 @@ class minio::server(
         user { $user:
             system     => true,
             shell      => '/bin/false',
-            home       => $data_dir,
+            home       => $base_dir,
             managehome => true,
             gid        => $group,
         }
@@ -18,6 +18,7 @@ class minio::server(
             system => true,
         }
     }
+    $data_dir = "${base_dir}/data"
     systemd::service {'minio':
         content => template('minio/minio.service');
     }
