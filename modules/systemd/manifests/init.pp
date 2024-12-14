@@ -82,5 +82,6 @@ define systemd::timer (
     }
     service { "${title}.timer":
         enable => true,
+        ensure => running,
     }
 }
