@@ -26,7 +26,11 @@ class minio::server(
         mode   => "750",
     }
     systemd::service {'minio':
-        content => template('minio/minio.service');
+        content => template('minio/minio.service'),
+        notify => Service['minio'],
     }
-    service {'minio': ensure => running}
+    service {'minio':
+        ensure => running,
+        enable => true,
+    }
 }
