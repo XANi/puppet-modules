@@ -2,9 +2,9 @@
 Description=Run restic maintenance
 
 [Timer]
-OnBootSec=5min
-OnUnitActiveSec=5m
-RandomizedDelaySec=3m
+#OnBootSec=5min
+#OnUnitActiveSec=5m
+RandomizedDelaySec=120m
 # run if host was restartd in meantime
 Persistent=true
 OnCalendar=*-*-* *:*/3:00
