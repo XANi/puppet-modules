@@ -7,7 +7,7 @@ Type=oneshot
 EnvironmentFile=/etc/restic/env
 ExecStart=restic backup --tag <%= @backup_tag %> \
      <% if @exclude_set %>--exclude-file /etc/restic/exclude-<%= @exclude_set %> <% end %> \
-     <%= @extra_flags %> \
+     --exclude-if-present .nobackup <%= @extra_flags %> \
      "<%= @directory %>"
 
 
