@@ -60,6 +60,7 @@ define restic::backup::file (
     $directory,
     $extra_flags='',
     $backup_tag='daily',
+    $exclude_set = false,
 ) {
     if $title !~ /^[a-zA-Z0-9_\-]+$/ {
         fail("only alphanumeric plus -_ names for systemd units sake")
@@ -85,4 +86,14 @@ class restic::backup::postgresql (
     systemd::timer { "restic-postgresql":
         content => template('restic/restic-postgresql.timer'),
     }
+}
+
+define restic::exclude::set (
+    Array $exclude,
+) {
+    file { "/etc/restic/exclude-${title}":
+        content => inline_template('<%= @exclude.join("\n") + "\n" %>'),
+    }
+
+
 }
