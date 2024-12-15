@@ -4,6 +4,7 @@ Description=restic file [<%= @title %>]
 [Service]
 Type=oneshot
 #Restart=always
+Environment=HOME=/root
 EnvironmentFile=/etc/restic/env
 ExecStart=restic backup --tag <%= @backup_tag %> \
      <% if @exclude_set %>--exclude-file /etc/restic/exclude-<%= @exclude_set %> <% end %> \
