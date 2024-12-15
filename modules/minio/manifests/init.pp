@@ -4,6 +4,7 @@ class minio::server(
     $base_dir,
     $user,
     $group,
+    $api_listen_host='127.0.0.1',
     $manage_user = true
 ) {
     if $manage_user {
