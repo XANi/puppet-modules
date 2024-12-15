@@ -48,7 +48,7 @@ class restic::backup::common(
         owner  => root,
     }
     if $backup_check {
-        if !$backup_job_count {
+        if $backup_job_count == Undef {
             $backup_job_count = 1
         }
         monitor::cmd { 'backup': command => "/usr/local/bin/check_restic_backup ${backup_job_count}"; }
