@@ -131,6 +131,7 @@ class restic::ignoreset::server ($extra = [])  {
         '/run',
         '/sys',
         '/dev',
+        '/var/log',
         '/var/lib/bareos',
         '/var/lib/libvirt/images',
         '/var/lib/docker',
