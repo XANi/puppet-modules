@@ -9,8 +9,8 @@ EnvironmentFile=/etc/restic/env
 ExecStart=restic backup --tag <%= @backup_tag %> \
      <% if @exclude_set %>--exclude-file /etc/restic/exclude-<%= @exclude_set %> <% end %> \
      --exclude-if-present .nobackup <%= @extra_flags %> \
-     --no-scan \
      <% Array(@dir).each do |d| %> "<%= d %>" <% end %>
 <% %>
 # need newer restic than debian stable TODO
 #      --retry-lock 1h \
+#     --no-scan \
