@@ -97,6 +97,27 @@ define restic::exclude::set (
     file { "/etc/restic/exclude-${title}":
         content => inline_template('<%= @exclude.join("\n") + "\n" %>'),
     }
+}
 
-
+class restic::ignoreset::server ($extra = [])  {
+    $x =  [
+        '/dev',
+        '/var/lib/bacula',
+        '/proc',
+        '/tmp',
+        '/var/tmp',
+        '/.journal',
+        '/.fsck',
+        '/var/cache',
+        '/run',
+        '/sys',
+        '/dev',
+        '/var/lib/bareos',
+        '/var/lib/libvirt/images',
+        '/var/lib/docker',
+    ]
+    $set = flatten($x, $extra)
+    restic::exclude::set { 'server':
+        exclude => $set
+    }
 }
