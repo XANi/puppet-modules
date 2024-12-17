@@ -18,7 +18,7 @@ if [ "$backups_in_date" -eq 0 ] ; then
 fi
 if [ "$backups_in_date" -lt $expected ] ; then
     echo "expected $expected backups, got $backups_in_date"
-    restic snapshots --latest 1
+    restic snapshots --latest 1|grep -P "($CURRENT_DATE|$YESTERDAY)"
     exit 1
 else
     echo "all OK: $backups_in_date"
