@@ -11,6 +11,6 @@ ExecStart=restic backup --tag <%= @backup_tag %> \
      --exclude-if-present .nobackup <%= @extra_flags %> \
      --retry-lock 1h \
      --no-scan \
-     "<%= @directory %>"
-
+     <% Array(@dir).each do |d| %> "<%= d %>" <% end %>
+<% %>
 
