@@ -1,0 +1,8 @@
+[Unit]
+Description=restic mariadb
+
+[Service]
+Type=oneshot
+#Restart=always
+EnvironmentFile=/etc/restic/env
+ExecStart=/bin/bash -c 'mysql --all-databases  | restic backup --tag <%= @backup_tag %> <%= @extra_flags %> --stdin --stdin-filename mariadb.sql'

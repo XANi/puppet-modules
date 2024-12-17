@@ -51,7 +51,10 @@ class restic::backup::common(
         if $backup_job_count == Undef {
             $backup_job_count = 1
         }
-        monitor::cmd { 'backup': command => "/usr/local/bin/check_restic_backup ${backup_job_count}"; }
+        monitor::cmd { 'backup':
+            command => "/usr/local/bin/check_restic_backup ${backup_job_count}",
+            user    => 'root',
+        }
     }
 }
 
@@ -91,6 +94,22 @@ class restic::backup::postgresql (
     }
 }
 
+class restic::backup::mariadb (
+    # verify with systemd-analyze calendar --iterations=5 *-*-* 4:00
+    $backup_schedule =  '*-*-* 4:00',
+    $randomized_delay = "30m",
+    $extra_flags='',
+    $backup_tag='daily',
+) {
+    systemd::service { "restic-mariadb":
+        content => template('restic/restic-mariadb.service'),
+    }
+    systemd::timer { "restic-mariadb":
+        content => template('restic/restic-mariadb.timer'),
+    }
+}
+
+
 define restic::exclude::set (
     Array $exclude,
 ) {
@@ -115,6 +134,8 @@ class restic::ignoreset::server ($extra = [])  {
         '/var/lib/bareos',
         '/var/lib/libvirt/images',
         '/var/lib/docker',
+        '/var/lib/mysql',
+        '/var/lib/postgresql',
     ]
     $set = flatten($x, $extra)
     restic::exclude::set { 'server':
