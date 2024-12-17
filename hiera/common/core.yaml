@@ -215,14 +215,6 @@ repos:
         key:
             id: 7F92E05B31093BEF5A3C2D38FEEA9169307EA071
             source: /etc/apt/gpg-keys-puppet/google-cloud-sdk.pub
-    bareos:
-        comment: Bareos
-        location: http://download.bareos.org/current/Debian_12
-        release: /
-        repos: ""
-        key:
-            id: 82834CF002D89BA55C1ED0AA42DA24A6DFEF9127
-            source: /etc/apt/gpg-keys-puppet/bareos.pub
     elk-7.x:
         comment: ELK packages
         location: https://artifacts.elastic.co/packages/7.x/apt

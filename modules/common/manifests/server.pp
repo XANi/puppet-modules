@@ -29,7 +29,7 @@ class common::server (
     include util::tmpreaper
     include tmux
     if $backup {
-        include bareos::fd
+        include restic::backup::common
     }
     include unattended_upgrades
     include debsecan
