@@ -6,11 +6,7 @@ LC_ALL=C
 CURRENT_DATE=$(date "+%F")
 YESTERDAY=$(date "+%F" -d yesterday)
 EXIT=0
-if [ -z "$1" ]; then
-    expected=1
-else
-   expected=$1
-fi
+expected=$(find /etc/restic/jobinfo -type f |wc -l)
 backups_in_date=$(restic snapshots --latest 1|grep -P "($CURRENT_DATE|$YESTERDAY)" |wc -l)
 if [ "$backups_in_date" -eq 0 ] ; then
     echo "no backup found!";

@@ -1,7 +1,12 @@
 [Unit]
 Description=restic backup maintenance
+StartLimitBurst=10
+StartLimitIntervalSec=30m
 
 [Service]
 Type=oneshot
-#Restart=always
+Restart=on-failure
+RestartSec=60s
+TimeoutStartSec=7d
+
 ExecStart=/etc/restic/maintenance.sh

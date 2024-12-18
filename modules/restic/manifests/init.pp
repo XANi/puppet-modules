@@ -4,7 +4,10 @@ class restic::backup::common(
     $weekly = 4,
     $backup_check = true,
 )  {
-    file { '/etc/restic':
+    file { [
+        '/etc/restic',
+        '/etc/restic/jobinfo',
+    ]:
         ensure => directory,
         force => true,
         recurse => true,
@@ -48,11 +51,8 @@ class restic::backup::common(
         owner  => root,
     }
     if $backup_check {
-        if $backup_job_count == Undef {
-            $backup_job_count = 1
-        }
         monitor::cmd { 'backup':
-            command => "/usr/local/bin/check_restic_backup ${backup_job_count}",
+            command => "/usr/local/bin/check_restic_backup",
             user    => 'root',
         }
     }
@@ -77,7 +77,9 @@ define restic::backup::file (
     systemd::timer { "restic-file-${title}":
         content => template('restic/restic-file.timer'),
     }
-
+    file { "/etc/restic/jobinfo/file-${title}":
+        content => "${backup_tag} $dir"
+    }
 }
 class restic::backup::postgresql (
     # verify with systemd-analyze calendar --iterations=5 *-*-* 4:00
@@ -91,6 +93,9 @@ class restic::backup::postgresql (
     }
     systemd::timer { "restic-postgresql":
         content => template('restic/restic-postgresql.timer'),
+    }
+    file { "/etc/restic/jobinfo/postgresql":
+        content => "${backup_tag} postgresql"
     }
 }
 
@@ -107,6 +112,10 @@ class restic::backup::mariadb (
     systemd::timer { "restic-mariadb":
         content => template('restic/restic-mariadb.timer'),
     }
+    file { "/etc/restic/jobinfo/mariadb":
+        content => "${backup_tag} mariadb"
+    }
+
 }
 
 

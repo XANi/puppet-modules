@@ -1,8 +1,14 @@
 [Unit]
 Description=restic mariadb
+StartLimitBurst=10
+StartLimitIntervalSec=30m
 
 [Service]
 Type=oneshot
+Restart=on-failure
+RestartSec=60s
+TimeoutStartSec=7d
+
 #Restart=always
 EnvironmentFile=/etc/restic/env
 ExecStart=/bin/bash -c 'mysqldump --all-databases  | restic backup --tag <%= @backup_tag %> <%= @extra_flags %> --stdin --stdin-filename mariadb.sql'

@@ -1,9 +1,14 @@
 [Unit]
 Description=restic file [<%= @title %>]
+StartLimitBurst=10
+StartLimitIntervalSec=30m
 
 [Service]
 Type=oneshot
-#Restart=always
+Restart=on-failure
+RestartSec=60s
+TimeoutStartSec=7d
+
 Environment=HOME=/root
 EnvironmentFile=/etc/restic/env
 ExecStart=restic backup --tag <%= @backup_tag %> \

@@ -1,8 +1,14 @@
 [Unit]
 Description=restic postgresql
+StartLimitBurst=10
+StartLimitIntervalSec=30m
+
 
 [Service]
 Type=oneshot
-#Restart=always
+Restart=on-failure
+RestartSec=60s
+TimeoutStartSec=7d
+
 EnvironmentFile=/etc/restic/env
 ExecStart=/bin/bash -c 'sudo -u postgres pg_dumpall  | restic backup --tag <%= @backup_tag %> <%= @extra_flags %> --stdin --stdin-filename postgresql.sql'
