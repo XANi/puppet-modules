@@ -24,6 +24,7 @@ if [ "$backups_in_date" -eq 0 ] ; then
     EXIT=2
 elif [ "$backups_in_date" -eq $expected ] ; then
     echo "$backups_in_date backups OK"
+    EXIT=0
 elif [ "$backups_in_date" -lt $expected ] ; then
     echo "expected $expected backups, got $backups_in_date"
     EXIT=1
