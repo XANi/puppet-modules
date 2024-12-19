@@ -56,6 +56,10 @@ class restic::backup::common(
             user    => 'root',
         }
     }
+    tidy { '/etc/systemd/system':
+        matches => ['restic*timer', 'restic*service'],
+        backup  => false,
+    }
 }
 
 
