@@ -16,7 +16,7 @@ YESTERDAY=$(date "+%F" -d yesterday)
 EXIT=3
 expected=$(find /etc/restic/jobinfo -type f |wc -l)
 tmpf=$(mktemp)
-restic snapshots --latest 1|grep -P "($CURRENT_DATE|$YESTERDAY)" >$tmpf
+restic --no-lock snapshots --latest 1|grep -P "($CURRENT_DATE|$YESTERDAY)" >$tmpf
 backups_in_date=$(cat $tmpf |wc -l)
 
 if [ "$backups_in_date" -eq 0 ] ; then
