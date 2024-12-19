@@ -1,6 +1,14 @@
 #!/bin/bash
 # puppet managed
 export PATH="$PATH:/usr/local/bin"
+if [ -z "$1" ] ;then
+    echo "usage: $0 machine_name"
+    exit 2
+fi
+if [ ! -e "/etc/restic/env_$1" ] ; then
+    echo "need file  /etc/restic/env_$1  to exist and contain correct creds"
+    exit 2
+fi
 source "/etc/restic/env_$1"
 LC_ALL=C
 CURRENT_DATE=$(date "+%F")
