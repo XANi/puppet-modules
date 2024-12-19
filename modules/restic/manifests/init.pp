@@ -58,6 +58,7 @@ class restic::backup::common(
     }
     tidy { '/etc/systemd/system':
         matches => ['restic*timer', 'restic*service'],
+        recurse => 1,
         backup  => false,
     }
 }
