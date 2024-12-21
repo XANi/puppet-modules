@@ -11,6 +11,7 @@ class restic::backup::common(
         ensure => directory,
         force => true,
         recurse => true,
+        purge => true,
         owner => 'root',
         mode  => '700'
     }
