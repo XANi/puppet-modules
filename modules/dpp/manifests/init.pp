@@ -70,8 +70,8 @@ class dpp (
             checksum => '6a59198f9a0260d0480c9d152282c614788db904550475c1323199aea6171343',
         },
         'amd64'   => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.5/dpp.amd64',
-            checksum => '2d82b8d70d7985f30b02f7fc4b10af5783fc60e1d2fc1eaeb828114f6a216893',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.6/dpp.amd64',
+            checksum => '346667755ccb2b5cc7f68aee8f96f9a2a2ce71518603cf1af68b7e3c2a2d85d9',
         },
         'arm'     => {
             url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.5/dpp.arm',
