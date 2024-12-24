@@ -5,6 +5,11 @@ if [ -z "$1" ] ;then
     echo "usage: $0 machine_name"
     exit 2
 fi
+expected=$2
+if [ -z "$2" ] ; then
+    expected=1
+fi
+
 if [ ! -e "/etc/restic/env_$1" ] ; then
     echo "need file  /etc/restic/env_$1  to exist and contain correct creds"
     exit 2
@@ -14,7 +19,6 @@ LC_ALL=C
 CURRENT_DATE=$(date "+%F")
 YESTERDAY=$(date "+%F" -d yesterday)
 EXIT=3
-expected=$(find /etc/restic/jobinfo -type f |wc -l)
 tmpf=$(mktemp)
 restic --no-lock snapshots --latest 1|grep -P "($CURRENT_DATE|$YESTERDAY)" >$tmpf
 backups_in_date=$(cat $tmpf |wc -l)
