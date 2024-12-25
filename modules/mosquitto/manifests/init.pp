@@ -1,6 +1,6 @@
 
 class mosquitto::client {
-    ensure_packages(['mosquitto-clients'])
+     stdlib::ensure_packages(['mosquitto-clients'])
 }
 
 class mosquitto::server (
@@ -12,7 +12,7 @@ class mosquitto::server (
     Boolean $manage_password_file = true,
     Variant[Boolean[false],String] $server_cert = false,
 ){
-    ensure_packages(['mosquitto'])
+     stdlib::ensure_packages(['mosquitto'])
     include mosquitto::client
 
     file { '/etc/mosquitto/conf.d/1000-general.conf':

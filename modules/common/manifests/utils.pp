@@ -4,7 +4,7 @@
 #
 class common::utils {
     include util::etckeeper
-    ensure_packages([
+     stdlib::ensure_packages([
         'aptitude',
         'bridge-utils',
         'bwm-ng',

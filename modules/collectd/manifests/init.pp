@@ -71,7 +71,7 @@ class collectd::common (
         notify => Service['collectd'],
     }
     if $virtual == "physical" {
-        ensure_packages([
+         stdlib::ensure_packages([
             'libsensors5',
             'lm-sensors',
             'libatasmart4',
@@ -236,7 +236,7 @@ class collectd::plugin::turbostat {
 }
 
 class collectd::server {
-    ensure_packages(['libyajl2'])
+     stdlib::ensure_packages(['libyajl2'])
     file { '/etc/collectd/collectd-server.conf':
         content => template('collectd/collectd-server.conf'),
         notify => Service['collectd-server'],
@@ -252,7 +252,7 @@ class collectd::server {
 }
 
 class collectd::ssd {
-    ensure_packages([
+     stdlib::ensure_packages([
         'nvme-cli',
         'libjson-perl',
         'smartmontools',

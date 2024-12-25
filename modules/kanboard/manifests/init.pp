@@ -1,5 +1,5 @@
 class kanboard::common {
-    ensure_packages(['php-sqlite3', 'php-gd', 'php-mbstring', 'php-xml','php-zip'])
+     stdlib::ensure_packages(['php-sqlite3', 'php-gd', 'php-mbstring', 'php-xml','php-zip'])
     file { '/etc/cron.daily/kanboard':
         source => 'puppet:///modules/kanboard/cron.sh',
         mode   => "0755",
