@@ -7,7 +7,7 @@ After=network.target
 
 
 [Service]
-ExecStart=/opt/dpp/dpp
+ExecStart=/opt/dpp/dpp --socket-dir /run/dpp
 TimeoutStopSec=30
 Restart=always
 RestartSec=60s
