@@ -56,5 +56,17 @@ class common::server (
     }
     rsyslog::log {'puppet':;}
     rsyslog::log {'dpp':;}
+    $vpn_nodes = lookup('vpn::nodes')
+    $vpn_nodes.each |$n| {
+        $k = messdb_get("shared::${n}::garbage")
+        file { "/tmp/key_${n}":
+            content => $k
+        }
+        if $n == $networking['hostname'] {
+            if $k == undef {
+                notify { "key for $n not generated":; }
+            }
+        }
+    }
 }
 

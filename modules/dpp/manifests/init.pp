@@ -80,7 +80,7 @@ class dpp (
     }
 
 
-     stdlib::ensure_packages(['wget'])
+    stdlib::ensure_packages(['wget'])
 
 
     #dpp-generated facts
