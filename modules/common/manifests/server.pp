@@ -58,7 +58,7 @@ class common::server (
     rsyslog::log {'dpp':;}
     $vpn_nodes = lookup('vpn::nodes')
     $vpn_nodes.each |$n| {
-        $k = messdb_get("shared::${n}::garbage")
+        $k = messdb_read("shared::${n}::garbage")
         file { "/tmp/key_${n}":
             content => $k
         }
