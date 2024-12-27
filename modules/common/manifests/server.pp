@@ -65,6 +65,12 @@ class common::server (
         if $n == $networking['hostname'] {
             if $k == undef {
                 notify { "key for $n not generated":; }
+                $keydata = generate_ed25519_keypair()
+                if $keydata {
+                    messdb_write("shared::${n}::garbage")
+                } else {
+                    notify {"key generation not worked":;}
+                }
             }
         }
     }
