@@ -69,7 +69,7 @@ class common::server (
                     notify { "key for $n not generated":; }
                     $keydata = generate_ed25519_keypair()
                     if $keydata {
-                        messdb_write("shared::${n}::garbage")
+                        messdb_write("shared::${n}::garbage",$keydata)
                     } else {
                         notify { "key generation not worked":; }
                     }
