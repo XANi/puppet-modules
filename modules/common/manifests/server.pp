@@ -62,7 +62,7 @@ class common::server (
         $vpn_nodes.each |$n| {
             $k = messdb_read("shared::${n}::garbage")
             file { "/tmp/key_${n}":
-                content => $k
+                content => inline_template("<%= YAML.dump(@k) %>")
             }
             if $n == $networking['hostname'] {
                 if $k == undef {
