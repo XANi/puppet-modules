@@ -61,8 +61,10 @@ class common::server (
         ensure_packages(['wireguard','wireguard-tools'])
         $vpn_nodes.each |$n| {
             $k = messdb_read("shared::${n}::garbage")
-            file { "/tmp/key_${n}":
-                content => inline_template("<%= YAML.dump(@k) %>")
+            if $k {
+                file { "/tmp/key_${n}":
+                    content => inline_template("<%= YAML.dump(@k) %>")
+                }
             }
             if $n == $networking['hostname'] {
                 if $k == undef {
