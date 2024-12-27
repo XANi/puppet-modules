@@ -57,19 +57,22 @@ class common::server (
     rsyslog::log {'puppet':;}
     rsyslog::log {'dpp':;}
     $vpn_nodes = lookup('vpn::nodes')
-    $vpn_nodes.each |$n| {
-        $k = messdb_read("shared::${n}::garbage")
-        file { "/tmp/key_${n}":
-            content => $k
-        }
-        if $n == $networking['hostname'] {
-            if $k == undef {
-                notify { "key for $n not generated":; }
-                $keydata = generate_ed25519_keypair()
-                if $keydata {
-                    messdb_write("shared::${n}::garbage")
-                } else {
-                    notify {"key generation not worked":;}
+    if $networking['hostname'] in $vpn_nodes {
+        ensure_packages(['wireguard','wireguard-tools'])
+        $vpn_nodes.each |$n| {
+            $k = messdb_read("shared::${n}::garbage")
+            file { "/tmp/key_${n}":
+                content => $k
+            }
+            if $n == $networking['hostname'] {
+                if $k == undef {
+                    notify { "key for $n not generated":; }
+                    $keydata = generate_ed25519_keypair()
+                    if $keydata {
+                        messdb_write("shared::${n}::garbage")
+                    } else {
+                        notify { "key generation not worked":; }
+                    }
                 }
             }
         }
