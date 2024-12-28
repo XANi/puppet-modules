@@ -54,6 +54,10 @@ class common::server (
             minimum_interval => 300,
         }
     }
+    service { 'tinc':
+        ensure => stopped,
+        enable => true,
+    }
     rsyslog::log {'puppet':;}
     rsyslog::log {'dpp':;}
 }
