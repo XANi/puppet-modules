@@ -23,7 +23,7 @@ define wireguard::tunnel (
     }
     service { "wg-quick@${title}":
         ensure => running,
-        enable => true,
+        enable => false,
     }
 
 }
