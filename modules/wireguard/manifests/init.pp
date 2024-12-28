@@ -1,3 +1,7 @@
+class wireguard::common {
+    stdlib::ensure_packages(['wireguard','wireguard-tools'])
+}
+
 define wireguard::tunnel (
     $address,
     $private_key,
@@ -37,7 +41,7 @@ define wireguard::peer (
 
 class wireguard::keyshare(Array $vpn_nodes) {
     if $networking['hostname'] in $vpn_nodes {
-        ensure_packages(['wireguard','wireguard-tools'])
+        stdlib::ensure_packages(['wireguard','wireguard-tools'])
         $vpn_nodes.each |$n| {
             $wg_key = "@wireguard::${n}::pub"
             $pubk = messdb_read($wg_key)
