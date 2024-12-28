@@ -36,3 +36,4 @@ class network::common::debian {
 class network::common::redhat {
     fail("rhel/centos not supported yet")
 }
+
