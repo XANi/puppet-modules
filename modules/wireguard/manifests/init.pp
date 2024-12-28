@@ -40,7 +40,7 @@ define wireguard::peer (
         target => "/etc/wireguard/${tunnel}.conf",
         order   => 1,
         content => template('wireguard/wireguard-peer.conf'),
-        notify => Service["wg-quick@${title}"],
+        notify => Service["wg-quick@${tunnel}"],
     }
 
 }
