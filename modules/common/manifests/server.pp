@@ -60,18 +60,21 @@ class common::server (
     if $networking['hostname'] in $vpn_nodes {
         ensure_packages(['wireguard','wireguard-tools'])
         $vpn_nodes.each |$n| {
-            $k = messdb_read("shared::${n}::garbage")
-            if $k {
+            $wg_key = "@wireguard::${n}::pub"
+            $pubk = messdb_read($wg_key)
+            if $pubk {
                 file { "/tmp/key_${n}":
-                    content => inline_template("<%= YAML.dump(@k) %>")
+                    content => $pubk
                 }
             }
             if $n == $networking['hostname'] {
-                if $k == undef {
+                $privk = messdb_read("wireguard::${n}::keypair")
+                if $pubk == undef or $privk == undef {
                     notify { "key for $n not generated":; }
                     $keydata = generate_ed25519_keypair()
                     if $keydata {
-                        messdb_write("shared::${n}::garbage",$keydata)
+                        messdb_write($wg_key,$keydata['pub'])
+                        messdb_write("wireguard::${n}::keypair",$keydata)
                     } else {
                         notify { "key generation not worked":; }
                     }
