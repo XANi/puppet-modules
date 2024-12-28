@@ -32,7 +32,7 @@ define wireguard::peer (
     $preshared_key = false,
     $endpoint = false,
     Variant[Boolean[false],Integer[0,65535]] $keepalive = false,
-    Array $allowed_ips = []
+    Array $allowed_ips = ["0.0.0.0/0","::/0"]
 ) {
     concat::fragment { "wireguard::${tunnel}::${title}":
         target => "/etc/wireguard/${tunnel}.conf",
