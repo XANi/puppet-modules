@@ -13,11 +13,13 @@ define wireguard::tunnel (
     concat { "/etc/wireguard/${title}.conf":
         owner => 'root',
         mode  => '600',
+        notify => Service["wg-quick@${title}"],
     }
     concat::fragment { "wireguard::${title}::head":
         target => "/etc/wireguard/${title}.conf",
         order   => 0,
         content => template('wireguard/wireguard-base.conf'),
+        notify => Service["wg-quick@${title}"],
     }
     service { "wg-quick@${title}":
         ensure => running,
@@ -38,6 +40,7 @@ define wireguard::peer (
         target => "/etc/wireguard/${tunnel}.conf",
         order   => 1,
         content => template('wireguard/wireguard-peer.conf'),
+        notify => Service["wg-quick@${title}"],
     }
 
 }
