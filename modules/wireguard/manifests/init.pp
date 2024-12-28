@@ -1,5 +1,14 @@
 class wireguard::common {
     stdlib::ensure_packages(['wireguard','wireguard-tools'])
+    file { '/etc/wireguard':
+        ensure  => directory,
+        owner   => root,
+        mode    => "700",
+        recurse => true,
+        purge   => true,
+        force   => true,
+        backup  => false,
+    }
 }
 
 define wireguard::tunnel (
