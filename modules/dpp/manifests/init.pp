@@ -62,20 +62,20 @@ class dpp (
 
     $source_map = $os['architecture'] ? {
         'i386'    => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.8/dpp.386',
-            checksum => 'd7ff94fb38c3206940bb06e99fdb87f351094519eee5fba5cbc2847cd1aa8226',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.2.0/dpp.386',
+            checksum => '12bdfb8179f3194594f0772fad807a5cfa81c9d13340550045448efe2cd5efcd',
         },
         'aarch64' => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.8/dpp.aarch64',
-            checksum => 'f4cdacefb14af6d8d2da3f656cedb349dfb01a5dcf90cac8b1a53b1182b9b4c9',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.2.0/dpp.aarch64',
+            checksum => '59b9eb59142c69f673215a09f121427d65f9cb4b487896e0f977e6d0a2b3ed39',
         },
         'amd64'   => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.8/dpp.amd64',
-            checksum => 'c9b4b2bec023905a050179a5e6e6b8bada3f0bb7cbd100505be88385f75649e5',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.2.0/dpp.amd64',
+            checksum => 'd6468d0629e22e8c43fc6196714ba09f8ebcf4a564cf43c7f8a9ebb0e9555d27',
         },
         'arm'     => {
-            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.1.8/dpp.arm',
-            checksum => '74bea8ec236ab96922addffcb1b331df2738e4231bc2402e88852685917c6157',
+            url      => 'https://github.com/XANi/go-dpp/releases/download/v0.2.0/dpp.arm',
+            checksum => '5a4fee8a1799d98d24fc38f6fbd4ec91098bfc8154a53b12b5586c5af3b70ada',
         },
     }
 
