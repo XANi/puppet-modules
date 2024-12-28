@@ -1,10 +1,5 @@
 class wireguard::common {
     stdlib::ensure_packages(['wireguard','wireguard-tools','resolvconf'])
-    # wg-quick tries to change DNS even with no DNS server setup
-    file { '/sbin/resolvconf':
-        target  => '/bin/true',
-        replace => false,
-    }
 }
 
 define wireguard::tunnel (
