@@ -1,5 +1,5 @@
 class wireguard::common {
-    stdlib::ensure_packages(['wireguard','wireguard-tools','resolvconf'])
+    stdlib::ensure_packages(['wireguard','wireguard-tools'])
 }
 
 define wireguard::tunnel (
