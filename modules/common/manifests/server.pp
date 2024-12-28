@@ -58,6 +58,9 @@ class common::server (
         ensure => stopped,
         enable => true,
     }
+    package { 'tinc':
+        ensure => absent
+    }
     rsyslog::log {'puppet':;}
     rsyslog::log {'dpp':;}
 }
