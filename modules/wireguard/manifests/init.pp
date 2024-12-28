@@ -19,7 +19,10 @@ define wireguard::tunnel (
         order   => 0,
         content => template('wireguard/wireguard-base.conf'),
     }
-
+    service { "wg-quick@${title}":
+        ensure => running,
+        enable => true,
+    }
 
 }
 
