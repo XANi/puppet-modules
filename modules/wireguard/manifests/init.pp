@@ -45,32 +45,28 @@ define wireguard::peer (
 
 }
 
-class wireguard::keyshare(Array $vpn_nodes) {
-    if $networking['hostname'] in $vpn_nodes {
-        stdlib::ensure_packages(['wireguard','wireguard-tools'])
-        $vpn_nodes.each |$n| {
-            $wg_key = "@wireguard::${n}::pub"
-            $pubk = messdb_read($wg_key)
-            if $pubk {
-                file { "/tmp/key_${n}":
-                    content => $pubk
-                }
+class wireguard::keyshare(Hash $vpn_nodes) {
+    stdlib::ensure_packages(['wireguard','wireguard-tools'])
+    $vpn_nodes.each |$n,$p| {
+        $wg_key = "@wireguard::${n}::pub"
+        $pubk = messdb_read($wg_key)
+        if $pubk {
+            file { "/tmp/key_${n}":
+                content => $pubk
             }
-            if $n == $networking['hostname'] {
-                $privk = messdb_read("wireguard::${n}::keypair")
-                if $pubk == undef or $privk == undef {
-                    notify { "key for $n not generated":; }
-                    $keydata = generate_ed25519_keypair()
-                    if $keydata {
-                        messdb_write($wg_key,$keydata['pub'])
-                        messdb_write("wireguard::${n}::keypair",$keydata)
-                    } else {
-                        notify { "key generation not worked":; }
-                    }
+        }
+        if $n == $networking['hostname'] {
+            $privk = messdb_read("wireguard::${n}::keypair")
+            if $pubk == undef or $privk == undef {
+                notify { "key for $n not generated":; }
+                $keydata = generate_ed25519_keypair()
+                if $keydata {
+                    messdb_write($wg_key,$keydata['pub'])
+                    messdb_write("wireguard::${n}::keypair",$keydata)
+                } else {
+                    notify { "key generation not worked":; }
                 }
             }
         }
-    } else {
-        fail("my node is not in ${vpn_nodes}")
     }
 }
