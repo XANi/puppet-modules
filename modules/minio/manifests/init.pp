@@ -8,6 +8,7 @@ class minio::server(
     $console_address='0.0.0.0:9001',
     $manage_user = true,
     $scanner_speed = 'default',
+    $scanner_cycle = false,
 ) {
     if $manage_user {
         user { $user:
