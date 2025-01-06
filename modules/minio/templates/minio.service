@@ -11,6 +11,7 @@ User=minio
 Group=minio
 Environment=MINIO_ROOT_USER=<%= @access_key %>
 Environment=MINIO_ROOT_PASSWORD=<%= @secret_key %>
+Environment=MINIO_SCANNER_SPEED=<%= @scanner_speed %>
 Environment=MINIO_PROMETHEUS_AUTH_TYPE=public
 ExecStart=/usr/local/bin/minio server --console-address <%= @console_address %> --address <%= @api_listen_host %>:9000  "<%= @data_dir %>"
 Restart=always
