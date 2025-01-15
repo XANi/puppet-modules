@@ -2,7 +2,7 @@ class common::server (
     # serve ntp to others
     $ntp_server = false,
     $backup = true,
-)  {
+) {
     if !defined(Class['apt']) {
         class { 'apt':
             purge => {
@@ -13,7 +13,7 @@ class common::server (
             }
         }
     }
-    apt::conf {"no-suggested":
+    apt::conf { "no-suggested":
         content => 'APT::Install-Suggests "0";'
     }
     include core
@@ -43,21 +43,22 @@ class common::server (
     package { ['apache2', 'apache2-bin']:
         ensure => absent,
     }
-    file {'/usr/local/bin/e':
+    file { '/usr/local/bin/e':
         target => '/usr/bin/zile',
     }
     $interval = 3600 + fqdn_rand(20)
     if !defined(Class['dpp']) {
         class { dpp:
-            manifest_from => 'private',
-            poll_interval => $interval,
+            manifest_from    => 'private',
+            poll_interval    => $interval,
             minimum_interval => 300,
         }
     }
     package { 'tinc':
         ensure => purged,
     }
-    rsyslog::log {'puppet':;}
-    rsyslog::log {'dpp':;}
+    rsyslog::log { 'puppet':; }
+    rsyslog::log { 'dpp':; }
+
 }
 
