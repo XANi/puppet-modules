@@ -1,6 +1,6 @@
 # /etc/default/collectd
 # <%= @puppet_header %>
-# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
 
 # 0: start collectd on boot, 1: do not start collectd on boot
 # default: 0

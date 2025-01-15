@@ -1,5 +1,5 @@
 # default defaults section
-# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
 
 defaults
     log     global

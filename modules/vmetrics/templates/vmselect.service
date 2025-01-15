@@ -1,4 +1,4 @@
-# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
 [Unit]
 Description=VictoriaMetrics vminsert
 After=syslog.target network.target

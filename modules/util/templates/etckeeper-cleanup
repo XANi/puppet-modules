@@ -1,5 +1,5 @@
 #!/bin/bash
 # <%= @puppet_header %>
-# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
 # delete old index (fixing "index file smalled than expected")
 find /etc/.git/index -mtime +2 -type f -delete

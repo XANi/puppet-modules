@@ -10,7 +10,7 @@
 ### END INIT INFO
 
 # <%= @puppet_header %>
-# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 NAME='dpp'

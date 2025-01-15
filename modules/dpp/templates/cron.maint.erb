@@ -1,5 +1,5 @@
 #<%= @puppet_header %>
-# <%=  __FILE__.gsub(/.*?puppet\//,@fqdn + ':') %>
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
 
 REPORTS_DIR='/var/lib/puppet/reports'
 if [ -d $REPORTS_DIR ] ; then
