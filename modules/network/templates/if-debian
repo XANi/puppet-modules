@@ -1,6 +1,5 @@
 # <%= @puppet_header %>
-# <%=  __FILE__.gsub(/.*?(dpp|puppet)\//,@fqdn + ':') %>
-
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
 # <%= @title %> <%= @caller_module_name %> -> <%= @module_name %>
 <% if @boot %>auto <%= @ifname %><% end %>
 <% if @hotplug %>allow-hotplug <%= @ifname %><% end %>
