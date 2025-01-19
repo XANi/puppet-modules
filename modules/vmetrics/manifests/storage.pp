@@ -34,7 +34,7 @@ define vmetrics::storage::instance(
     $listen_addr,
     $vminsert_addr,
     $vmselect_addr,
-    $cache_memory = '1GB',
+    $cache_memory_max = '1GB',
 
 ) {
     require vmetrics::common
