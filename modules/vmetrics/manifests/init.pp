@@ -131,7 +131,7 @@ define vmetrics::snapshot (
 ) {
     include vmetrics::snapshot::common
     cron { "vmetrics-snapshot-${title}":
-        command => "/opt/vmetrics/bin/vmsnapshot.sh ${port} ${title} >>/tmp/vmsnapshot.log 2>&1",
+        command => "/opt/vmetrics/bin/vmsnapshot.sh ${port} ${title} 2>&1 | ts >>/tmp/vmsnapshot.log",
         hour    => 1,
         minute  => fqdn_rand(59, $title),
         user => 'vmetrics',
