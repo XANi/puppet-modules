@@ -44,7 +44,6 @@ define vmetrics::storage::instance(
     $data_path = "${path}/data-${title}"
     $service_name = "vmstorage-${title}"
     $instance = $title
-    $pushmetrics_url = $vmetrics::common::pushmetrics_url
     file { $data_path:
         ensure => directory,
         owner  => vmetrics,
