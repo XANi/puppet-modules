@@ -46,8 +46,8 @@ define vmetrics::storage::instance(
     $pushmetrics_url = $vmetrics::common::pushmetrics_url
     file { $data_path:
         ensure => directory,
-        owner  => victoriametrics,
-        group  => victoriametrics,
+        owner  => vmetrics,
+        group  => vmetrics,
         mode   => "750",
     }
     systemd::service { $service_name:
