@@ -3,7 +3,7 @@
 
 set -x
 PORT=$1
-DIR="/var/lib/victoriametrics/data-${2}/snapshots"
+DIR="/var/lib/vmetrics/data-${2}/snapshots"
 if [ -z "$2" ] ;then
     echo "usage $0 port instance"
     exit 1
