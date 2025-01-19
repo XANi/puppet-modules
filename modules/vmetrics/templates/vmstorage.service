@@ -21,6 +21,7 @@ ExecStart=/opt/vmetrics/bin/vmstorage \
     -vminsertAddr <%= @vminsert_addr %> \
     -vmselectAddr <%= @vmselect_addr %> \
     -memory.allowedBytes <%= @cache_memory_max %> \
+    -snapshotsMaxAge 7d \
     -storage.minFreeDiskSpaceBytes "100MB"
 
 
