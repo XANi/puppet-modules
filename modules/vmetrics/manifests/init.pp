@@ -89,39 +89,6 @@ class vmetrics::select (
     }
 }
 
-class vmetrics::storage (
-    $path='/var/lib/vmetrics',
-    $manage_dir=false,
-    $retention="7d",
-    $data_flush_interval="10s", # 10s is default
-) {
-    if $manage_dir {
-        file { $path:
-            ensure => directory,
-            owner  => vmetrics,
-            group  => vmetrics,
-            mode   => "750",
-        }
-    }
-    $pprof_auth_key =
-    file { "${path}/data":
-        ensure => directory,
-        owner  => vmetrics,
-        group  => vmetrics,
-        mode   => "750",
-    }
-    systemd::service { 'vmstorage':
-        content => template('vmetrics/vmstorage.service'),
-        notify => Service['vmstorage'],
-    }
-    service { "vmstorage":
-        ensure => running,
-        enable => true,
-        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
-    }
-    include vmetrics::common
-}
-
 class vmetrics::insert (
     Array $storage_nodes,
     Integer $replication_factor=1,
