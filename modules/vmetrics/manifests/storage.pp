@@ -37,7 +37,7 @@ define vmetrics::storage::instance(
 
 ) {
     require vmetrics::common
-    require vmetrics::storage
+    include vmetrics::storage
     $path=$::vmetrics::storage::path
 
     $data_path = "${path}/data-${title}"
