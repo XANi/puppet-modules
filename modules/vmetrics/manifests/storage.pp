@@ -1,11 +1,13 @@
-
 class vmetrics::storage (
     $path='/var/lib/vmetrics',
     $manage_dir=false,
     $retention="7d",
     $data_flush_interval="10s", # 10s is default
+    $listen_addr = '0.0.0.0:8482',
+    $vminsert_addr = '0.0.0.0:8400',
+    $vmselect_addr = '0.0.0.0:8401',
 ) {
-    $instance = 'main'
+    include vmetrics::common
     if $manage_dir {
         file { $path:
             ensure => directory,
@@ -14,25 +16,17 @@ class vmetrics::storage (
             mode   => "750",
         }
     }
-    $pprof_auth_key =
-    file { "${path}/data":
-        ensure => directory,
-        owner  => vmetrics,
-        group  => vmetrics,
-        mode   => "750",
-    }
-    systemd::service { 'vmstorage':
-        content => template('vmetrics/vmstorage.service'),
-        notify => Service['vmstorage'],
-    }
-    service { "vmstorage":
-        ensure => running,
-        enable => true,
-        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
-    }
-    include vmetrics::common
-}
 
+    include vmetrics::storage::common
+    vmetrics::storage::instance { 'main':
+        path                => $path,
+        listen_addr         => $listen_addr,
+        retention           => $retention,
+        data_flush_interval => $data_flush_interval,
+        vminsert_addr       => $vminsert_addr,
+        vmselect_addr       => $vmselect_addr,
+    }
+}
 
 define vmetrics::storage::instance(
     $data_flush_interval="1m",
@@ -45,7 +39,9 @@ define vmetrics::storage::instance(
 
 ) {
     require vmetrics::common
-    $path='/var/lib/vmetrics'
+    require vmetrics::storage
+    $path=$::vmetrics::storage::path
+
     $data_path = "${path}/data-${title}"
     $service_name = "vmstorage-${title}"
     $instance = $title
@@ -63,5 +59,6 @@ define vmetrics::storage::instance(
     service { $service_name:
         ensure => running,
         enable => true,
+        subscribe => Archive['/opt/vmetrics/cluster.tar.gz'],
     }
 }

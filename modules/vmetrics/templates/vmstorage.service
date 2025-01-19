@@ -16,6 +16,10 @@ ExecStart=/opt/vmetrics/bin/vmstorage \
     -storageDataPath "<%= @path %>/data" \
     -retentionPeriod <%= @retention %> \
     -inmemoryDataFlushInterval <%= @data_flush_interval %> \
+    -httpListenAddr <%= @listen_addr %> \
+    -vminsertAddr <%= @vminsert_addr %> \
+    -vmselectAddr <%= @vmselect_addr %> \
+    -pushmetrics.url=<%= @pushmetrics_url %> \
     -storage.minFreeDiskSpaceBytes "100MB"
 
 
