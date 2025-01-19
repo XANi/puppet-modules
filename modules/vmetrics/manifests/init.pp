@@ -126,7 +126,13 @@ class vmetrics::snapshot::common {
         owner => 'root',
     }
 }
-define vmetrics::snapshot {
+define vmetrics::snapshot (
+    $port,
+) {
     include vmetrics::snapshot::common
-
+    cron { "vmetrics-snapshot-${title}":
+        command => "/opt/vmetrics/bin/vmsnapshot.sh ${port} ${title} >>/tmp/vmsnapshot.log 2>&1",
+        hour    => 1,
+        minute  => fqdn_rand(59, $title),
+    }
 }

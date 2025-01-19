@@ -1,7 +1,6 @@
 #!/bin/bash
 # puppet managed file
 
-set -x
 PORT=$1
 DIR="/var/lib/vmetrics/data-${2}/snapshots"
 if [ -z "$2" ] ;then
@@ -26,5 +25,3 @@ done
 if   curl -s http://127.0.0.1:8482/snapshot/delete_all | grep -v '"ok"' ; then
   echo "cleaning snapshots failed"
 fi
-
-/var/lib/victoriametrics/data/snapshots
