@@ -121,7 +121,7 @@ class vmetrics::collectd2metrics  {
 
 class vmetrics::snapshot::common {
     file { '/opt/vmetrics/bin/vmsnapshot.sh':
-        source => 'puppet://puppet/modules/vmetrics/vmstorage_snapshot.sh',
+        source => 'puppet:///modules/vmetrics/vmstorage_snapshot.sh',
         mode   => '755',
         owner => 'root',
     }
