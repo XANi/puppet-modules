@@ -17,7 +17,6 @@ class vmetrics::storage (
         }
     }
 
-    include vmetrics::storage::common
     vmetrics::storage::instance { 'main':
         path                => $path,
         listen_addr         => $listen_addr,
