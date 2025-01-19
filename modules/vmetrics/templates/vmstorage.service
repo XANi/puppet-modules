@@ -11,7 +11,7 @@ User=vmetrics
 Group=vmetrics
 WorkingDirectory=/opt/vmetrics
 ExecStart=/opt/vmetrics/bin/vmstorage \
-    -pushmetrics.extraLabel='host=\"%H\",service=\"%p\"' \
+    -pushmetrics.extraLabel='host=\"%H\",service=\"%p\",instance=\"<%= @instance %>\"' \
     -pushmetrics.url=http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/import/prometheus \
     -storageDataPath "<%= @path %>/data" \
     -retentionPeriod <%= @retention %> \
