@@ -1,9 +1,11 @@
+#!/bin/bash
 # puppet managed file
 
+set -x
 PORT=$1
-DIR="${2}/snapshots"
+DIR="/var/lib/victoriametrics/data-${2}/snapshots"
 if [ -z "$2" ] ;then
-    echo "usage $0 port local_path"
+    echo "usage $0 port instance"
     exit 1
 fi
 SNAPSHOT_ID=$(curl -s http://127.0.0.1:${PORT}/snapshot/create | jq -r .snapshot)
@@ -24,3 +26,5 @@ done
 if   curl -s http://127.0.0.1:8482/snapshot/delete_all | grep -v '"ok"' ; then
   echo "cleaning snapshots failed"
 fi
+
+/var/lib/victoriametrics/data/snapshots
