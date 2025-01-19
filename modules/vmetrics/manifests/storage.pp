@@ -18,7 +18,6 @@ class vmetrics::storage (
     }
 
     vmetrics::storage::instance { 'main':
-        path                => $path,
         listen_addr         => $listen_addr,
         retention           => $retention,
         data_flush_interval => $data_flush_interval,
