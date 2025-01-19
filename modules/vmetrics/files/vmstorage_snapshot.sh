@@ -1,9 +1,10 @@
 # puppet managed file
 
 PORT=$1
-DIR=$2
-if [ -z "$a" ] ;then
+DIR="${2}/snapshots"
+if [ -z "$2" ] ;then
     echo "usage $0 port local_path"
+    exit 1
 fi
 SNAPSHOT_ID=$(curl -s http://127.0.0.1:${PORT}/snapshot/create | jq -r .snapshot)
 cd $DIR || exit 1
@@ -11,7 +12,7 @@ if [ ! -e $SNAPSHOT_ID ] ; then
   echo "snapshot failed [$SNAPSHOT_ID]"
   exit 2
 fi
-rm -rf /var/lib/victoriametrics/data/snapshots/current
+rm -rf "${DIR}/current"
 IN=$SNAPSHOT_ID
 OUT=current
 for a in `find -L "$IN"  -type f` ; do
