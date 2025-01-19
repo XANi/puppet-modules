@@ -19,6 +19,7 @@ ExecStart=/opt/vmetrics/bin/vmstorage \
     -httpListenAddr <%= @listen_addr %> \
     -vminsertAddr <%= @vminsert_addr %> \
     -vmselectAddr <%= @vmselect_addr %> \
+    -memory.allowedBytes <%= @cache_memory_max %> \
     -storage.minFreeDiskSpaceBytes "100MB"
 
 
