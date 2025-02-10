@@ -7,6 +7,7 @@ class restic::backup::common(
     file { [
         '/etc/restic',
         '/etc/restic/jobinfo',
+        '/var/spool/restic',
     ]:
         ensure => directory,
         force => true,
