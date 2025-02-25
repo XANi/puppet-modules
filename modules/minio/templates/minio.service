@@ -15,6 +15,9 @@ Environment=MINIO_SCANNER_SPEED=<%= @scanner_speed %>
 <%- if @scanner_cycle -%>
 Environment=MINIO_SCANNER_CYCLE=<%= @scanner_cycle %>
 <%- end -%>
+<%- if @prometheus_url -%>
+Environment=MINIO_PROMETHEUS_URL=<%= @prometheus_url %>
+<%- end -%>
 Environment=MINIO_PROMETHEUS_AUTH_TYPE=public
 ExecStart=/usr/local/bin/minio server --console-address <%= @console_address %> --address <%= @api_listen_host %>:9000  "<%= @data_dir %>"
 Restart=always

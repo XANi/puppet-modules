@@ -9,6 +9,7 @@ class minio::server(
     $manage_user = true,
     $scanner_speed = 'slow',
     $scanner_cycle = false,
+    $prometheus_url = false,
 ) {
     if $manage_user {
         user { $user:
