@@ -30,10 +30,10 @@ class vmetrics::common (
         require => User['vmetrics'],
     }
     # remember to change checksums too!
-    $version = '1.98.0'
+    $version = '1.112.0'
     archive { '/opt/vmetrics/utils.tar.gz':
         source        => "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${version}/vmutils-linux-amd64-v${version}.tar.gz",
-        checksum      => '5b7f47cd4b32a651bf501d33a5a12cc03477a9685f7d419f801a02c7e709411a',
+        checksum      => '57fc797702f43764e26f7f3c6c394dc19ca5a6baf504a598f047d64f2de9bff0',
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
@@ -43,7 +43,7 @@ class vmetrics::common (
     }
     archive { '/opt/vmetrics/cluster.tar.gz':
         source        => "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${version}/victoria-metrics-linux-amd64-v${version}-cluster.tar.gz",
-        checksum      => 'a4ae99a637d79ad35ec86862c1b9892844ac846b88a84279f948bd326d6b4f68',
+        checksum      => '03958ce68263e1ff47a7ea5656da5468922c56ebc0a5c320ca4fe8a210729f40',
         checksum_type => 'sha256',
         extract       => true,
         extract_path  => '/opt/vmetrics/bin',
