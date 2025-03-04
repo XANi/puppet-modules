@@ -247,3 +247,10 @@ repos:
         key:
             id: 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3
             source: /etc/apt/gpg-keys-puppet/firefox.pub
+    microsoft:
+        location: https://packages.microsoft.com/debian/12/prod
+        release: "%{::lsbdistcodename}"
+        repos: main
+        key:
+            id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
+            source: /etc/apt/gpg-keys-puppet/microsoft-prod.pub
