@@ -227,7 +227,7 @@ repos:
         comment: QOwnNotes
         location: http://download.opensuse.org/repositories/home:/pbek:/QOwnNotes/Debian_11/
         release: /
-        repos: ""
+        repos: " "
         key:
             id: F2205FB121DF142B31450865A3BA514562A835DB
             source: /etc/apt/gpg-keys-puppet/qownnotes.pub
