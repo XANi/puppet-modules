@@ -24,7 +24,7 @@ class vmetrics::agent (
     }
     file { "${etc}/scrape.yaml":
         content => template('vmetrics/scrape.yaml'),
-        mode => "750"
+        mode => "640"
     }
 
 
