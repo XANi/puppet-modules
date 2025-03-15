@@ -43,6 +43,7 @@ define vmetrics::agent::scrape (
     $instance = $title,
     $insecure_tls = true,
     $metric_relabel_configs = [],
+    $interval = "10s",
 ) {
     include vmetrics::agent
     $scrape_cfg = [{
@@ -57,6 +58,7 @@ define vmetrics::agent::scrape (
                 }
             }
         ],
+        scrape_interval => $interval,
         metric_relabel_configs=>$metric_relabel_configs,
     }
     ]
