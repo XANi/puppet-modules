@@ -1,4 +1,5 @@
 class vmetrics::agent (
+    $url = 'http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/write'
 ) {
     include vmetrics::common
     file { '/var/lib/vmetrics/agent':
@@ -23,6 +24,7 @@ define vmetrics::agent::scrape (
     $insecure_tls = true,
     $metric_relabel_configs = [],
 ) {
+    include vmetrics::agent
     $scrape_cfg = [{
         job_name   => "s-${title}",
         tls_config => { insecure_skip_verify => $insecure_tls },
