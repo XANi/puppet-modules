@@ -1,5 +1,4 @@
 class vmetrics::storage (
-    $path='/var/lib/vmetrics',
     $manage_dir=false,
     $retention="7d",
     $data_flush_interval="10s", # 10s is default
@@ -8,14 +7,7 @@ class vmetrics::storage (
     $vmselect_addr = '0.0.0.0:8401',
 ) {
     include vmetrics::common
-    if $manage_dir {
-        file { $path:
-            ensure => directory,
-            owner  => vmetrics,
-            group  => vmetrics,
-            mode   => "750",
-        }
-    }
+    $path='/var/lib/vmetrics'
 
     vmetrics::storage::instance { 'main':
         listen_addr         => $listen_addr,

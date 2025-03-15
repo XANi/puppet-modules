@@ -10,6 +10,7 @@
 #
 
 class vmetrics::common (
+    $manage_storage=true,
 ) {
     # TODO autoinstall
     user { 'vmetrics':
@@ -29,7 +30,7 @@ class vmetrics::common (
         mode    => "750",
         require => User['vmetrics'],
     }
-    if !defined(File['/var/lib/vmetrics']) {
+    if !defined(File['/var/lib/vmetrics']) and $manage_storage {
         file { '/var/lib/vmetrics':
             ensure => directory,
             owner => 'vmetrics',
