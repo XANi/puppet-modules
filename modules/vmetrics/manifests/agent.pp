@@ -12,7 +12,7 @@ class vmetrics::agent (
     file { [
         $var,
         "${etc}",
-        "${etc}/conf.d",
+        "${etc}/scrape.d",
     ] :
         ensure => directory,
         owner  => vmetrics,
