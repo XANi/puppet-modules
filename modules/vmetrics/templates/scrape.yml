@@ -1,0 +1,5 @@
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+
+scrape_configs:
+scrape_config_files:
+  - /etc/vmagent/scrape.d/*.yaml

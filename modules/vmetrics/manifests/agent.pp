@@ -2,12 +2,32 @@ class vmetrics::agent (
     $url = 'http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/write'
 ) {
     include vmetrics::common
-    file { '/var/lib/vmetrics/agent':
+    $var = '/var/lib/vmetrics/agent'
+    $etc = '/etc/vmagent'
+    File {
+        owner => vmetrics,
+        group => vmetrics,
+        mode => "0650"
+    }
+    file { [
+        $var,
+        "${etc}",
+        "${etc}/conf.d",
+    ] :
         ensure => directory,
         owner  => vmetrics,
         group  => vmetrics,
         mode   => "750",
     }
+    file { "${var}/.nobackup":
+        content => "*\n";
+    }
+    file { "${etc}/scrape.yaml":
+        content => template('vmetrics/scrape.yaml'),
+        mode => "750"
+    }
+
+
     systemd::service { 'vmagent':
         content => template('vmetrics/vmagent.service'),
         notify => Service['vmagent'],

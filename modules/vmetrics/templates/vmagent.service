@@ -14,7 +14,7 @@ ExecStart=/opt/vmetrics/bin/vmagent \
     -memory.allowedBytes=100MB \
     -remoteWrite.tmpDataPath=/var/lib/vmetrics/agent \
     -remoteWrite.url=<%= @url %> \
-    -promscrape.config=/opt/vmetrics/cfg/scrape.yaml
+    -promscrape.config=/etc/vmagent/scrape.yaml
 
 Restart=always
 RestartSec=30
