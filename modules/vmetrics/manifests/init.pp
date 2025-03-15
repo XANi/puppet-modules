@@ -29,6 +29,15 @@ class vmetrics::common (
         mode    => "750",
         require => User['vmetrics'],
     }
+    if !defined(File['/var/lib/vmetrics']) {
+        file { '/var/lib/vmetrics':
+            ensure => directory,
+            owner => 'vmetrics',
+            group => 'vmetrics',
+            mode => '750',
+        }
+
+    }
     # remember to change checksums too!
     $version = '1.112.0'
     archive { '/opt/vmetrics/utils.tar.gz':
