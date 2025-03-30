@@ -12,7 +12,8 @@ restic --no-lock snapshots --latest 1|grep -P "($CURRENT_DATE|$YESTERDAY)" >$tmp
 backups_in_date=$(cat $tmpf |wc -l)
 
 if [ "$backups_in_date" -eq 0 ] ; then
-    echo "no backup found!";
+    echo "no recent backup found!";
+    restic --no-lock snapshots --latest 1
     EXIT=2
 elif [ "$backups_in_date" -eq $expected ] ; then
     echo "$backups_in_date backups OK"
