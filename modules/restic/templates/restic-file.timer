@@ -2,7 +2,9 @@
 Description=Run restic file [<%= @title %>]
 
 [Timer]
-#OnBootSec=5min
+<%- if @at_boot -%>
+OnBootSec=5min
+<%- end -%>
 #OnUnitActiveSec=5m
 RandomizedDelaySec=<%= @randomized_delay %>
 # run if host was restarted in meantime
