@@ -1,6 +1,6 @@
 class lvautoresize {
     file { '/usr/local/bin/lvautoresize':
-        source => 'puppet://puppet/modules/lvautoresize/lvautoresize.pl',
+        source => 'puppet:///modules/lvautoresize/lvautoresize.pl',
         mode   => "755",
         owner  => "root",
     }
