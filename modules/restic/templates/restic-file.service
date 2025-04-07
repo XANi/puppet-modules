@@ -8,6 +8,7 @@ Type=oneshot
 Restart=on-failure
 RestartSec=60s
 TimeoutStartSec=7d
+Nice=19
 
 Environment=HOME=/root
 EnvironmentFile=/etc/restic/env

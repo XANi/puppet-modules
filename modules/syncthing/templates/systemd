@@ -5,6 +5,7 @@ Description=Syncthing[<%= @title %>]
 [Service]
 ExecStart=/usr/bin/syncthing
 TimeoutStopSec=30
+Nice=19
 Restart=always
 RestartSec=30s
 #WorkingDirectory
