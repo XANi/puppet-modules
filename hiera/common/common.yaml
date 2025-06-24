@@ -1,2 +1,4 @@
 ---
 location: default
+apt::purge:
+    "sources.list.d": true
