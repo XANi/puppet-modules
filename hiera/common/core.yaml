@@ -158,9 +158,8 @@ repos:
         repos: main
     asbru:
         comment: Asbru Connection Manager
-        location: https://packagecloud.io/asbru-cm/asbru-cm/debian/
-#        release: "%{::lsbdistcodename}"
-        release: "bookworm"
+        location: https://dl.cloudsmith.io/public/asbru-cm/release/deb/debian
+        release: "%{::lsbdistcodename}"
         repos: main
         keyring: /etc/apt/gpg-keys-puppet/asbru.pub
     grafana:
