@@ -130,6 +130,7 @@ repos:
         location: http://apt.syncthing.net/
         release: syncthing
         repos: release
+        keyring: /etc/apt/gpg-keys-puppet/syncthing.pub
 
     nextcloud:
         comment: nextcloud
