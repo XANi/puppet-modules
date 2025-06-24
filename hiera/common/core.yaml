@@ -87,9 +87,7 @@ repos:
         location: http://repository.spotify.com
         release: testing
         repos: non-free
-        key:
-            id: F9A211976ED662F00E59361E5E3C45D7B312C643
-            source: /etc/apt/gpg-keys-puppet/spotify.pub
+        keyring: /etc/apt/gpg-keys-puppet/spotify.pub
 
     puppet:
         comment: Puppet repo
@@ -113,9 +111,7 @@ repos:
         location: https://dl.bintray.com/openhab/apt-repo2
         release: stable
         repos: main
-        key:
-            id: EDB7D0304E2FCAF629DF1163075721F6A224060A
-            source:  /etc/apt/gpg-keys-puppet/openhab.pub
+        keyring:  /etc/apt/gpg-keys-puppet/openhab.pub
     raspbian:
         comment: Rasbian repo
         location: http://mirrordirector.raspbian.org/raspbian/
@@ -127,9 +123,7 @@ repos:
         location: https://pkg.jenkins.io/debian
         repos: " "
         release: "binary/"
-        key:
-            id: 150FDE3F7787E7D11EF4E12A9B7D32F2D50582E6
-            source: /etc/apt/gpg-keys-puppet/jenkins.pub
+        keyring: /etc/apt/gpg-keys-puppet/jenkins.pub
 
     syncthing:
         comment: syncthing
@@ -137,18 +131,9 @@ repos:
         release: syncthing
         repos: release
 
-    nodesource-8:
-        comment: JS crap
-        key: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
-        location: https://deb.nodesource.com/node_8.x
-        release: stretch
-        repos: main
-
     nextcloud:
         comment: nextcloud
-        key:
-            id: 1FCD77DD0DBEF5699AD2610160EE47FBAD3DD469
-            source: /etc/apt/gpg-keys-puppet/nextcloud.pub
+        keyring: /etc/apt/gpg-keys-puppet/nextcloud.pub
         location: http://ppa.launchpad.net/nextcloud-devs/client/ubuntu
         repos: "main"
         release: "buster"
@@ -157,30 +142,22 @@ repos:
         location:  https://download.docker.com/linux/debian
         release: "%{::lsbdistcodename}"
         repos: stable
-        key:
-            id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
-            source: /etc/apt/gpg-keys-puppet/docker.pub
+        keyring: /etc/apt/gpg-keys-puppet/docker.pub
     gns3-stretch:
         comment: gns3 stretch repo
-        key:
-            id: F88F6D313016330404F710FC9A2FD067A2E3EF7B
-            source: /etc/apt/gpg-keys-puppet/gns3-stretch.pub
+        keyring: /etc/apt/gpg-keys-puppet/gns3-stretch.pub
         location: http://ppa.launchpad.net/gns3/ppa/ubuntu
         release: xenial
         repos: main
     zim:
         comment: Zim desktop wiki
-        key:
-            id: DC4AC0EE92BC64ED020C1C637588B93F8F7DF243
-            source: /etc/apt/gpg-keys-puppet/zim.pub
+        keyring: /etc/apt/gpg-keys-puppet/zim.pub
         location: http://ppa.launchpad.net/jaap.karssenberg/zim/ubuntu
         release: zesty
         repos: main
     yarn:
         comment: facebook js crap
-        key:
-            id: 72ECF46A56B4AD39C907BBB71646B01B86E50310
-            source: /etc/apt/gpg-keys-puppet/yarn.pub
+        keyring: /etc/apt/gpg-keys-puppet/yarn.pub
         location: https://dl.yarnpkg.com/debian/
         release: stable
         repos: main
@@ -189,9 +166,7 @@ repos:
         location: http://download.mono-project.com/repo/debian
         release: stable-stretch
         repos: main
-        key:
-            id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-            source: /etc/apt/gpg-keys-puppet/mono.pub
+        keyring: /etc/apt/gpg-keys-puppet/mono.pub
     asbru:
         comment: Asbru Connection Manager
         location: https://packagecloud.io/asbru-cm/asbru-cm/debian/
@@ -208,45 +183,33 @@ repos:
         location: https://packages.cloud.google.com/apt
         release: cloud-sdk
         repos: main
-        key:
-            id: 7F92E05B31093BEF5A3C2D38FEEA9169307EA071
-            source: /etc/apt/gpg-keys-puppet/google-cloud-sdk.pub
+        keyring: /etc/apt/gpg-keys-puppet/google-cloud-sdk.pub
     elk-7.x:
         comment: ELK packages
         location: https://artifacts.elastic.co/packages/7.x/apt
         release: stable
         repos: main
-        key:
-            id: 46095ACC8548582C1A2699A9D27D666CD88E42B4
-            source: /etc/apt/gpg-keys-puppet/elastic.pub
+        keyring: /etc/apt/gpg-keys-puppet/elastic.pub
     qownnotes:
         comment: QOwnNotes
         location: http://download.opensuse.org/repositories/home:/pbek:/QOwnNotes/Debian_11/
         release: /
         repos: " "
-        key:
-            id: F2205FB121DF142B31450865A3BA514562A835DB
-            source: /etc/apt/gpg-keys-puppet/qownnotes.pub
+        keyring: /etc/apt/gpg-keys-puppet/qownnotes.pub
     signal:
         comment: signal
         location: https://updates.signal.org/desktop/apt
         release: xenial
         repos: main
-        key:
-            id: DBA36B5181D0C816F630E889D980A17457F6FB06
-            source: /etc/apt/gpg-keys-puppet/signal.pub
+        keyring: /etc/apt/gpg-keys-puppet/signal.pub
     firefox:
         comment: firefox
         location: https://packages.mozilla.org/apt
         release: mozilla
         repos: main
-        key:
-            id: 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3
-            source: /etc/apt/gpg-keys-puppet/firefox.pub
+        keyring: /etc/apt/gpg-keys-puppet/firefox.pub
     microsoft:
         location: https://packages.microsoft.com/debian/12/prod
         release: "%{::lsbdistcodename}"
         repos: main
-        key:
-            id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
-            source: /etc/apt/gpg-keys-puppet/microsoft-prod.pub
+        keyring: /etc/apt/gpg-keys-puppet/microsoft-prod.pub
