@@ -6,6 +6,7 @@ certs=$(perl -e 'print map {"-d $_ "} @ARGV' $@)
                  --keep-until-expiring  \
                  --expand \
                  --agree-tos  \
+                 --email xani+certbot@devrandom.pl \
                  --non-interactive \
                  --no-self-upgrade \
                  --webroot -w /var/www/certbot  \
