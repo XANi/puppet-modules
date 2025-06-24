@@ -198,16 +198,14 @@ repos:
         release: "%{::lsbdistcodename}"
         repos: main
         key:
-            id: 7777FC8EDA8E1B250D1CC787531B2912A3EC6B28
-            source: /etc/apt/gpg-keys-puppet/asbru.pub
+            name: /etc/apt/gpg-keys-puppet/asbru.pub
     grafana:
         comment: Grafana
         location: https://packages.grafana.com/oss/deb
         release: stable
         repos: main
         key:
-            id: B53AE77BADB630A683046005963FA27710458545
-            source: /etc/apt/gpg-keys-puppet/grafana.pub
+            name: /etc/apt/gpg-keys-puppet/grafana.pub
     google-cloud-sdk:
         location: https://packages.cloud.google.com/apt
         release: cloud-sdk
