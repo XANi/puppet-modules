@@ -197,15 +197,13 @@ repos:
         location: https://packagecloud.io/asbru-cm/asbru-cm/debian/
         release: "%{::lsbdistcodename}"
         repos: main
-        key:
-            name: /etc/apt/gpg-keys-puppet/asbru.pub
+        keyring: /etc/apt/gpg-keys-puppet/asbru.pub
     grafana:
         comment: Grafana
         location: https://packages.grafana.com/oss/deb
         release: stable
         repos: main
-        key:
-            name: /etc/apt/gpg-keys-puppet/grafana.pub
+        keyring: /etc/apt/gpg-keys-puppet/grafana.pub
     google-cloud-sdk:
         location: https://packages.cloud.google.com/apt
         release: cloud-sdk
