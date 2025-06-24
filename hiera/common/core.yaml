@@ -144,12 +144,6 @@ repos:
         release: "%{::lsbdistcodename}"
         repos: stable
         keyring: /etc/apt/gpg-keys-puppet/docker.pub
-    gns3-stretch:
-        comment: gns3 stretch repo
-        keyring: /etc/apt/gpg-keys-puppet/gns3-stretch.pub
-        location: http://ppa.launchpad.net/gns3/ppa/ubuntu
-        release: xenial
-        repos: main
     zim:
         comment: Zim desktop wiki
         keyring: /etc/apt/gpg-keys-puppet/zim.pub
