@@ -2,5 +2,4 @@
 location: default
 apt::purge:
     "sources.list.d": true
-nginx::params::manage_repo: false
 nginx::manage_repo: false
