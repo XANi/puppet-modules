@@ -187,7 +187,7 @@ repos:
         keyring: /etc/apt/gpg-keys-puppet/elastic.pub
     qownnotes:
         comment: QOwnNotes
-        location: http://download.opensuse.org/repositories/home:/pbek:/QOwnNotes/Debian_11/
+        location: http://download.opensuse.org/repositories/home:/pbek:/QOwnNotes/Debian_12/
         release: /
         repos: " "
         keyring: /etc/apt/gpg-keys-puppet/qownnotes.pub
