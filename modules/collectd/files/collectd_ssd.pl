@@ -22,6 +22,7 @@ my $cfg = { # default config values go here
     'interval'    => 300,
 };
 my $help;
+my $displayed_skip=0;
 $| = 1;
 GetOptions(
 #    'daemon'        => \$cfg->{'daemon'},
@@ -105,7 +106,7 @@ sub print_ssd_status {
             if($line[1] =~ /Life_Curve_Status/i) {
                 $dev_status->{$dev}{'life_curve_status'} = $line[3] + 0;
             }
-            if($line[1] =~ /(SSD_Life_Left|Media_Wearout_Indicator|Wear_Leveling_Count)/i) {
+            if($line[1] =~ /(SSD_Life_Left|Media_Wearout_Indicator|Wear_Leveling_Count)/i || $line[0] =~ /231/) {
                 $dev_status->{$dev}{'ssd_life_left'} = $line[3] + 0;
             }
             if($line[1] =~ /(Wear_Leveling_Count)/i && $line[9] > 0) {
@@ -200,7 +201,13 @@ sub print_ssd_status {
 
     }
     my $t = int(time);
+    my $skip_display=0;
     while(my ($dev, $data) = each(%$dev_status)) {
+        if (scalar %$data  < 2) {
+            print STDERR "skipping $dev, no data\n" if !$displayed_skip;
+            $skip_display=1;
+            next;
+        }
         my $prefix = "PUTVAL $host/ssd-";
         if ($cfg->{'by-model'}) {
             $prefix .= $data->{'model'} . '_'  . $data->{'serial'} . '/';
@@ -211,7 +218,7 @@ sub print_ssd_status {
             my $unit = 'gauge';
             my $instance = $var;
             if ($var =~ /_bytes$/) { $unit = 'bytes' }
-            elsif ($var =~ /_left/) { $unit = 'percent' }
+            elsif ($var =~ /_left|_spare/) { $unit = 'percent' }
             elsif ($var =~/^temperature_(.+)/) {
                 $unit = 'temperature';
                 $instance = $1;
@@ -219,5 +226,8 @@ sub print_ssd_status {
             print $prefix . "$unit-$instance" . " interval=$cfg->{'interval'} " . "$t:" . $data->{$var} . "\n";
 
         }
+    }
+    if ($skip_display) {
+        $displayed_skip = 1;
     }
 };
