@@ -1,5 +1,8 @@
 prometheus_writer:
-  url: http://127.0.0.1:8480/insert/1:0/prometheus/api/v1/write
-  timeout: 30s
-  max_batch_duration: 5s
-  max_batch_length: 1000
+<%- @url.each do |u| -%>
+  - url: <%= u %>
+    timeout: 30s
+    max_batch_duration: 5s
+    max_batch_length: 1000
+<%- end -%>
+<% %>

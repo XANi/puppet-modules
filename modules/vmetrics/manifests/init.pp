@@ -114,7 +114,7 @@ class vmetrics::insert (
     }
 }
 
-class vmetrics::collectd2metrics  {
+class vmetrics::collectd2metrics(Array $url)  {
     systemd::service { 'collectd2metrics':
         content => template('vmetrics/collectd2metrics.service'),
         notify => Service['collectd2metrics'],
