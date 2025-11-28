@@ -95,6 +95,7 @@ while($c->sleep) {
             'type-instance'   => $k,
         );
     }
+
     print $c->generate(
         'plugin-instance' => $instance,
         'value' => hash_to_bytes($gpu->{'mem_usage'}{'used_vram'}),
@@ -146,14 +147,12 @@ while($c->sleep) {
         'type'  => 'percent',
         'type-instance' => 'fan',
     );
-
-    # print $c->generate(
-    #     'plugin-instance' => $instance,
-    #     'value' => $util_mem_num,
-    #     'type'  => 'percent',
-    #     'type-instance' => 'util_mem',
-    # );
-
+    print $c->generate(
+        'plugin-instance' => $instance,
+        'value' => $gpu->{'power'}{'socket_power'}{'value'},
+        'type'  => 'power',
+        'type-instance' => 'used',
+    );
     #$c->sleep();
 }
 
