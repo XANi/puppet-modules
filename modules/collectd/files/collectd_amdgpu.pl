@@ -154,7 +154,7 @@ while($c->sleep) {
     #     'type-instance' => 'util_mem',
     # );
 
-    $c->sleep();
+    #$c->sleep();
 }
 
 sub to_bytes {
