@@ -245,7 +245,18 @@ class collectd::amdgpu {
     # need sudo on turbostat
     collectd::plugin::exec { 'amdgpu':
         command => '/usr/local/bin/collectd_amdgpu.pl',
+        args => ['--sudo'],
         user    => 'collectd',
+    }
+    file { '/etc/sudoers.d/collectd_amdgpu':
+        mode         => '644',
+        owner        => root,
+        content      => join([
+            "# puppet managed file",
+            'collectd ALL=(root) NOPASSWD: /bin/amd-smi',
+            ""
+        ], "\n"),
+        validate_cmd => '/usr/sbin/visudo -c %'
     }
 }
 

@@ -19,12 +19,14 @@ use JSON qw(decode_json);
 
 my $cfg = { # default config values go here
     'hostname' => hostfqdn(),
+    'sudo' => 0,
     'interval'    => 10,
 };
 my $help;
 
 GetOptions(
     'interval=s'    => \$cfg->{'interval'},
+    'sudo'    => \$cfg->{'sudo'},
     'help'          => \$help,
 ) or pod2usage(
     -verbose => 2,  #2 is "full man page" 1 is usage + options ,0/undef is only usage
@@ -60,8 +62,12 @@ my $c = Arte::Collectd->new(
     interval => $cfg->{'interval'},
 );
 $| = 1; #unbuffer out, important!
-open(SMI,'-|','amd-smi metric --json -w 2');
-while($c->sleep) {
+if ($cfg->{'sudo'}) {
+    open(SMI, '-|', 'sudo amd-smi metric --json -w 10');
+} else {
+    open(SMI, '-|', 'amd-smi metric --json -w 10');
+}
+while() {
     my $start=0;
     my $buffer='';
     while(my $line = <SMI>) {
@@ -82,7 +88,7 @@ while($c->sleep) {
     if (!defined($gpu)) {
         croak($@);
     }
-    #print Dumper $gpu;
+    print Dumper $gpu;
     my $instance = 'amd-' . $gpu->{'gpu'};
     while (my ($k, $v) = each(%{$gpu->{'temperature'}})) {
         if ($v->{'unit'} ne 'C') {
@@ -153,7 +159,7 @@ while($c->sleep) {
         'type'  => 'power',
         'type-instance' => 'used',
     );
-    #$c->sleep();
+    $c->sleep();
 }
 
 sub to_bytes {
