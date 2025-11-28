@@ -88,7 +88,7 @@ while() {
     if (!defined($gpu)) {
         croak($@);
     }
-    print Dumper $gpu;
+    #print STDERR Dumper $gpu;
     my $instance = 'amd-' . $gpu->{'gpu'};
     while (my ($k, $v) = each(%{$gpu->{'temperature'}})) {
         if ($v->{'unit'} ne 'C') {
