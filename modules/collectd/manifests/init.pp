@@ -235,6 +235,20 @@ class collectd::plugin::turbostat {
     }
 }
 
+class collectd::plugin::amdgpu {
+    file { '/usr/local/bin/collectd_amdgpu.pl':
+        source => 'puppet:///modules/collectd/collectd_amdgpu.pl',
+        mode => "0755",
+        owner => "root",
+        notify => Service['collectd'],
+    }
+    # need sudo on turbostat
+    collectd::plugin::exec { 'amdgpu':
+        command => '/usr/local/bin/collectd_amdgpu.pl',
+        user    => 'collectd',
+    }
+}
+
 class collectd::server {
      stdlib::ensure_packages(['libyajl2'])
     file { '/etc/collectd/collectd-server.conf':
