@@ -235,7 +235,7 @@ class collectd::plugin::turbostat {
     }
 }
 
-class collectd::plugin::amdgpu {
+class collectd::amdgpu {
     file { '/usr/local/bin/collectd_amdgpu.pl':
         source => 'puppet:///modules/collectd/collectd_amdgpu.pl',
         mode => "0755",
