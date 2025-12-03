@@ -154,6 +154,9 @@ class restic::ignoreset::server ($extra = [])  {
         '/var/lib/docker',
         '/var/lib/mysql',
         '/var/lib/postgresql',
+        # rust stuff
+        'target/release/deps/**',
+        'target/debug/deps/**'
     ]
     $set = flatten($x, $extra)
     restic::exclude::set { 'server':
