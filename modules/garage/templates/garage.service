@@ -1,25 +1,25 @@
 # <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
 
 [Unit]
-Description=Rustfs S3 server
+Description=Garage S3 server
 ConditionPathExists=<%= @data_dir %>
 
 
 [Service]
 Type=simple
-User=rustfs
-Group=rustfs
+User=garage
+Group=garage
 Environment=RUSTFS_ACCESS_KEY=<%= @access_key %>
 Environment=RUSTFS_SECRET_KEY=<%= @secret_key %>
 Environment=RUSTFS_ADDRESS=":9003"
 Environment=RUSTFS_CONSOLE_ADDRESS=":9004"
 Environment=RUSTFS_CONSOLE_ENABLED="true"
 Environment=RUSTFS_LOG=error
-Environment=RUSTFS_OBS_LOG_DIRECTORY="/var/log/rustfs/"
+Environment=RUSTFS_OBS_LOG_DIRECTORY="/var/log/garage/"
 MemoryHigh=750M
 MemoryMax=1G
 MemorySwapMax=64M
-ExecStart=/usr/local/bin/rustfs "<%= @data_dir %>"
+ExecStart=/usr/local/bin/garage "<%= @data_dir %>"
 Restart=always
 RestartSec=30
 LimitNOFILE=40000
