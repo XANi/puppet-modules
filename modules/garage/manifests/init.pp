@@ -2,6 +2,7 @@ class garage::server(
     #$access_key,
     #$secret_key,
     $admin_token,
+    String[32] $rpc_secret,
     #$metrics_token,
     $data_dir,
     #$api_listen_host='127.0.0.1',
