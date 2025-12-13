@@ -12,9 +12,14 @@ Group=rustfs
 Environment=RUSTFS_ACCESS_KEY=<%= @access_key %>
 Environment=RUSTFS_SECRET_KEY=<%= @secret_key %>
 Environment=RUSTFS_ADDRESS=":9003"
+Environment=RUSTFS_CONSOLE_ADDRESS=":9004"
 Environment=RUSTFS_CONSOLE_ENABLED="true"
 Environment=RUSTFS_LOG=error
 Environment=RUSTFS_OBS_LOG_DIRECTORY="/var/log/rustfs/"
+Environment=OTEL_TRACES_EXPORTER=none
+Environment=OTEL_LOGS_EXPORTER=none
+Environment=OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
+Environment=OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://127.0.0.1:8480/insert/999:0/opentelemetry/v1/metrics"
 MemoryHigh=750M
 MemoryMax=1G
 MemorySwapMax=64M
