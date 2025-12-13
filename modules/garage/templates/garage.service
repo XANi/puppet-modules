@@ -19,7 +19,7 @@ Environment=RUSTFS_OBS_LOG_DIRECTORY="/var/log/garage/"
 MemoryHigh=750M
 MemoryMax=1G
 MemorySwapMax=64M
-ExecStart=/usr/local/bin/garage "<%= @data_dir %>"
+ExecStart=/usr/local/bin/garage server
 Restart=always
 RestartSec=30
 LimitNOFILE=40000
