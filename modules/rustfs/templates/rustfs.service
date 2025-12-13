@@ -20,6 +20,7 @@ Environment=OTEL_TRACES_EXPORTER=none
 Environment=OTEL_LOGS_EXPORTER=none
 Environment=OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
 Environment=OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://127.0.0.1:8480/insert/999:0/opentelemetry/v1/metrics"
+Environment=OTEL_METRIC_EXPORT_INTERVAL=10000
 MemoryHigh=750M
 MemoryMax=1G
 MemorySwapMax=64M
