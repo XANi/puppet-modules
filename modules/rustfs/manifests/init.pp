@@ -30,5 +30,18 @@ class rustfs::server(
             mode   => "750",
         }
     }
-
+    file { '/var/log/rustfs':
+        ensure => directory,
+        owner  => $user,
+        group  => $group,
+        mode   => "750",
+    }
+    systemd::service {'rustfs':
+        content => template('rustfs/rustfs.service'),
+        notify => Service['rustfs'],
+    }
+    service {'rustfs':
+        ensure => running,
+        enable => true,
+    }
 }
