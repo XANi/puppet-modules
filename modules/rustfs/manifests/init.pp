@@ -14,7 +14,7 @@ class rustfs::server(
         user { $user:
             system     => true,
             shell      => '/bin/false',
-            home       => $base_dir,
+            home       => $data_dir,
             managehome => true,
             gid        => $group,
         }
