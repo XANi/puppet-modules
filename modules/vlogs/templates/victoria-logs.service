@@ -1,0 +1,23 @@
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
+[Unit]
+Description=VictoriaLogs
+After=syslog.target network.target
+RequiresMountsFor=<%= @data_path %>/data
+
+
+[Service]
+Type=simple
+User=vlogs
+Group=vlogs
+WorkingDirectory=/opt/vlogs
+ExecStart=/opt/vlogs/bin/victoria-logs \
+    -storageDataPath=/var/lib/vlogs \
+    -retentionPeriod=90d
+
+
+
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

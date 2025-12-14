@@ -56,3 +56,16 @@ class vlogs::common (
         file { "/opt/vlogs/bin/${f}": target => "/opt/vlogs/bin/${f}-prod" }
     }
 }
+class vlogs::server {
+    include vlogs::common
+    $data_path = "/var/lib/vlogs"
+    systemd::service { 'victoria-logs':
+        content => template('vlogs/victoria-logs.service'),
+        notify => Service['victoria-logs'],
+    }
+    service { "victoria-logs":
+        ensure => running,
+        enable => true,
+        subscribe => Archive['/opt/vlogs/server.tar.gz'],
+    }
+}
