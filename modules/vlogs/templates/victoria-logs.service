@@ -12,6 +12,9 @@ Group=vlogs
 WorkingDirectory=/opt/vlogs
 ExecStart=/opt/vlogs/bin/victoria-logs \
     -storageDataPath=/var/lib/vlogs \
+    -memory.allowedPercent=10 \
+    -loggerDisableTimestamps \
+    -inmemoryDataFlushInterval 20s \
     -retentionPeriod=90d
 
 
