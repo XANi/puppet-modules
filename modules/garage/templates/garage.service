@@ -9,8 +9,8 @@ ConditionPathExists=<%= @data_dir %>
 Type=simple
 User=garage
 Group=garage
-MemoryHigh=750M
-MemoryMax=1G
+MemoryHigh=1G
+MemoryMax=2G
 MemorySwapMax=64M
 ExecStart=/usr/local/bin/garage server
 Restart=always
