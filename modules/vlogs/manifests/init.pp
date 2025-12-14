@@ -48,17 +48,11 @@ class vlogs::common (
         #creates       => '/opt/vlogs/bin/vmstorage-prod',
         require       => File['/opt/vlogs/bin'],
     }
-#    [
-#        'vmagent',
-#        'vmalert',
-#        'vmauth',
-#        'vmbackup',
-#        'vmctl',
-#        'vminsert',
-#        'vmrestore',
-#        'vmselect',
-#        'vmstorage',
-#    ].each |$f| {
-#        file { "/opt/vlogs/bin/${f}": target => "/opt/vlogs/bin/${f}-prod" }
-#    }
+    [
+        'victoria-logs',
+        'vlagent',
+        'vlogscli'
+    ].each |$f| {
+        file { "/opt/vlogs/bin/${f}": target => "/opt/vlogs/bin/${f}-prod" }
+    }
 }
