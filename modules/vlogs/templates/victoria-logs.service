@@ -14,7 +14,7 @@ ExecStart=/opt/vlogs/bin/victoria-logs \
     -storageDataPath=/var/lib/vlogs \
     -memory.allowedPercent=10 \
     -loggerDisableTimestamps \
-    -inmemoryDataFlushInterval 300s \
+    -inmemoryDataFlushInterval 3600s \
     -retentionPeriod=90d
 
 
