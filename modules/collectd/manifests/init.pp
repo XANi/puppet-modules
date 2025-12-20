@@ -221,6 +221,21 @@ class collectd::plugin::sensors (
     }
 }
 
+class collectd::garage::buckets {
+    file { '/usr/local/bin/collectd_garage_buckets.pl':
+        source => 'puppet:///modules/collectd/collectd_garage_buckets.pl',
+        mode => "0755",
+        owner => "root",
+        notify => Service['collectd'],
+    }
+    # need sudo on turbostat
+    collectd::plugin::exec { 'turbostat':
+        command => '/usr/local/bin/collectd_garage_buckets.pl',
+        user    => 'garage',
+    }
+}
+
+
 class collectd::plugin::turbostat {
     file { '/usr/local/bin/collectd_turbostat.pl':
         source => 'puppet:///modules/collectd/collectd_turbostat.pl',
@@ -234,6 +249,7 @@ class collectd::plugin::turbostat {
         user    => 'collectd',
     }
 }
+
 
 class collectd::amdgpu {
     file { '/usr/local/bin/collectd_amdgpu.pl':
