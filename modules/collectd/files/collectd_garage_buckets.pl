@@ -56,7 +56,7 @@ if ($help || defined( $missing_opts ) ) {
 }
 my $c = Arte::Collectd->new(
     hostname => $cfg->{'hostname'},
-    plugin => 'template',
+    plugin => 'garage',
     interval => $cfg->{'interval'},
 );
 $| = 1; #unbuffer out, important!
