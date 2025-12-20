@@ -229,7 +229,7 @@ class collectd::garage::buckets {
         notify => Service['collectd'],
     }
     # need sudo on turbostat
-    collectd::plugin::exec { 'turbostat':
+    collectd::plugin::exec { 'garage_buckets':
         command => '/usr/local/bin/collectd_garage_buckets.pl',
         user    => 'garage',
     }
