@@ -19,7 +19,7 @@ use JSON qw(decode_json);
 
 my $cfg = { # default config values go here
     'hostname' => hostfqdn(),
-    'interval'    => 10,
+    'interval'    => 60,
 };
 my $help;
 
