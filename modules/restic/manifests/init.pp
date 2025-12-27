@@ -1,7 +1,7 @@
 class restic::backup::common(
     $s3_server,
     $monthly = 3,
-    $weekly = 4,
+    $weekly = 8,
     $backup_check = true,
 )  {
     file { [
