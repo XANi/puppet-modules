@@ -276,6 +276,18 @@ class collectd::amdgpu {
     }
 }
 
+class collectd::cgroup {
+    collectd::plugin::exec { 'cgroup':
+        command => '/usr/local/bin/collectd_cgroup.pl',
+    }
+    file { '/usr/local/bin/collectd_cgroup.pl':
+        source => 'puppet:///modules/collectd/collectd_cgroup.pl',
+        mode => "0755",
+        owner => "root",
+        notify => Service['collectd'],
+    }
+}
+
 class collectd::server {
      stdlib::ensure_packages(['libyajl2'])
     file { '/etc/collectd/collectd-server.conf':
