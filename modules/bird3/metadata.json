@@ -1,0 +1,13 @@
+{
+  "name": "XANi-bird3",
+  "version": "0.1.0",
+  "author": "XANi",
+  "summary": "BIRD Routing Daemon",
+  "license": "Apache 2.0",
+  "source": "https://github.com/XANi/puppet-bird3.git",
+  "project_page": "https://github.com/XANi/puppet-bird3",
+  "issues_url": "https://github.com/XANi/puppet-bird3/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
