@@ -4,7 +4,7 @@ class ntp::chrony (
     $server = false,
 
     ) {
-    package { 'ntpdate':
+    package { 'ntpsec-ntpdate':
         ensure => installed;
     }
     package {'ntp':

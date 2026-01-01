@@ -33,11 +33,13 @@ class bird3::client (
         },
         tag => $export_tag,
     }
-    @@bird::config { "bgp_ha_$hostname":
+    @@bird3::config { "bgp_ha_$hostname":
         config => {
             "protocol bgp ha_${instance_name}" => [
-                "export none",
-                {"import filter"=> $ip_rules },
+                   {"ipv4" => [
+                       "export none",
+                       {"import filter"=> $ip_rules },
+                   ]},
                 "local as ${asn}",
                 "neighbor $ip as ${asn}",
             ]
