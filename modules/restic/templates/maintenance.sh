@@ -14,10 +14,10 @@ restic prune
 if [ '/etc/restic/env.old' ] ; then
   source /etc/restic/env.old
   restic backup --tag daily /var/spool/cron/crontabs
-  restic forget --group-by host --tag "" --keep-within 2m
-  restic forget --group-by host --tag hourly --keep-within 2m
-  restic forget --group-by host --tag daily --keep-within 2m
-  restic forget --group-by host --tag weekly --keep-within 2m
+  restic forget --group-by host --tag "" --keep-within 1m
+  restic forget --group-by host --tag hourly --keep-within 1m
+  restic forget --group-by host --tag daily --keep-within 1m
+  restic forget --group-by host --tag weekly --keep-within 1m
   restic prune
 fi
 restic cache --cleanup
