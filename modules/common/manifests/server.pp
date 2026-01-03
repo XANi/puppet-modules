@@ -63,7 +63,7 @@ class common::server (
     file { '/etc/systemd/journald.conf':
         content => template('common/journald.conf'),
         owner => root,
-        mode => "755",
+        mode => "644",
         notify => Exec['restart-journald'],
     }
     exec { 'restart-journald':
