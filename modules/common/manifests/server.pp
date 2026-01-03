@@ -60,6 +60,16 @@ class common::server (
     rsyslog::log { 'puppet':; }
     rsyslog::log { 'dpp':; }
 
+    file { '/etc/systemd/journald.conf':
+        content => template('common/journald.conf'),
+        owner => root,
+        mode => "755",
+        notify => Exec['restart-journald'],
+    }
+    exec { 'restart-journald':
+        command     => 'systemctl restart systemd-journald',
+        refreshonly => true,
+    }
 
 }
 
