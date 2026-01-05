@@ -198,8 +198,8 @@ repos:
         repos: main
         keyring: /etc/apt/gpg-keys-puppet/firefox.pub
     microsoft:
-        location: https://packages.microsoft.com/debian/12/prod
+        location: https://packages.microsoft.com/debian/13/prod
 #        release: "%{::lsbdistcodename}"
-        release: "bookworm"
+        release: "trixie"
         repos: main
         keyring: /etc/apt/gpg-keys-puppet/microsoft-prod.pub
