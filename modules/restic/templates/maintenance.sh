@@ -21,3 +21,4 @@ if [ '/etc/restic/env.old' ] ; then
   restic prune
 fi
 restic cache --cleanup
+
