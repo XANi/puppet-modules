@@ -62,25 +62,34 @@ my $c = Arte::Collectd->new(
     interval => $cfg->{'interval'},
 );
 $| = 1; #unbuffer out, important!
-if ($cfg->{'sudo'}) {
-    open(SMI, '-|', 'sudo amd-smi metric --json -w 10');
-} else {
-    open(SMI, '-|', 'amd-smi metric --json -w 10');
-}
+# amd broke -w
+#if ($cfg->{'sudo'}) {
+#    open(SMI, '-|', 'sudo amd-smi metric --json -w 10');
+#} else {
+#    open(SMI, '-|', 'amd-smi metric --json -w 10');
+#}
 while() {
-    my $start=0;
-    my $buffer='';
-    while(my $line = <SMI>) {
-        if ($line =~ /^\[/) {
-            $start = 1;
-        }
-        elsif ($line =~ /^\]/) {
-            last;
-        }
-        elsif ($start == 1) {
-            $buffer .= $line;
-        }
+#    my $start=0;
+#    my $buffer='';
+#    while(my $line = <SMI>) {
+#        if ($line =~ /^\[/) {
+#            $start = 1;
+#        }
+#        elsif ($line =~ /^\]/) {
+#            last;
+#        }
+#        elsif ($start == 1) {
+#            $buffer .= $line;
+#        }
+#    }
+    if ($cfg->{'sudo'}) {
+        open(SMI, '-|', 'sudo amd-smi metric --json');
+    } else {
+        open(SMI, '-|', 'amd-smi metric --json');
     }
+    my $buffer = do { local $/; <SMI> };
+    #print $buffer;
+    close(SMI);
     my $gpu;
     eval {
         $gpu = decode_json($buffer);
@@ -88,6 +97,7 @@ while() {
     if (!defined($gpu)) {
         croak($@);
     }
+    $gpu = $gpu->{'gpu_data'}[0];
     #print STDERR Dumper $gpu;
     my $instance = 'amd-' . $gpu->{'gpu'};
     while (my ($k, $v) = each(%{$gpu->{'temperature'}})) {
