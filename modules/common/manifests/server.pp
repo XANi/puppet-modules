@@ -57,6 +57,7 @@ class common::server (
     package { 'tinc':
         ensure => purged,
     }
+    ensure_packages(['uptimed'])
     rsyslog::log { 'puppet':; }
     rsyslog::log { 'dpp':; }
 
