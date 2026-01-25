@@ -11,7 +11,7 @@ restic forget --tag hourly --keep-hourly 48 --keep-daily 14 --keep-weekly <%= @w
 restic forget --tag daily --keep-daily 7 --keep-weekly <%= @weekly %>  --keep-monthly <%= @monthly %> --keep-within <%= @monthly%>m
 restic forget --tag weekly --keep-daily 1 --keep-weekly <%= @weekly %>  --keep-monthly <%= @monthly %> --keep-within <%= @monthly%>m
 restic prune
-if [ '/etc/restic/env.old' ] ; then
+if [ -e '/etc/restic/env.old' ] ; then
   source /etc/restic/env.old
   restic backup --tag daily /var/spool/cron/crontabs
   restic forget --group-by host --tag "" --keep-within 1m
