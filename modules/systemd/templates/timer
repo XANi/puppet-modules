@@ -1,0 +1,34 @@
+# <%= @puppet_header %>
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
+<%- if @unit -%>
+[Unit]
+<%- @unit.each do |k,v| -%>
+<%-
+    v = @unit[k]
+    k = k.gsub(/^\d+\:/,'')
+-%>
+<%= k %>=<%= v %>
+<%- end -%>
+<%- end -%>
+
+<%- if @timer -%>
+[Timer]
+<%- @timer.keys.each do |k| -%>
+<%-
+    v = @timer[k]
+    k = k.gsub(/^\d+\:/,'')
+-%>
+<%= k %>=<%= v %>
+<%- end -%>
+<%- end -%>
+
+<%- if @install -%>
+[Install]
+<%- @install.each do |k,v| -%>
+<%-
+    v = @install[k]
+    k = k.gsub(/^\d+\:/,'')
+-%>
+<%= k %>=<%= v %>
+<%- end -%>
+<%- end -%>

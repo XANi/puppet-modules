@@ -42,6 +42,32 @@ define systemd::service::override (
     }
 
 }
+define systemd::timer::override (
+    $service_name = $title,
+    $unit = false,
+    $timer = false,
+    $install = false,
+    $prio = 1000,
+    ) {
+    $padded_prio = sprintf('%04d',$prio)# 4 -> 0004
+    include systemd::common
+    if !defined (File["/etc/systemd/system/${service_name}.timer.d/"]) {
+        file {"/etc/systemd/system/${service_name}.timer.d/":
+            ensure  => directory,
+            recurse => true,
+            purge   => true,
+            mode    => "644",
+        }
+    }
+    file {"/etc/systemd/system/${service_name}.timer.d/${padded_prio}-${title}.conf":
+        content => template('systemd/timer'),
+        mode => "644",
+        owner => root,
+        group => root,
+        notify => Exec["systemd-reload"],
+    }
+
+}
 
 define systemd::service (
     $content = undef,
