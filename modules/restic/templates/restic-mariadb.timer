@@ -4,7 +4,7 @@ Description=Run restic mariadb
 [Timer]
 #OnBootSec=5min
 #OnUnitActiveSec=5m
-RandomizedDelaySec=<%= @randomized_delay %>
+RandomizedOffsetSec=<%= @randomized_delay %>
 # run if host was restarted in meantime
 Persistent=true
 #systemd-analyze calendar --iterations=5 *-*-* 3:00 to validate

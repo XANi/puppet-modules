@@ -156,7 +156,7 @@ sub print_ssd_status {
         # NVMe
         # "data units" are 512b * 1000 ( https://wisesciencewise.wordpress.com/2017/05/22/c-program-to-read-and-interpret-smart-log-of-an-nvme-drive/ )
         if ($dev =~ /nvme/) {
-            my $pid = open(my $nvme, '-|', '/usr/bin/sudo', '/usr/sbin/nvme', 'smart-log',  "/dev/$dev", "--output=json");
+            my $pid = open(my $nvme, '-|', '/usr/bin/sudo', '/usr/sbin/nvme', 'smart-log',  "/dev/$dev", "--output-format=json");
 
             my $nvme_json = do { local $/;  <$nvme> };
             my $nvme_data;

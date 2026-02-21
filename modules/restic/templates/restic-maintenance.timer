@@ -4,8 +4,7 @@ Description=Run restic maintenance
 [Timer]
 #OnBootSec=5min
 #OnUnitActiveSec=5m
-RandomizedDelaySec=120m
-FixedRandomDelay=true
+RandomizedOffsetSec=120m
 # run if host was restarted in meantime
 Persistent=true
 #systemd-analyze calendar --iterations=5 *-*-* 3:00 to validate

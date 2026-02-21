@@ -6,7 +6,7 @@ Description=Run restic file [<%= @title %>]
 OnBootSec=5min
 <%- end -%>
 #OnUnitActiveSec=5m
-RandomizedDelaySec=<%= @randomized_delay %>
+RandomizedOffsetSec=<%= @randomized_delay %>
 # run if host was restarted in meantime
 Persistent=true
 #systemd-analyze calendar --iterations=5 *-*-* 3:00 to validate
