@@ -13,6 +13,23 @@ class systemd::common {
         command => "systemctl daemon-reload",
         refreshonly => true,
     }
+    file { '/etc/tmpfiles.d/systemd-nologin.conf':
+        target => '/dev/null',
+    }
+    # allows to boot in rescue mode when root account is locked
+    systemd::service::override { 'allow-rescue-with-locked-root':
+        service_name => 'rescue',
+        service      => {
+            "Environment" => "SYSTEMD_SULOGIN_FORCE=1",
+        }
+    }
+    systemd::service::override { 'allow-emergency-with-locked-root':
+        service_name => 'emergency',
+        service      => {
+            "Environment" => "SYSTEMD_SULOGIN_FORCE=1",
+        }
+    }
+
 }
 
 
