@@ -16,6 +16,15 @@ Environment=RUSTFS_CONSOLE_ADDRESS=":9004"
 Environment=RUSTFS_CONSOLE_ENABLED="true"
 Environment=RUSTFS_LOG=error
 Environment=RUSTFS_OBS_LOG_DIRECTORY="/var/log/rustfs/"
+<%- if @oltp_exporter_url -%>
+Environment=OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+Environment=OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=<%= @oltp_exporter_url %>
+Environment=OTEL_TRACES_EXPORTER=none
+Environment=OTEL_LOGS_EXPORTER=none
+Environment=OTEL_METRIC_EXPORT_INTERVAL=15000
+Environment=OTEL_SERVICE_NAME="rustfs"
+Environment=OTEL_RESOURCE_ATTRIBUTES="host=<%= @hostname %>"
+<%- end -%>
 MemoryHigh=750M
 MemoryMax=1G
 MemorySwapMax=64M
