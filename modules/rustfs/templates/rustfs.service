@@ -18,7 +18,7 @@ Environment=RUSTFS_LOG=error
 Environment=RUSTFS_OBS_LOG_DIRECTORY="/var/log/rustfs/"
 <%- if @oltp_exporter_url -%>
 Environment=RUSTFS_OBS_ENDPOINT=<%= @oltp_exporter_url %>
-# Environment=RUSTFS_OBS_METER_INTERVAL=
+Environment=RUSTFS_OBS_METER_INTERVAL=10000
 Environment=RUSTFS_OBS_PROFILING_EXPORT_ENABLED=0
 Environment=RUSTFS_OBS_LOGS_EXPORT_ENABLED=0
 Environment=OTEL_SERVICE_NAME="rustfs"
