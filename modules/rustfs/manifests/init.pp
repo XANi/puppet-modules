@@ -8,6 +8,7 @@ class rustfs::server(
     $console_address='0.0.0.0:9001',
     $manage_user = true,
     $manage_datadir = true,
+    # without /v1/metrics part
     $oltp_exporter_url = false,
 ) {
     if $manage_user {

@@ -17,18 +17,15 @@ Environment=RUSTFS_CONSOLE_ENABLED="true"
 Environment=RUSTFS_LOG=error
 Environment=RUSTFS_OBS_LOG_DIRECTORY="/var/log/rustfs/"
 <%- if @oltp_exporter_url -%>
-Environment=OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
-Environment=OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=<%= @oltp_exporter_url %>
-Environment=OTEL_TRACES_EXPORTER=none
-Environment=OTEL_LOGS_EXPORTER=none
-Environment=OTEL_METRIC_EXPORT_INTERVAL=15000
-Environment=OTEL_SERVICE_NAME="rustfs"
-Environment=OTEL_RESOURCE_ATTRIBUTES="host=<%= @hostname %>"
+Environment=RUSTFS_OBS_ENDPOINT=<%= @oltp_exporter_url %>
+# Environment=RUSTFS_OBS_METER_INTERVAL=
+Environment=RUSTFS_OBS_PROFILING_EXPORT_ENABLED=0
+Environment=RUSTFS_OBS_LOGS_EXPORT_ENABLED=0
 <%- end -%>
 MemoryHigh=750M
 MemoryMax=1G
 MemorySwapMax=64M
-ExecStart=/usr/local/bin/rustfs "<%= @data_dir %>"
+ExecStart=/usr/local/bin/rustfs server "<%= @data_dir %>"
 Restart=always
 RestartSec=30
 LimitNOFILE=40000
