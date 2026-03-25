@@ -30,6 +30,7 @@ class vmetrics::agent (
     if $global_metric_relabel {
         file { "${etc}/global-relabel.yaml":
             content => inline_template('<%= YAML.dump(@global_metric_relabel) %>'),
+            notify => Service['vmagent'],
         }
     }
 

@@ -1,4 +1,9 @@
 # <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+# those are a bit of a trap; they apply globally to TARGETS of scrape
+# not to push data sent to vmagent
+#global:
+#  relabel_configs:
+#  metric_relabel_configs:
 
 scrape_configs:
 scrape_config_files:
