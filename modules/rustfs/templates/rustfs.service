@@ -22,7 +22,7 @@ Environment=RUSTFS_OBS_METER_INTERVAL=10
 Environment=RUSTFS_OBS_PROFILING_EXPORT_ENABLED=0
 Environment=RUSTFS_OBS_LOGS_EXPORT_ENABLED=0
 Environment=OTEL_SERVICE_NAME="rustfs"
-Environment=OTEL_RESOURCE_ATTRIBUTES="host=<%= @hostname %>"
+Environment=OTEL_RESOURCE_ATTRIBUTES="host=<%= @hostname %>,service=rustfs"
 <%- end -%>
 MemoryHigh=750M
 MemoryMax=1G
