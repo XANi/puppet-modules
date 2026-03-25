@@ -1,5 +1,6 @@
 class vmetrics::agent (
-    $url = 'http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/write'
+    $url = 'http://127.0.0.1:8480/insert/100:0/prometheus/api/v1/write',
+    Variant[Array,Boolean[false]]  $global_metric_relabel = false,
 ) {
     include vmetrics::common
     $var = '/var/lib/vmetrics/agent'
@@ -26,7 +27,11 @@ class vmetrics::agent (
         content => template('vmetrics/scrape.yaml'),
         mode => "640"
     }
-
+    if $global_metric_relabel {
+        file { "${etc}/global-relabel.yaml":
+            content => inline_template('<%= YAML.dump(@global_metric_relabel) %>'),
+        }
+    }
 
     systemd::service { 'vmagent':
         content => template('vmetrics/vmagent.service'),

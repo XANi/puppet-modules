@@ -14,6 +14,9 @@ ExecStart=/opt/vmetrics/bin/vmagent \
     -memory.allowedBytes=100MB \
     -remoteWrite.tmpDataPath=/var/lib/vmetrics/agent \
     -remoteWrite.url=<%= @url %> \
+<%- if @global_metric_relabel -%>
+    -remoteWrite.relabelConfig=/etc/vmagent/global-relabel.yaml \
+<%- end -%>
     -promscrape.config=/etc/vmagent/scrape.yaml
 
 Restart=always
