@@ -5,7 +5,7 @@ require 'json'
 Puppet::Functions.create_function(:'messdb_read') do
   dispatch :key do
     param 'String', :db_key
-    optional_param 'String', :default_value
+    optional_param 'Any', :default_value
   end
   def key(db_key, default_value = nil )
     #if !@@messdb_client
