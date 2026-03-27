@@ -3,7 +3,7 @@
 [Unit]
 Description=Rustfs S3 server
 ConditionPathExists=<%= @data_dir %>
-RequiresMountsFor=<%= @data_dir %>
+
 
 [Service]
 Type=simple
