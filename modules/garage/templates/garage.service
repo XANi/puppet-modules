@@ -12,6 +12,7 @@ Group=garage
 MemoryHigh=1G
 MemoryMax=2G
 MemorySwapMax=64M
+Environment=RUST_LOG=garage=warn
 ExecStart=/usr/local/bin/garage server
 Restart=always
 RestartSec=30
