@@ -16,6 +16,7 @@ define syncthing::instance {
     service {"syncthing-${title}":
         enable => true,
 	provider => 'systemd',
-        require => File["/etc/systemd/system/syncthing-${title}.service"]
+        require => File["/etc/systemd/system/syncthing-${title}.service"],
+        subscribe=> Package['syncthing'],
     }
 }
