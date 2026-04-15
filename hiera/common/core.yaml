@@ -203,3 +203,8 @@ repos:
         release: "trixie"
         repos: main
         keyring: /etc/apt/gpg-keys-puppet/microsoft-prod.pub
+    hashicorp:
+        location: https://apt.releases.hashicorp.com
+        release: "trixie"
+        repos: main
+        keyring: /etc/apt/gpg-keys-puppet/hashicorp.pub
