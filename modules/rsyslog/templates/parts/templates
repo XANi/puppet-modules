@@ -1,0 +1,4 @@
+# <%=  __FILE__.gsub(/.*?modules\//,'puppet://modules/') %>
+
+$template json,"{%msg:::jsonf:message%,%HOSTNAME:::jsonf:fromhost%,%syslogfacility-text:::jsonf:facility%,%syslogpriority-text:::jsonf:priority%,%timereported:::date-rfc3339,jsonf%,%timegenerated:::date-rfc3339,jsonf%,%programname:::jsonf:program%,%procid:::jsonf:pid%}"
+<% %>

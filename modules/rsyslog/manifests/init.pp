@@ -6,6 +6,9 @@ class rsyslog::common {
         ensure => running,
         enable => true,
     }
+    rsyslog::log { 'templates':
+        prio => 0,
+    }
 }
 
 define rsyslog::log (
