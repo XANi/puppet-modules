@@ -208,3 +208,8 @@ repos:
         release: "trixie"
         repos: main
         keyring: /etc/apt/gpg-keys-puppet/hashicorp.pub
+    vector:
+        location: https://apt.vector.dev/
+        release: stable
+        repos: vector-0
+        keyring: /etc/apt/gpg-keys-puppet/datadog.pub
