@@ -1,12 +1,11 @@
-# default defaults section
 # <%=  __FILE__.gsub(/.*?modules\//,'puppet:///modules/') %>
-
 defaults
     log     global
     mode    http
     option	httpchk GET /
     option  httplog
     option  dontlognull
+    option forwardfor
     timeout connect 5000
     timeout client  50000
     timeout server  50000
@@ -17,3 +16,4 @@ defaults
     errorfile 502 /etc/haproxy/errors/502.http
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
+<% %>
