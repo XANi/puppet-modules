@@ -61,6 +61,16 @@ class common::server (
     ensure_packages(['uptimed'])
     rsyslog::log { 'puppet':; }
     rsyslog::log { 'dpp':; }
+    if $volatile_journal {
+        file { '/var/log/journal':
+            ensure  => directory,
+            purge   => true,
+            recurse => true,
+            force   => true,
+            backup  => false,
+        }
+    }
+
 
     file { '/etc/systemd/journald.conf':
         content => template('common/journald.conf'),
