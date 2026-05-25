@@ -2,6 +2,7 @@ class common::server (
     # serve ntp to others
     $ntp_server = false,
     $backup = true,
+    $volatile_journal = true,
 ) {
     if !defined(Class['apt']) {
         class { 'apt':
