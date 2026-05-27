@@ -36,7 +36,7 @@ Environment=RUSTFS_DRIVE_WALKDIR_STALL_TIMEOUT_SECS=1200
 #Environment=RUSTFS_OBJECT_CACHE_ENABLE=false
 Environment=RUSTFS_BUFFER_PROFILE=SecureStorage
 
-MemoryMax=1G
+MemoryMax=2G
 MemorySwapMax=64M
 ExecStart=/usr/local/bin/rustfs server "<%= @data_dir %>"
 Restart=always
