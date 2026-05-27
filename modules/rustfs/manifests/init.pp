@@ -1,6 +1,7 @@
 class rustfs::server(
     $access_key,
     $secret_key,
+    $encryption_key,
     $data_dir,
     $user = 'rustfs',
     $group = 'rustfs',
