@@ -213,3 +213,8 @@ repos:
         release: stable
         repos: vector-0
         keyring: /etc/apt/gpg-keys-puppet/datadog.pub
+    brave:
+        location: https://brave-browser-apt-release.s3.brave.com
+        release: stable
+        repos: main
+        keyring: /etc/apt/gpg-keys-puppet/brave.pub
