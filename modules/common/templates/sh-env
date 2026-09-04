@@ -11,7 +11,11 @@ elif [ -e /usr/bin/nano ] ; then
     export EDITOR=nano
 fi
 if [ ! -e '/usr/bin/go' ] ; then
-    if [ -e '/usr/lib/go-1.27/bin' ] ; then
+    if [ -e '/usr/lib/go-1.29/bin' ] ; then
+      export PATH="$PATH:/usr/lib/go-1.27/bin/"
+    elif [ -e '/usr/lib/go-1.28/bin' ] ; then
+      export PATH="$PATH:/usr/lib/go-1.27/bin/"
+    elif [ -e '/usr/lib/go-1.27/bin' ] ; then
       export PATH="$PATH:/usr/lib/go-1.27/bin/"
     elif [ -e '/usr/lib/go-1.26/bin' ] ; then
       export PATH="$PATH:/usr/lib/go-1.26/bin/"

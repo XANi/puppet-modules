@@ -1,7 +1,7 @@
 class commento::server (
     $origin_domain,
     $port = 3010,
-    $postgres_url = "postgres:///commento?host=/var/run/postgresql/",
+    $postgres_url = "postgres:///commento?host=/run/postgresql/",
     $smtp_from,
     $smtp_server,
     $google_key = false,
